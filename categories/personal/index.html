@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/categories/personal/" />
 
-<meta property="og:updated_time" content="2018-01-13T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2017-09-27T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="personal"/>
@@ -68,14 +68,14 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/recovery-admin-password-for-grafana/" rel="bookmark">
-			Recovery admin password for grafana
+			<a href="/post/manage-tls-certificates-for-kubernetes-users/" rel="bookmark">
+			Manage TLS Certificates for Kubernetes Users
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-01-13T00:00:00">January 13, 2018</time>
+	<time class="meta__text" datetime="2017-09-27T00:00:00">September 27, 2017</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -85,11 +85,8 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Steps to recovery admin password for grafana Install sqlite3
-sudo apt-get install sqlite3  Login to the database
-sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;
-sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin'; sqlite&gt; .exit  Now you can login using this credentials: username: admin and password: admin
-Obviusly, afterward you need to change the admin password.
+		User Steps (Part 1)  Download cfssl  mkdir ~/bin curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 chmod +x ~/bin/{cfssl,cfssljson} export PATH=$PATH:~/bin   Create a key and csr certificate  echo '{&quot;CN&quot;:&quot;juan.enciso&quot;,&quot;hosts&quot;:[&quot;&quot;],&quot;key&quot;:{&quot;algo&quot;:&quot;rsa&quot;,&quot;size&quot;:2048}}' \ | cfssl genkey - | cfssljson -bare juan.enciso   Signing the certificate  create a YAML file named certsignrequest.yml and send it to kubernetes Admin
+apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata: name: user-request-juan.
 	</div>
 </article>
 </main>
@@ -111,6 +108,7 @@ Obviusly, afterward you need to change the admin password.
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/post/recovery-admin-password-for-grafana/">Recovery admin password for grafana</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/manage-tls-certificates-for-kubernetes-users/">Manage TLS Certificates for Kubernetes Users</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Altering the minio bucket policy in kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/">How setup Haproxy with zero downtime reload from code source</a></li>
 		</ul>
@@ -120,8 +118,16 @@ Obviusly, afterward you need to change the admin password.
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/grafana">Grafana</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/personal">Personal</a></li>
 		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/haproxy" title="Haproxy">Haproxy</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
 	</div>
 </div>
 <div class="widget-social widget">

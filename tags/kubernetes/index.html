@@ -4,23 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Posts - Tech-Blog</title>
+	<title>kubernetes - Tech-Blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="My Blog">
-	<meta property="og:title" content="Posts" />
-<meta property="og:description" content="My Blog" />
+	<meta name="description" content="">
+	<meta property="og:title" content="kubernetes" />
+<meta property="og:description" content="Juan Enciso&#39;s Personal blog about linux, technology, kubernetes and anything" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/post/" />
+<meta property="og:url" content="/tags/kubernetes/" />
 
-<meta property="og:updated_time" content="2018-01-13T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2017-09-27T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="My Blog"/>
+<meta name="twitter:title" content="kubernetes"/>
+<meta name="twitter:description" content="Juan Enciso&#39;s Personal blog about linux, technology, kubernetes and anything"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="Tech-Blog">
+	<link rel="alternate" type="application/rss+xml" href="/tags/kubernetes/index.xml" title="Tech-Blog">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -46,7 +46,7 @@
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/post/">Blog</a>
 		</li>
 		<li class="menu__item">
@@ -64,34 +64,8 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Posts</h1>
+		<h1 class="main__title">kubernetes</h1>
 	</header><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/recovery-admin-password-for-grafana/" rel="bookmark">
-			Recovery admin password for grafana
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-01-13T00:00:00">January 13, 2018</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/grafana" rel="category">grafana</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Steps to recovery admin password for grafana Install sqlite3
-sudo apt-get install sqlite3  Login to the database
-sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;
-sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin'; sqlite&gt; .exit  Now you can login using this credentials: username: admin and password: admin
-Obviusly, afterward you need to change the admin password.
-	</div>
-</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/manage-tls-certificates-for-kubernetes-users/" rel="bookmark">
@@ -113,40 +87,6 @@ Obviusly, afterward you need to change the admin password.
 	<div class="content list__excerpt post__content clearfix">
 		User Steps (Part 1)  Download cfssl  mkdir ~/bin curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 chmod +x ~/bin/{cfssl,cfssljson} export PATH=$PATH:~/bin   Create a key and csr certificate  echo '{&quot;CN&quot;:&quot;juan.enciso&quot;,&quot;hosts&quot;:[&quot;&quot;],&quot;key&quot;:{&quot;algo&quot;:&quot;rsa&quot;,&quot;size&quot;:2048}}' \ | cfssl genkey - | cfssljson -bare juan.enciso   Signing the certificate  create a YAML file named certsignrequest.yml and send it to kubernetes Admin
 apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata: name: user-request-juan.
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/">
-			<img src="https://images.unsplash.com/photo-1532298326444-cfaf66a44cd1?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjF9&amp;s=267074028c630adbd9f64e3368206f31" alt="Altering the minio bucket policy in kubernetes" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
-			Altering the minio bucket policy in kubernetes
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
-First you need to get the credentials. Ex:
-✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
-✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" rel="bookmark">
-			How setup Haproxy with zero downtime reload from code source
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Intro HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
-This enables dynamic scalability and continuous integration all the way into production datacenters.
-Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed.
 	</div>
 </article>
 </main>

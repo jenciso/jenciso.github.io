@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>grafana on Tech-Blog</title>
+    <link>/categories/grafana/</link>
+    <description>Recent content in grafana on Tech-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/grafana/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Recovery admin password for grafana</title>
+      <link>/post/recovery-admin-password-for-grafana/</link>
+      <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/recovery-admin-password-for-grafana/</guid>
+      <description>Steps to recovery admin password for grafana Install sqlite3
+sudo apt-get install sqlite3  Login to the database
+sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &amp;ldquo;admin&amp;rdquo;
+sqlite&amp;gt; update user set password = &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt = &#39;F3FAxVm33R&#39; where login = &#39;admin&#39;; sqlite&amp;gt; .exit  Now you can login using this credentials: username: admin and password: admin
+Obviusly, afterward you need to change the admin password.</description>
+    </item>
+    
+  </channel>
+</rss>
