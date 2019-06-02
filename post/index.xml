@@ -25,6 +25,16 @@ Obviusly, afterward you need to change the admin password.</description>
     </item>
     
     <item>
+      <title>Using a custom openconnect version for VPN</title>
+      <link>/post/using-a-custom-openconnect-version-for-vpn/</link>
+      <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-a-custom-openconnect-version-for-vpn/</guid>
+      <description>My company use Palo Alto Networks to offer a VPN service for their employees. Personally I prefer Openvpn software, of course, because it is Open Source.
+I don&amp;rsquo;t know, but the openconnect version installed by default in my Fedora 26 haven&amp;rsquo;t the protocol support for GLobal Protect of Palo Alto, so for that reason, I had to compile a custom version of this software. Here is the procediment to compile it, and here are the my own steps to run it</description>
+    </item>
+    
+    <item>
       <title>Manage TLS Certificates for Kubernetes Users</title>
       <link>/post/manage-tls-certificates-for-kubernetes-users/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
