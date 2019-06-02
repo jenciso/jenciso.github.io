@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>personal on Tech-Blog</title>
+    <link>/categories/personal/</link>
+    <description>Recent content in personal on Tech-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Altering the minio bucket policy in kubernetes</title>
+      <link>/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/</guid>
+      <description>If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
+First you need to get the credentials. Ex:
+✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
+✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.</description>
+    </item>
+    
+    <item>
+      <title>How setup Haproxy with zero downtime reload from code source</title>
+      <link>/post/2018-11-19-how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-11-19-how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
+      <description>Intro HAProxy 1.8 and Linux kernel &amp;gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
+This enables dynamic scalability and continuous integration all the way into production datacenters.
+Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Altering the minio bucket policy in kubernetes - Tech-Blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Altering the minio bucket policy in kubernetes" />
+<meta property="og:description" content="If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
+First you need to get the credentials. Ex:
+✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
+✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/" />
+
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Altering the minio bucket policy in kubernetes"/>
+<meta name="twitter:description" content="If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
+First you need to get the credentials. Ex:
+✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
+✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Tech-Blog" rel="home">
+				<div class="logo__title">Tech-Blog</div>
+				<div class="logo__tagline">Juan Enciso</div>
+			</a>
+			<a href="/" title="Tech-Blog" rel="home">
+		                <img style="float: right" src="/images/logo_llama_blog.png" alt="Site Logo" width="90">
+			</a>
+                </div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/">Blog</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About me</a>
+		</li>
+	</ul>
+</nav>
+
+
+	</div>
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Altering the minio bucket policy in kubernetes</h1>
+			<div class="post__meta meta">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/personal" rel="category">personal</a></span>
+</div>
+</div>
+		</header>
+		<figure class="post__thumbnail">
+			<img src="https://images.unsplash.com/photo-1532298326444-cfaf66a44cd1?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjF9&amp;s=267074028c630adbd9f64e3368206f31" alt="Altering the minio bucket policy in kubernetes">
+		</figure>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.</p>
+
+<p>First you need to get the credentials. Ex:</p>
+
+<pre><code class="language-sh">✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \
+storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY=
+MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV
+MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3
+✔ 21:21:10 [inspiron3647] ~ $
+</code></pre>
+
+<p>Create a port-forward to access into the web interface</p>
+
+<pre><code class="language-sh">✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \
+storage-realiza-minio-66449995b5-q2qt7 9000:9000
+✔ 21:21:20 [inspiron3647] ~ $
+</code></pre>
+
+<p>Then, you need to access via <a href="http://localhost:9000">http://localhost:9000</a> and edit the policy and use the wildcard <code>*</code>. Like this image:</p>
+
+<p><img src="/images/Screenshot from 2018-08-09 21-22-18.png" alt="Screenshot from 2018-08-09 21-22-18.png" /></p>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Juan Enciso avatar" src="/img/jenciso.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Juan Enciso</span>
+	</div>
+	<div class="authorbox__description">
+		Juan Enciso&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/2018-11-19-how-setup-haproxy-with-zero-downtime-reload-from-code-source/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">How setup Haproxy with zero downtime reload from code source</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/migrate-from-jekyll/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Migrate to Hugo from Jekyll</p></a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jenciso-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		<div class="footer__links">
+	<a class="footer__link" href="/post/goisforlovers/">(Hu)go Template Primer</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2019 Juan Enciso.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

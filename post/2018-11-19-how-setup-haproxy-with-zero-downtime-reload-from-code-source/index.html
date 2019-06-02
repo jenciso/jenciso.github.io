@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>How setup Haproxy with zero downtime reload from code source - Tech-Blog</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="How setup Haproxy with zero downtime reload from code source" />
+<meta property="og:description" content="Intro HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
+This enables dynamic scalability and continuous integration all the way into production datacenters.
+Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2018-11-19-how-setup-haproxy-with-zero-downtime-reload-from-code-source/" />
+
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How setup Haproxy with zero downtime reload from code source"/>
+<meta name="twitter:description" content="Intro HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
+This enables dynamic scalability and continuous integration all the way into production datacenters.
+Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Tech-Blog" rel="home">
+				<div class="logo__title">Tech-Blog</div>
+				<div class="logo__tagline">Juan Enciso</div>
+			</a>
+			<a href="/" title="Tech-Blog" rel="home">
+		                <img style="float: right" src="/images/logo_llama_blog.png" alt="Site Logo" width="90">
+			</a>
+                </div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/">Blog</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About me</a>
+		</li>
+	</ul>
+</nav>
+
+
+	</div>
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">How setup Haproxy with zero downtime reload from code source</h1>
+			<div class="post__meta meta">
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/personal" rel="category">personal</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#steps">Steps</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h2 id="intro">Intro</h2>
+
+<p>HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</p>
+
+<p>This enables dynamic scalability and continuous integration all the way into production datacenters.</p>
+
+<p>Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed.</p>
+
+<h2 id="steps">Steps</h2>
+
+<ul>
+<li>Download the latest haproxy version</li>
+</ul>
+
+<pre><code class="language-sh">export HAPROXY_MAJOR=1.8
+export HAPROXY_VERSION=1.8.14
+
+wget -O haproxy.tar.gz \
+&quot;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
+</code></pre>
+
+<ul>
+<li>Installing the prerequisites packages to compile</li>
+</ul>
+
+<p>For ubuntu 16.04:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
+libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget \
+zlib1g-dev libsystemd-dev
+</code></pre>
+
+<p>For Centos 7.5:</p>
+
+<pre><code class="language-sh">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
+openssl openssl-devel openssl-libs systemd-devel
+</code></pre>
+
+<ul>
+<li>Compiling</li>
+</ul>
+
+<pre><code class="language-sh">tar xvfz haproxy.tar.gz
+cd haproxy-1.8.14/
+</code></pre>
+
+<p>For ubuntu:</p>
+
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+
+make install
+</code></pre>
+
+<p>For Centos 7.5:</p>
+
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+
+make install
+</code></pre>
+
+<ul>
+<li><p>verify the compile options, you have to have the <code>USE_SYSTEMD=1</code> option</p>
+
+<pre><code>HA-Proxy version 1.8.14-52e4d43 2018/09/20
+Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
+
+Build options :
+TARGET  = linux2628
+CPU     = generic
+CC      = gcc
+CFLAGS  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
+OPTIONS = USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+
+Default settings :
+maxconn = 2000, bufsize = 16384, maxrewrite = 1024, maxpollevents = 200
+
+Built with OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
+Running on OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
+OpenSSL library supports TLS extensions : yes
+OpenSSL library supports SNI : yes
+OpenSSL library supports : TLSv1.0 TLSv1.1 TLSv1.2
+Built with Lua version : Lua 5.3.1
+Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
+Encrypted password support via crypt(3): yes
+Built with multi-threading support.
+Built with PCRE version : 8.38 2015-11-23
+Running on PCRE version : 8.38 2015-11-23
+PCRE library supports JIT : yes
+Built with zlib version : 1.2.8
+Running on zlib version : 1.2.8
+Compression algorithms supported : identity(&quot;identity&quot;), deflate(&quot;deflate&quot;), raw-deflate(&quot;deflate&quot;), gzip(&quot;gzip&quot;)
+Built with network namespace support.
+
+Available polling systems :
+  epoll : pref=300,  test result OK
+   poll : pref=200,  test result OK
+ select : pref=150,  test result OK
+Total: 3 (3 usable), will use epoll.
+
+Available filters :
+	[SPOE] spoe
+	[COMP] compression
+	[TRACE] trace
+</code></pre></li>
+</ul>
+
+<p>References:</p>
+
+<p><a href="https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/">https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/</a></p>
+
+<p><a href="https://midiroot.com/post/haproxy-getting-started/">https://midiroot.com/post/haproxy-getting-started/</a></p>
+
+<p><a href="https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/">https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/</a></p>
+
+<p><a href="https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html">https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html</a></p>
+
+<p><a href="https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/">https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/</a></p>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Juan Enciso avatar" src="/img/jenciso.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Juan Enciso</span>
+	</div>
+	<div class="authorbox__description">
+		Juan Enciso&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Altering the minio bucket policy in kubernetes</p></a>
+	</div>
+</nav>
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jenciso-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		<div class="footer__links">
+	<a class="footer__link" href="/post/goisforlovers/">(Hu)go Template Primer</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2019 Juan Enciso.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>
