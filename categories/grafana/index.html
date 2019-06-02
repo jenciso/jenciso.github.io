@@ -77,6 +77,11 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">grafana</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/post/recovery-admin-password-for-grafana/">
+			<img src="https://www.hostinger.com/blog/wp-content/uploads/sites/4/2017/11/grafana-logo.jpg" alt="Recovery admin password for grafana" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/recovery-admin-password-for-grafana/" rel="bookmark">
@@ -96,11 +101,13 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Steps to recovery admin password for grafana Install sqlite3
-sudo apt-get install sqlite3  Login to the database
-sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;
-sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin'; sqlite&gt; .exit  Now you can login using this credentials: username: admin and password: admin
-Obviusly, afterward you need to change the admin password.
+		Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:
+ In your local machine, install the sqlite3 package
+sudo apt-get install sqlite3   Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;
+sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin'; sqlite&gt; .
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/recovery-admin-password-for-grafana/">Read more…</a>
 	</div>
 </article>
 </main>
@@ -108,7 +115,7 @@ Obviusly, afterward you need to change the admin password.
 
 			</div>
 			
-<aside class="sidebar sidebar--left"><div class="widget-search widget">
+<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
@@ -134,8 +141,8 @@ Obviusly, afterward you need to change the admin password.
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/categories/grafana">Grafana</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/kubernetes">Kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/network">Network</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/personal">Personal</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/vpn">Vpn</a></li>
 		</ul>
 	</div>
