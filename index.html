@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
 
-<meta property="og:updated_time" content="2018-04-16T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2018-01-13T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tech-Blog"/>
@@ -67,167 +67,37 @@
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/basic-elements/" rel="bookmark">
-			Basic HTML Elements
+			<a href="/post/recovery-admin-password-for-grafana/" rel="bookmark">
+			Recovery admin password for grafana
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-04-16T00:00:00">April 16, 2018</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/development" rel="category">Development</a></span>
+	<time class="meta__text" datetime="2018-01-13T00:00:00">January 13, 2018</time>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>The main purpose of this article is to make sure that all basic HTML Elements are decorated with CSS so as to not miss any possible elements when creating new themes for Hugo.</p>
+		Steps to recovery admin password for grafana Install sqlite3
+sudo apt-get install sqlite3  Login to the database
+sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;
+sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin'; sqlite&gt; .exit  Now you can login using this credentials: username: admin and password: admin
+Obviusly, afterward you need to change the admin password.
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
-		<a href="/post/demo/">
-			<img src="/images/kurtvonnegut.jpg" alt="Demo Page" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/demo/" rel="bookmark">
-			Demo Page
-			</a>
-		</h3>
-		<p class="list__lead post__lead">Example lead - highlighted near the title</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-08-21T00:00:00">August 21, 2017</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/category-1" rel="category">Category 1</a>, <a class="meta__link" href="/categories/category-2" rel="category">Category 2</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Intro This is a demo
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/creating-a-new-theme/" rel="bookmark">
-			Creating a New Theme
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2014-09-28T00:00:00">September 28, 2014</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&rsquo;t cover using CSS to style your theme.
-We&rsquo;ll start with creating a new site with a very basic template.
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="/post/goisforlovers/">
-			<img src="/img/placeholder.png" alt="(Hu)go Template Primer" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/goisforlovers/" rel="bookmark">
-			(Hu)go Template Primer
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2014-04-02T00:00:00">April 02, 2014</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/development" rel="category">Development</a>, <a class="meta__link" href="/categories/golang" rel="category">golang</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>Hugo uses the excellent <a href="https://golang.org/">Go</a> <a href="https://golang.org/pkg/html/template/">html/template</a> library for
-its template engine. It is an extremely lightweight engine that provides a very
-small amount of logic. In our experience that it is just the right amount of
-logic to be able to create a good static website. If you have used other
-template systems from different languages or frameworks you will find a lot of
-similarities in Go templates.</p>
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/hugoisforlovers/" rel="bookmark">
-			Getting Started with Hugo
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2014-04-02T00:00:00">April 02, 2014</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/development" rel="category">Development</a>, <a class="meta__link" href="/categories/golang" rel="category">golang</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/migrate-from-jekyll/" rel="bookmark">
-			Migrate to Hugo from Jekyll
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2014-03-10T00:00:00">March 10, 2014</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &lt;root&gt;/ ▾ images/ logo.png  should become
-▾ &lt;root&gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/">
+		<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/">
 			<img src="https://images.unsplash.com/photo-1532298326444-cfaf66a44cd1?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjF9&amp;s=267074028c630adbd9f64e3368206f31" alt="Altering the minio bucket policy in kubernetes" />
 		</a>
 	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/2018-08-09-altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
+			<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
 			Altering the minio bucket policy in kubernetes
 			</a>
 		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/personal" rel="category">personal</a></span>
-</div>
-</div>
+		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
@@ -238,16 +108,11 @@ First you need to get the credentials. Ex:
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/2018-11-19-how-setup-haproxy-with-zero-downtime-reload-from-code-source/" rel="bookmark">
+			<a href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" rel="bookmark">
 			How setup Haproxy with zero downtime reload from code source
 			</a>
 		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/personal" rel="category">personal</a></span>
-</div>
-</div>
+		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Intro HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
@@ -272,40 +137,10 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/post/basic-elements/">Basic HTML Elements</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/demo/">Demo Page</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/hugoisforlovers/">Getting Started with Hugo</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/recovery-admin-password-for-grafana/">Recovery admin password for grafana</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Altering the minio bucket policy in kubernetes</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/">How setup Haproxy with zero downtime reload from code source</a></li>
 		</ul>
-	</div>
-</div>
-<div class="widget-categories widget">
-	<h4 class="widget__title">Categories</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/categories/category-1">Category 1</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/category-2">Category 2</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/development">Development</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/golang">Golang</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/personal">Personal</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
-	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/another-test" title="Another test">Another test</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/basic-elements" title="Basic elements">Basic elements</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/css" title="Css">Css</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/development" title="Development">Development</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go" title="Go">Go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang" title="Golang">Golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/html" title="Html">Html</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/templates" title="Templates">Templates</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/test" title="Test">Test</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/themes" title="Themes">Themes</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -365,9 +200,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 		</div>
 		<footer class="footer">
 	<div class="container footer__container flex">
-		<div class="footer__links">
-	<a class="footer__link" href="/post/goisforlovers/">(Hu)go Template Primer</a>
-</div>
+		
 		<div class="footer__copyright">
 			&copy; 2019 Juan Enciso.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
