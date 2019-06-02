@@ -100,7 +100,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:
+		Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
  In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;  sqlite&gt; update user set password = &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt = &#39;F3FAxVm33R&#39; where login = &#39;admin&#39;; sqlite&gt; .
 	</div>
 	<div class="list__footer clearfix">

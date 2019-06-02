@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Recovery admin password for grafana" />
-<meta property="og:description" content="Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:
+<meta property="og:description" content="Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
  In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;  sqlite&gt; update user set password = &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt = &#39;F3FAxVm33R&#39; where login = &#39;admin&#39;; sqlite&gt; ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/recovery-admin-password-for-grafana/" />
@@ -17,7 +17,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Recovery admin password for grafana"/>
-<meta name="twitter:description" content="Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:
+<meta name="twitter:description" content="Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
  In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;  sqlite&gt; update user set password = &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt = &#39;F3FAxVm33R&#39; where login = &#39;admin&#39;; sqlite&gt; ."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -97,7 +97,7 @@ if (!doNotTrack) {
 
 <h2 id="intro">Intro</h2>
 
-<p>Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:</p>
+<p>Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&rsquo;ve been using <code>sqlite</code> as your grafana backend storage, the following these steps:</p>
 
 <ul>
 <li>In your local machine, install the sqlite3 package</li>

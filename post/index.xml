@@ -17,7 +17,7 @@
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/recovery-admin-password-for-grafana/</guid>
-      <description>Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If are you using sqlite as backend storage? Then following these steps:
+      <description>Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&amp;rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
  In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &amp;ldquo;admin&amp;rdquo;  sqlite&amp;gt; update user set password = &amp;#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&amp;#39;, salt = &amp;#39;F3FAxVm33R&amp;#39; where login = &amp;#39;admin&amp;#39;; sqlite&amp;gt; .</description>
     </item>
     
