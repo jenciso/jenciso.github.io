@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/post/" />
 
-<meta property="og:updated_time" content="2018-01-13T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2018-08-09T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -77,6 +77,34 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/">
+			<img src="https://blog.alexellis.io/content/images/2017/01/minio_light_cir_sm-1.png" alt="Altering the minio bucket policy in kubernetes" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
+			Altering the minio bucket policy in kubernetes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-08-09T00:00:00">August 09, 2018</time>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
+First you need to get the credentials. Ex:
+✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
+✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Read more…</a>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="/post/recovery-admin-password-for-grafana/">
 			<img src="https://www.hostinger.com/blog/wp-content/uploads/sites/4/2017/11/grafana-logo.jpg" alt="Recovery admin password for grafana" />
@@ -171,29 +199,6 @@ apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata
 	</div>
 </article><article class="list__item post">
 	<figure class="list__thumbnail">
-		<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/">
-			<img src="https://blog.alexellis.io/content/images/2017/01/minio_light_cir_sm-1.png" alt="Altering the minio bucket policy in kubernetes" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
-			Altering the minio bucket policy in kubernetes
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
-First you need to get the credentials. Ex:
-✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
-✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Read more…</a>
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
 		<a href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/">
 			<img src="https://cdn.haproxy.com/wp-content/uploads/2015/10/HAProxy_Logo-2-1.png" alt="How setup Haproxy with zero downtime reload from code source" />
 		</a>
@@ -233,10 +238,10 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Altering the minio bucket policy in kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/recovery-admin-password-for-grafana/">Recovery admin password for grafana</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/using-a-custom-openconnect-version-for-vpn/">Using a custom openconnect version for VPN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/manage-tls-certificates-for-kubernetes-users/">Manage TLS Certificates for Kubernetes Users</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Altering the minio bucket policy in kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/">How setup Haproxy with zero downtime reload from code source</a></li>
 		</ul>
 	</div>
@@ -257,6 +262,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/haproxy" title="Haproxy">Haproxy</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/minio" title="Minio">Minio</a>
 	</div>
 </div>
 <div class="widget-social widget">

@@ -4,23 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>grafana - Tech-Blog</title>
+	<title>minio - Tech-Blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="grafana" />
+	<meta property="og:title" content="minio" />
 <meta property="og:description" content="Juan Enciso&#39;s Personal blog about linux, technology, kubernetes and anything" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/categories/grafana/" />
+<meta property="og:url" content="/tags/minio/" />
 
-<meta property="og:updated_time" content="2018-01-13T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2018-08-09T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="grafana"/>
+<meta name="twitter:title" content="minio"/>
 <meta name="twitter:description" content="Juan Enciso&#39;s Personal blog about linux, technology, kubernetes and anything"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/categories/grafana/index.xml" title="Tech-Blog">
+	<link rel="alternate" type="application/rss+xml" href="/tags/minio/index.xml" title="Tech-Blog">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -75,37 +75,34 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">grafana</h1>
+		<h1 class="main__title">minio</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
-		<a href="/post/recovery-admin-password-for-grafana/">
-			<img src="https://www.hostinger.com/blog/wp-content/uploads/sites/4/2017/11/grafana-logo.jpg" alt="Recovery admin password for grafana" />
+		<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/">
+			<img src="https://blog.alexellis.io/content/images/2017/01/minio_light_cir_sm-1.png" alt="Altering the minio bucket policy in kubernetes" />
 		</a>
 	</figure>
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/recovery-admin-password-for-grafana/" rel="bookmark">
-			Recovery admin password for grafana
+			<a href="/post/altering-the-minio-bucket-policy-in-kubernetes/" rel="bookmark">
+			Altering the minio bucket policy in kubernetes
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-01-13T00:00:00">January 13, 2018</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/grafana" rel="category">grafana</a></span>
+	<time class="meta__text" datetime="2018-08-09T00:00:00">August 09, 2018</time>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
- In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &ldquo;admin&rdquo;  sqlite&gt; update user set password = &#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;, salt = &#39;F3FAxVm33R&#39; where login = &#39;admin&#39;; sqlite&gt; .
+		Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
+First you need to get the credentials. Ex:
+✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
+✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
 	</div>
 	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/post/recovery-admin-password-for-grafana/">Read more…</a>
+		<a class="list__footer-readmore btn" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Read more…</a>
 	</div>
 </article>
 </main>
