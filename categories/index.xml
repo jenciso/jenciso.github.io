@@ -21,11 +21,20 @@
     </item>
     
     <item>
-      <title>grafana</title>
-      <link>https://jenciso.github.io/categories/grafana/</link>
+      <title>cloud</title>
+      <link>https://jenciso.github.io/categories/cloud/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monitoring</title>
+      <link>https://jenciso.github.io/categories/monitoring/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jenciso.github.io/categories/grafana/</guid>
+      <guid>https://jenciso.github.io/categories/monitoring/</guid>
       <description></description>
     </item>
     
@@ -48,11 +57,11 @@
     </item>
     
     <item>
-      <title>kubernetes</title>
-      <link>https://jenciso.github.io/categories/kubernetes/</link>
+      <title>devops</title>
+      <link>https://jenciso.github.io/categories/devops/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jenciso.github.io/categories/kubernetes/</guid>
+      <guid>https://jenciso.github.io/categories/devops/</guid>
       <description></description>
     </item>
     
