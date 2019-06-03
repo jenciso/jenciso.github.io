@@ -8,9 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Embedding asciinema cast in your Hugo site" />
-<meta property="og:description" content="Background Asciinema is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.
-You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:
-&lt;script src=&quot;https://asciinema.org/a/186686.js&quot; id=&quot;asciicast-186686&quot; async&gt;&lt;/script&gt;  This works fine, but if you’re already using a static site generator you are probably using a service like Netlify or even a basic S3 &#43; CDN setup for your hosting." />
+<meta property="og:description" content="Background I use Asciinema commonly to share my favorite commands, it is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.
+You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/post/asciinema-hugo/" />
 <meta property="article:published_time" content="2019-06-02T00:00:00&#43;00:00"/>
@@ -18,9 +17,8 @@ You can embed casts hosted on asciinema into your Hugo posts and pages by embedd
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Embedding asciinema cast in your Hugo site"/>
-<meta name="twitter:description" content="Background Asciinema is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.
-You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:
-&lt;script src=&quot;https://asciinema.org/a/186686.js&quot; id=&quot;asciicast-186686&quot; async&gt;&lt;/script&gt;  This works fine, but if you’re already using a static site generator you are probably using a service like Netlify or even a basic S3 &#43; CDN setup for your hosting."/>
+<meta name="twitter:description" content="Background I use Asciinema commonly to share my favorite commands, it is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.
+You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -102,14 +100,14 @@ if (!doNotTrack) {
 
 <h2 id="background">Background</h2>
 
-<p><a href="https://github.com/asciinema/asciinema">Asciinema</a> is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.</p>
+<p>I use <a href="https://github.com/asciinema/asciinema">Asciinema</a> commonly to share my favorite commands, it is an excellent tool for technical blogs, documentation, and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.</p>
 
 <p>You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:</p>
 
 <pre><code class="language-js">&lt;script src=&quot;https://asciinema.org/a/186686.js&quot; id=&quot;asciicast-186686&quot; async&gt;&lt;/script&gt;
 </code></pre>
 
-<p>This works fine, but if you’re already using a static site generator you are probably using a service like Netlify or even a basic S3 + CDN setup for your hosting. If so, you don’t really care about offloading assets and bandwidth and by hosting asciinema casts yourself you also get some extra flexibility in styling and customisation.</p>
+<p>Although, it works fine, you could use it into your blog without upload the cast file in public. Thinks in security IT department rules, if you have a private blog it could be important to host the cast file into your statics files. So, these are the steps to do that</p>
 
 <h2 id="embedding-in-hugo-with-shortcodes">Embedding in Hugo with shortcodes</h2>
 
@@ -180,14 +178,14 @@ if (!doNotTrack) {
 
 <p>
     <asciinema-player
-        src="/casts/242631.cast"
-        cols="640"
+        src="/casts/249623.cast"
+        cols="158"
         rows="40"
         
         preload="1"
         
         start-at="0"
-        speed="1.5"
+        speed="1"
         
         
         
@@ -199,6 +197,10 @@ if (!doNotTrack) {
     ></asciinema-player>
 </p>
 
+
+<h4 id="references">References</h4>
+
+<p><a href="https://www.tonylykke.com/posts/custom-fonts-in-asciinema/">https://www.tonylykke.com/posts/custom-fonts-in-asciinema/</a></p>
 
 		</div>
 		
