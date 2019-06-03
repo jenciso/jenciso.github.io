@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech-Blog</title>
-    <link>/</link>
+    <link>https://jenciso.github.io/</link>
     <description>Recent content on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 09 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Altering the minio bucket policy in kubernetes</title>
-      <link>/post/altering-the-minio-bucket-policy-in-kubernetes/</link>
+      <link>https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/</link>
       <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/altering-the-minio-bucket-policy-in-kubernetes/</guid>
+      <guid>https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/</guid>
       <description>Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
 ✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
@@ -25,40 +25,40 @@ First you need to get the credentials. Ex:
     
     <item>
       <title>Recovery admin password for grafana</title>
-      <link>/post/recovery-admin-password-for-grafana/</link>
+      <link>https://jenciso.github.io/post/recovery-admin-password-for-grafana/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/recovery-admin-password-for-grafana/</guid>
+      <guid>https://jenciso.github.io/post/recovery-admin-password-for-grafana/</guid>
       <description>Intro Sometimes you need to enter in your grafana system, but for some reason, you lost your admin password. If you&amp;rsquo;ve been using sqlite as your grafana backend storage, the following these steps:
  In your local machine, install the sqlite3 package  sudo apt-get install sqlite3  Login to the database  sudo sqlite3 /var/lib/grafana/grafana.db  Reset the admin password to &amp;ldquo;admin&amp;rdquo;  sqlite&amp;gt; update user set password = &amp;#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&amp;#39;, salt = &amp;#39;F3FAxVm33R&amp;#39; where login = &amp;#39;admin&amp;#39;; sqlite&amp;gt; .</description>
     </item>
     
     <item>
       <title>Using a custom openconnect version for VPN</title>
-      <link>/post/using-a-custom-openconnect-version-for-vpn/</link>
+      <link>https://jenciso.github.io/post/using-a-custom-openconnect-version-for-vpn/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/using-a-custom-openconnect-version-for-vpn/</guid>
+      <guid>https://jenciso.github.io/post/using-a-custom-openconnect-version-for-vpn/</guid>
       <description>My company use Palo Alto Networks to offer a VPN service for their employees. Personally I prefer Openvpn software, of course, because it is Open Source.
 I don&amp;rsquo;t know, but the openconnect version installed by default in my Fedora 26 haven&amp;rsquo;t the protocol support for GLobal Protect of Palo Alto, so for that reason, I had to compile a custom version of this software. Here is the procediment to compile it, and here are the my own steps to run it</description>
     </item>
     
     <item>
       <title>Manage TLS Certificates for Kubernetes Users</title>
-      <link>/post/manage-tls-certificates-for-kubernetes-users/</link>
+      <link>https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/manage-tls-certificates-for-kubernetes-users/</guid>
+      <guid>https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/</guid>
       <description>User Steps (Part 1)  Download cfssl  mkdir ~/bin curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 chmod +x ~/bin/{cfssl,cfssljson} export PATH=$PATH:~/bin   Create a key and csr certificate  echo &#39;{&amp;quot;CN&amp;quot;:&amp;quot;juan.enciso&amp;quot;,&amp;quot;hosts&amp;quot;:[&amp;quot;&amp;quot;],&amp;quot;key&amp;quot;:{&amp;quot;algo&amp;quot;:&amp;quot;rsa&amp;quot;,&amp;quot;size&amp;quot;:2048}}&#39; \ | cfssl genkey - | cfssljson -bare juan.enciso   Signing the certificate  create a YAML file named certsignrequest.yml and send it to kubernetes Admin
 apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata: name: user-request-juan.</description>
     </item>
     
     <item>
       <title>How setup Haproxy with zero downtime reload from code source</title>
-      <link>/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
+      <link>https://jenciso.github.io/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
+      <guid>https://jenciso.github.io/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
       <description>Intro HAProxy 1.8 and Linux kernel &amp;gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
 This enables dynamic scalability and continuous integration all the way into production datacenters.
 Here are the steps to install the new version of haproxy 1.8.14, that include reload daemon when the config file (haproxy.cfg) need to be changed.</description>
@@ -66,10 +66,10 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
     
     <item>
       <title>Juan Enciso</title>
-      <link>/about/</link>
+      <link>https://jenciso.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://jenciso.github.io/about/</guid>
       <description>I&amp;rsquo;m an IT professional with solid background to create infrastructure solutions in diverse industries as Financial Services and Internet Web Services. I&amp;rsquo;m looking forward to use cutting edge technology and Open Source Software to create resilience services. Always comfortable to use infrastructure as code to manage large computers farm using many tools like to ansible, puppet and chef. Actually I&amp;rsquo;m working focused in microservices architecture technology and cloud native solutions.</description>
     </item>
     

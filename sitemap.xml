@@ -3,94 +3,94 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/altering-the-minio-bucket-policy-in-kubernetes/</loc>
+    <loc>https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/</loc>
     <lastmod>2018-08-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://jenciso.github.io/post/</loc>
     <lastmod>2018-08-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2018-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://jenciso.github.io/tags/</loc>
     <lastmod>2018-08-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/minio/</loc>
+    <loc>https://jenciso.github.io/</loc>
     <lastmod>2018-08-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://jenciso.github.io/tags/minio/</loc>
+    <lastmod>2018-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/categories/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/grafana/</loc>
+    <loc>https://jenciso.github.io/categories/grafana/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/recovery-admin-password-for-grafana/</loc>
+    <loc>https://jenciso.github.io/post/recovery-admin-password-for-grafana/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/using-a-custom-openconnect-version-for-vpn/</loc>
+    <loc>https://jenciso.github.io/post/using-a-custom-openconnect-version-for-vpn/</loc>
     <lastmod>2017-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/network/</loc>
-    <lastmod>2017-10-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/vpn/</loc>
+    <loc>https://jenciso.github.io/categories/network/</loc>
     <lastmod>2017-10-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/manage-tls-certificates-for-kubernetes-users/</loc>
+    <loc>https://jenciso.github.io/categories/vpn/</loc>
+    <lastmod>2017-10-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/kubernetes/</loc>
+    <loc>https://jenciso.github.io/categories/kubernetes/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/kubernetes/</loc>
+    <loc>https://jenciso.github.io/tags/kubernetes/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
+    <loc>https://jenciso.github.io/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
   </url>
   
   <url>
-    <loc>/about/</loc>
+    <loc>https://jenciso.github.io/about/</loc>
   </url>
   
   <url>
-    <loc>/tags/haproxy/</loc>
+    <loc>https://jenciso.github.io/tags/haproxy/</loc>
     <priority>0</priority>
   </url>
   

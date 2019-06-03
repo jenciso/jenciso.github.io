@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on Tech-Blog</title>
-    <link>/tags/kubernetes/</link>
+    <link>https://jenciso.github.io/tags/kubernetes/</link>
     <description>Recent content in kubernetes on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Manage TLS Certificates for Kubernetes Users</title>
-      <link>/post/manage-tls-certificates-for-kubernetes-users/</link>
+      <link>https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/manage-tls-certificates-for-kubernetes-users/</guid>
+      <guid>https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/</guid>
       <description>User Steps (Part 1)  Download cfssl  mkdir ~/bin curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 chmod +x ~/bin/{cfssl,cfssljson} export PATH=$PATH:~/bin   Create a key and csr certificate  echo &#39;{&amp;quot;CN&amp;quot;:&amp;quot;juan.enciso&amp;quot;,&amp;quot;hosts&amp;quot;:[&amp;quot;&amp;quot;],&amp;quot;key&amp;quot;:{&amp;quot;algo&amp;quot;:&amp;quot;rsa&amp;quot;,&amp;quot;size&amp;quot;:2048}}&#39; \ | cfssl genkey - | cfssljson -bare juan.enciso   Signing the certificate  create a YAML file named certsignrequest.yml and send it to kubernetes Admin
 apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata: name: user-request-juan.</description>
     </item>

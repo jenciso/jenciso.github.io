@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Tech-Blog</title>
-    <link>/categories/</link>
+    <link>https://jenciso.github.io/categories/</link>
     <description>Recent content in Categories on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>grafana</title>
-      <link>/categories/grafana/</link>
+      <link>https://jenciso.github.io/categories/grafana/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/grafana/</guid>
+      <guid>https://jenciso.github.io/categories/grafana/</guid>
       <description></description>
     </item>
     
     <item>
       <title>network</title>
-      <link>/categories/network/</link>
+      <link>https://jenciso.github.io/categories/network/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/network/</guid>
+      <guid>https://jenciso.github.io/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vpn</title>
-      <link>/categories/vpn/</link>
+      <link>https://jenciso.github.io/categories/vpn/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/vpn/</guid>
+      <guid>https://jenciso.github.io/categories/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>/categories/kubernetes/</link>
+      <link>https://jenciso.github.io/categories/kubernetes/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/kubernetes/</guid>
+      <guid>https://jenciso.github.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     

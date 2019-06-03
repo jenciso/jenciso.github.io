@@ -11,7 +11,7 @@
 <meta property="og:description" content="User Steps (Part 1)  Download cfssl  mkdir ~/bin curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 chmod &#43;x ~/bin/{cfssl,cfssljson} export PATH=$PATH:~/bin   Create a key and csr certificate  echo &#39;{&quot;CN&quot;:&quot;juan.enciso&quot;,&quot;hosts&quot;:[&quot;&quot;],&quot;key&quot;:{&quot;algo&quot;:&quot;rsa&quot;,&quot;size&quot;:2048}}&#39; \ | cfssl genkey - | cfssljson -bare juan.enciso   Signing the certificate  create a YAML file named certsignrequest.yml and send it to kubernetes Admin
 apiVersion: certificates.k8s.io/v1beta1 kind: CertificateSigningRequest metadata: name: user-request-juan." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/manage-tls-certificates-for-kubernetes-users/" />
+<meta property="og:url" content="https://jenciso.github.io/post/manage-tls-certificates-for-kubernetes-users/" />
 <meta property="article:published_time" content="2017-09-27T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2017-09-27T00:00:00&#43;00:00"/>
 

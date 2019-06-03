@@ -13,7 +13,7 @@ First you need to get the credentials. Ex:
 ✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
 ✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/post/altering-the-minio-bucket-policy-in-kubernetes/" />
+<meta property="og:url" content="https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/" />
 <meta property="article:published_time" content="2018-08-09T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2018-08-09T00:00:00&#43;00:00"/>
 
