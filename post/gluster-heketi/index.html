@@ -37,6 +37,11 @@ if (!doNotTrack) {
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
         
+
+<link rel="stylesheet" href="/highlight/styles/a11y-dark.css">
+<script src="/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -108,21 +113,23 @@ if (!doNotTrack) {
 <li>Scale down your heketi service</li>
 </ul>
 
-<pre><code class="language-console">$ kubectl scale deployment -n gluster-heketi heketi --replicas=0
+<pre><code class="language-shell">$ kubectl scale deployment -n gluster-heketi heketi --replicas=0
 </code></pre>
 
 <ul>
-<li><p>Find out your <code>heketidbstorage</code> mount point</p>
-
-<pre><code>$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k
-</code></pre></li>
-
-<li><p>Mount the gluster volume of <code>heketi.db</code></p>
-
-<pre><code>$ sudo apt-get -y install glusterfs-client
-$ sudo mount -t glusterfs 10.64.14.47:/heketidbstorage  /mnt
-</code></pre></li>
+<li>Find out your <code>heketidbstorage</code> mount point</li>
 </ul>
+
+<pre><code class="language-shell">$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k
+</code></pre>
+
+<ul>
+<li>Mount the gluster volume of <code>heketi.db</code></li>
+</ul>
+
+<pre><code class="language-shell">$ sudo apt-get -y install glusterfs-client
+$ sudo mount -t glusterfs 10.64.14.47:/heketidbstorage  /mnt
+</code></pre>
 
 <blockquote>
 <p><code>10.64.14.47</code> is one of my gluster servers</p>
@@ -132,7 +139,7 @@ $ sudo mount -t glusterfs 10.64.14.47:/heketidbstorage  /mnt
 <li>Download the heketi binary</li>
 </ul>
 
-<pre><code class="language-console">$ wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz 
+<pre><code class="language-shell">$ wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz 
 $ cd heketi
 $ sudo ./heketi db delete-bricks-with-empty-path --dbfile=/mnt/heketi.db --all
 $ umount /mnt
@@ -142,27 +149,27 @@ $ umount /mnt
 <li>Scale up your heketi service</li>
 </ul>
 
-<pre><code class="language-console">$ kubectl scale deployment -n gluster-heketi heketi --replicas=1
+<pre><code class="language-shell">$ kubectl scale deployment -n gluster-heketi heketi --replicas=1
 </code></pre>
 
 <ul>
-<li><p>Resync your devices in all the nodes</p>
-
-<pre><code>$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- \ 
-heketi-cli device resync 4c2a876a7829f3660e5a08cd1c0a5b1c
-</code></pre></li>
+<li>Resync your devices in all the nodes</li>
 </ul>
+
+<pre><code class="language-shell">$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- \ 
+  heketi-cli device resync 4c2a876a7829f3660e5a08cd1c0a5b1c
+</code></pre>
 
 <blockquote>
 <p>You need to do that in all your devices</p>
 </blockquote>
 
 <ul>
-<li><p>Check your heketi environment</p>
-
-<pre><code>$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl heketi-cli topology info
-</code></pre></li>
+<li>Check your heketi environment</li>
 </ul>
+
+<pre><code class="language-shell">$ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl heketi-cli topology info
+</code></pre>
 
 <hr />
 
