@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.49" />
+	<meta name="generator" content="Hugo 0.55.6" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
 <meta property="og:description" content="Juan Enciso&#39;s Personal blog about linux, technology, kubernetes and anything" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jenciso.github.io/" />
+
 <meta property="og:updated_time" content="2019-06-03T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
@@ -92,13 +93,18 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2019-06-03T00:00:00">June 03, 2019</time>
 </div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux" rel="category">linux</a></span>
+</div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Background I&rsquo;m using gluster + heketi in my kubernetes cluster to give a persistent storage service on demand. Periodically, I need to clean up my gluster volumes because for some reason the heketi volumes is not equal with the gluster bricks.
 Delete the orphands bricks Some bricks haven&rsquo;t the path correctly. So, you need to clean up using the heketi binary command (the server, not the client).
 Steps:
- Scale down your heketi service  $ kubectl scale deployment -n gluster-heketi heketi --replicas=0   Find out your heketidbstorage mount point  $ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k   Mount the gluster volume of heketi.
+ Scale down your heketi service  $ kubectl scale deployment -n gluster-heketi heketi --replicas=0   Find out your heketidbstorage mount point
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/post/gluster-heketi/">Read more…</a>
@@ -331,6 +337,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/minio" title="Minio">Minio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/storage" title="Storage">Storage</a>
 	</div>
 </div>
 <div class="widget-social widget">

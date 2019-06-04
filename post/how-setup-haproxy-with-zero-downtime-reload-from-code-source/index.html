@@ -14,6 +14,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/post/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" />
 
+
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How setup Haproxy with zero downtime reload from code source"/>
 <meta name="twitter:description" content="Intro HAProxy 1.8 and Linux kernel &gt;=3.9 then you can take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.
@@ -149,21 +150,20 @@ make install
 </code></pre>
 
 <ul>
-<li>verify the compile options, you have to have the <code>USE_SYSTEMD=1</code> option</li>
-</ul>
+<li><p>verify the compile options, you have to have the <code>USE_SYSTEMD=1</code> option</p>
 
 <pre><code>HA-Proxy version 1.8.14-52e4d43 2018/09/20
 Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :
-  TARGET  = linux2628
-  CPU     = generic
-  CC      = gcc
-  CFLAGS  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
-  OPTIONS = USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+TARGET  = linux2628
+CPU     = generic
+CC      = gcc
+CFLAGS  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
+OPTIONS = USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 
 Default settings :
-  maxconn = 2000, bufsize = 16384, maxrewrite = 1024, maxpollevents = 200
+maxconn = 2000, bufsize = 16384, maxrewrite = 1024, maxpollevents = 200
 
 Built with OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
 Running on OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
@@ -183,16 +183,17 @@ Compression algorithms supported : identity(&quot;identity&quot;), deflate(&quot
 Built with network namespace support.
 
 Available polling systems :
-      epoll : pref=300,  test result OK
-       poll : pref=200,  test result OK
-     select : pref=150,  test result OK
+  epoll : pref=300,  test result OK
+   poll : pref=200,  test result OK
+ select : pref=150,  test result OK
 Total: 3 (3 usable), will use epoll.
 
 Available filters :
 	[SPOE] spoe
 	[COMP] compression
 	[TRACE] trace
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>References:</p>
 

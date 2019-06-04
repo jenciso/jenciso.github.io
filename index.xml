@@ -20,7 +20,7 @@
       <description>Background I&amp;rsquo;m using gluster + heketi in my kubernetes cluster to give a persistent storage service on demand. Periodically, I need to clean up my gluster volumes because for some reason the heketi volumes is not equal with the gluster bricks.
 Delete the orphands bricks Some bricks haven&amp;rsquo;t the path correctly. So, you need to clean up using the heketi binary command (the server, not the client).
 Steps:
- Scale down your heketi service  $ kubectl scale deployment -n gluster-heketi heketi --replicas=0   Find out your heketidbstorage mount point  $ kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k   Mount the gluster volume of heketi.</description>
+ Scale down your heketi service  $ kubectl scale deployment -n gluster-heketi heketi --replicas=0   Find out your heketidbstorage mount point</description>
     </item>
     
     <item>
