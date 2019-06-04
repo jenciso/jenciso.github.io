@@ -172,8 +172,8 @@ You can embed casts hosted on asciinema into your Hugo posts and pages by embedd
 	<div class="content list__excerpt post__content clearfix">
 		Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
-✔ 21:21:09 [inspiron3647] ~ $ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3 ✔ 21:21:10 [inspiron3647] ~ $  Create a port-forward to access into the web interface
-✔ 21:21:20 [inspiron3647] ~ $ kubectl port-forward -n realiza \ storage-realiza-minio-66449995b5-q2qt7 9000:9000 ✔ 21:21:20 [inspiron3647] ~ $  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
+$ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= $ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV $ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3  Create a port-forward to access into the web interface
+$ kubectl port-forward -n realiza storage-realiza-minio-66449995b5-q2qt7 9000:9000  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Read more…</a>
