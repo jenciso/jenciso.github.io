@@ -122,14 +122,14 @@ if (!doNotTrack) {
 
 <p>Add the following to your template’s <code>head</code> section:</p>
 
-<pre><code>{{ if .Params.asciinema }}
+<pre><code class="language-html">{{ if .Params.asciinema }}
     &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{{ .Site.BaseURL }}css/asciinema-player.css&quot; /&gt;
 {{ end }}
 </code></pre>
 
 <p>Add the following just before the closing <code>body</code> tag in your template’s footer:</p>
 
-<pre><code>{{ if .Params.asciinema }}
+<pre><code class="language-html">{{ if .Params.asciinema }}
     &lt;script src=&quot;{{ .Site.BaseURL }}js/asciinema-player.js&quot;&gt;&lt;/script&gt;
 {{ end }}
 </code></pre>
