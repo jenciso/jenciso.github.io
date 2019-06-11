@@ -10,18 +10,17 @@
 	<meta property="og:title" content="Altering the minio bucket policy in kubernetes" />
 <meta property="og:description" content="Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
-$ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= $ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV $ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3  Create a port-forward to access into the web interface
+$ kubectl exec -it -n realiza storage-realiza-minio-6644999-lvtvp env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEEMSNXVSWSC MINIO_SECRET_KEY=BcjweDZOVMECCIfiCY $  Create a port-forward to access into the web interface
 $ kubectl port-forward -n realiza storage-realiza-minio-66449995b5-q2qt7 9000:9000  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/" />
-<meta property="article:published_time" content="2018-08-09T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/" /><meta property="article:published_time" content="2018-08-09T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2018-08-09T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Altering the minio bucket policy in kubernetes"/>
 <meta name="twitter:description" content="Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
-$ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= $ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV $ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3  Create a port-forward to access into the web interface
+$ kubectl exec -it -n realiza storage-realiza-minio-6644999-lvtvp env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEEMSNXVSWSC MINIO_SECRET_KEY=BcjweDZOVMECCIfiCY $  Create a port-forward to access into the web interface
 $ kubectl port-forward -n realiza storage-realiza-minio-66449995b5-q2qt7 9000:9000  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -111,10 +110,10 @@ if (!doNotTrack) {
 
 <p>First you need to get the credentials. Ex:</p>
 
-<pre><code class="language-shell">$ kubectl exec -it -n realiza \
-  storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= 
-$ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV
-$ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3
+<pre><code class="language-shell">$ kubectl exec -it -n realiza storage-realiza-minio-6644999-lvtvp env | egrep MINIO.*KEY=  
+MINIO_ACCESS_KEY=XJNCWECEEMSNXVSWSC
+MINIO_SECRET_KEY=BcjweDZOVMECCIfiCY
+$ 
 </code></pre>
 
 <p>Create a port-forward to access into the web interface</p>

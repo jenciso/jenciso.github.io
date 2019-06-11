@@ -4,20 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Using a custom openconnect version for VPN - Tech-Blog</title>
+	<title>How setup the Noto Color Emoji in your Ubuntu - Tech-Blog</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-	<meta property="og:title" content="Using a custom openconnect version for VPN" />
-<meta property="og:description" content="My company use Palo Alto Networks to offer a VPN service for their employees. Personally I prefer Openvpn software, of course, because it is Open Source.
-I don&rsquo;t know, but the openconnect version installed by default in my Fedora 26 haven&rsquo;t the protocol support for GLobal Protect of Palo Alto, so for that reason, I had to compile a custom version of this software. Here is the procediment to compile it, and here are the my own steps to run it" />
+	<meta name="description" content="Setting the color emoji unicode chars">
+	<meta property="og:title" content="How setup the Noto Color Emoji in your Ubuntu" />
+<meta property="og:description" content="Setting the color emoji unicode chars" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jenciso.github.io/post/using-a-custom-openconnect-version-for-vpn/" /><meta property="article:published_time" content="2017-10-21T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2017-10-21T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://jenciso.github.io/post/how-setup-your-noto-color-emoji-fonts/" /><meta property="article:published_time" content="2019-06-11T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-06-11T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Using a custom openconnect version for VPN"/>
-<meta name="twitter:description" content="My company use Palo Alto Networks to offer a VPN service for their employees. Personally I prefer Openvpn software, of course, because it is Open Source.
-I don&rsquo;t know, but the openconnect version installed by default in my Fedora 26 haven&rsquo;t the protocol support for GLobal Protect of Palo Alto, so for that reason, I had to compile a custom version of this software. Here is the procediment to compile it, and here are the my own steps to run it"/>
+<meta name="twitter:title" content="How setup the Noto Color Emoji in your Ubuntu"/>
+<meta name="twitter:description" content="Setting the color emoji unicode chars"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -82,87 +80,95 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Using a custom openconnect version for VPN</h1>
+			<h1 class="post__title">How setup the Noto Color Emoji in your Ubuntu</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-10-21T00:00:00">October 21, 2017</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/network" rel="category">network</a>, <a class="meta__link" href="/categories/vpn" rel="category">vpn</a></span>
+	<time class="meta__text" datetime="2019-06-11T00:00:00">June 11, 2019</time>
 </div>
 </div>
 		</header>
 		<figure class="post__thumbnail">
-			<img src="https://lh3.ggpht.com/CgBsBObW435LaQ6Y_yceVU6eopiI_kRDJdOk6y5DVjs6vfWPZ8MKKQbJieDjQJFzwQ4" alt="Using a custom openconnect version for VPN">
+			<img src="/images/noto_color_emoji01.png" alt="How setup the Noto Color Emoji in your Ubuntu">
 		</figure><div class="content post__content clearfix">
 			
 
-<p>My company use Palo Alto Networks to offer a VPN service for their employees. Personally I prefer Openvpn software, of course, because it is Open Source.</p>
+<h1 id="background">Background</h1>
 
-<p>I don&rsquo;t know, but the openconnect version installed by default in my <code>Fedora 26</code> haven&rsquo;t the protocol support for GLobal Protect of Palo Alto, so for that reason, I had to compile a custom version of this software. <a href="https://github.com/dlenski/openconnect">Here</a> is the procediment to compile it, and here are the my own steps to run it</p>
+<p>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons.In Ubuntu 16.04 LTS it could be a little hard to install it. So, here are th step to install it manually</p>
 
-<h2 id="requeriments">Requeriments</h2>
+<h2 id="steps">Steps</h2>
 
-<h3 id="fedora-users">Fedora Users</h3>
+<ul>
+<li><p>Download from <a href="https://www.google.com/get/noto">https://www.google.com/get/noto</a>. If you prefer, you could download it directly from <a href="https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip">here</a></p></li>
 
-<p>First at all, you need to install these packages</p>
+<li><p>Copy the ttf file into the <code>.fonts</code> dir</p></li>
+</ul>
 
-<pre><code class="language-console">$ sudo dnf -f install libxml2-devel \
-  zlib-devel \
-  openssl-devel \
-  pkg-config \
-  p11-kit \
-  libp11 \
-  libproxy \
-  trous \
-  libproxy-devel \
-  libstoken 
+<pre><code class="language-shell">$ cp NotoColorEmoji.ttf ~/.fonts
 </code></pre>
 
-<h3 id="ubuntu">Ubuntu</h3>
+<ul>
+<li>Edit the <code>.fonts.conf</code> file</li>
+</ul>
 
-<pre><code class="language-console">$ sudo apt-get install \
-    build-essential gettext autoconf automake libproxy-dev \
-    libxml2-dev libtool vpnc-scripts pkg-config \
-    libgnutls-dev
+<pre><code class="language-shell">$ vim ~/.fonts.conf
+</code></pre>
+
+<ul>
+<li>Copy the following text</li>
+</ul>
+
+<pre><code class="language-html">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
+&lt;fontconfig&gt;
+
+   &lt;alias&gt;
+     &lt;family&gt;sans-serif&lt;/family&gt;
+     &lt;prefer&gt;
+       &lt;family&gt;Noto Color Emoji&lt;/family&gt;
+       &lt;family&gt;Noto Emoji&lt;/family&gt;
+     &lt;/prefer&gt;
+   &lt;/alias&gt;
+
+   &lt;alias&gt;
+     &lt;family&gt;serif&lt;/family&gt;
+     &lt;prefer&gt;
+       &lt;family&gt;Noto Color Emoji&lt;/family&gt;
+       &lt;family&gt;Noto Emoji&lt;/family&gt;
+     &lt;/prefer&gt;
+   &lt;/alias&gt;
+
+   &lt;alias&gt;
+    &lt;family&gt;monospace&lt;/family&gt;
+    &lt;prefer&gt;
+      &lt;family&gt;Ubuntu Mono&lt;/family&gt;
+     &lt;/prefer&gt;
+   &lt;/alias&gt;
+
+&lt;/fontconfig&gt;
+</code></pre>
+
+<ul>
+<li>Rebuild the cache font</li>
+</ul>
+
+<pre><code class="language-shell">$ sudo fc-cache -fv
 </code></pre>
 
 <blockquote>
-<p>Tested in Ubuntu 16.04</p>
+<p>You need to restart your chrome and if you have problems with your Terminal, because some characters appears a little big or some wierd, you should setup your Profile to specify the size font and not permit to ubuntu setup for you the fonts</p>
 </blockquote>
-
-<h2 id="compiling">Compiling</h2>
-
-<p>After, you need to download the repo for dlenski github pages and compile it</p>
-
-<pre><code class="language-console">$ git clone https://github.com/dlenski/openconnect.git
-$ cd openconnect
-$ git checkout globalprotect
-$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
-</code></pre>
-
-<p>Load the shared libraries</p>
-
-<pre><code class="language-console">$ sudo ldconfig
-</code></pre>
-
-<p>Finally, you can test it!</p>
-
-<pre><code class="language-console">$ sudo /usr/local/sbin/openconnect --protocol=gp vpn.mycompany.com.br --dump -v
-</code></pre>
-
-<h2 id="notes">Notes</h2>
-
-<p>To create an init script, <a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">here</a> you have some ideias.</p>
 
 		</div>
 		
+<div class="post__tags tags clearfix">
+	<svg class="tags__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/ubuntu/" rel="tag">ubuntu</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/emoji/" rel="tag">emoji</a></li>
+	</ul>
+</div>
 	</article>
 </main>
 
@@ -180,10 +186,7 @@ $ sudo make install
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/post/manage-tls-certificates-for-kubernetes-users/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Manage TLS Certificates for Kubernetes Users</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/post/recovery-admin-password-for-grafana/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Recovery admin password for grafana</p></a>
+		<a class="post-nav__link" href="/post/gluster-heketi/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Cleaning Gluster Heketi volumes</p></a>
 	</div>
 </nav>
 

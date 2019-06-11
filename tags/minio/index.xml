@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>minio on Tech-Blog</title>
+    <title>Minio on Tech-Blog</title>
     <link>https://jenciso.github.io/tags/minio/</link>
-    <description>Recent content in minio on Tech-Blog</description>
+    <description>Recent content in Minio on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 09 Aug 2018 00:00:00 +0000</lastBuildDate>
@@ -19,7 +19,7 @@
       <guid>https://jenciso.github.io/post/altering-the-minio-bucket-policy-in-kubernetes/</guid>
       <description>Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
-$ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= $ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV $ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3  Create a port-forward to access into the web interface
+$ kubectl exec -it -n realiza storage-realiza-minio-6644999-lvtvp env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEEMSNXVSWSC MINIO_SECRET_KEY=BcjweDZOVMECCIfiCY $  Create a port-forward to access into the web interface
 $ kubectl port-forward -n realiza storage-realiza-minio-66449995b5-q2qt7 9000:9000  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.</description>
     </item>
     

@@ -11,8 +11,7 @@
 <meta property="og:description" content="My Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jenciso.github.io/post/" />
-
-<meta property="og:updated_time" content="2019-06-03T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2019-06-11T00:00:00&#43;00:00"/>
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -83,6 +82,32 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://jenciso.github.io/post/how-setup-your-noto-color-emoji-fonts/">
+			<img src="/images/noto_color_emoji01.png" alt="How setup the Noto Color Emoji in your Ubuntu" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/how-setup-your-noto-color-emoji-fonts/" rel="bookmark">
+			How setup the Noto Color Emoji in your Ubuntu
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-06-11T00:00:00">June 11, 2019</time>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Background Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons.In Ubuntu 16.04 LTS it could be a little hard to install it. So, here are th step to install it manually
+Steps  Download from https://www.google.com/get/noto. If you prefer, you could download it directly from here
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/how-setup-your-noto-color-emoji-fonts/">Read more…</a>
+	</div>
+</article><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://jenciso.github.io/post/gluster-heketi/">
 			<img src="https://angristan.xyz/content/images/size/w2000/2018/10/glusterfs.png" alt="Cleaning Gluster Heketi volumes" />
@@ -173,7 +198,7 @@ You can embed casts hosted on asciinema into your Hugo posts and pages by embedd
 	<div class="content list__excerpt post__content clearfix">
 		Intro If you want to create a public bucket, you can use the minio web interface to alter its bucket policy.
 First you need to get the credentials. Ex:
-$ kubectl exec -it -n realiza \ storage-realiza-minio-66449995b5-q2qt7 -- env | egrep MINIO.*KEY= $ MINIO_ACCESS_KEY=XJNCWECEDDSDSNXVEAAMKV $ MINIO_SECRET_KEY=BcjweDZOVMECCI232443e3  Create a port-forward to access into the web interface
+$ kubectl exec -it -n realiza storage-realiza-minio-6644999-lvtvp env | egrep MINIO.*KEY= MINIO_ACCESS_KEY=XJNCWECEEMSNXVSWSC MINIO_SECRET_KEY=BcjweDZOVMECCIfiCY $  Create a port-forward to access into the web interface
 $ kubectl port-forward -n realiza storage-realiza-minio-66449995b5-q2qt7 9000:9000  Then, you need to access via http://localhost:9000 and edit the policy and use the wildcard *.
 	</div>
 	<div class="list__footer clearfix">
@@ -313,11 +338,11 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/how-setup-your-noto-color-emoji-fonts/">How setup the Noto Color Emoji in your Ubuntu</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/gluster-heketi/">Cleaning Gluster Heketi volumes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/asciinema-hugo/">Embedding asciinema cast in your Hugo site</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/altering-the-minio-bucket-policy-in-kubernetes/">Altering the minio bucket policy in kubernetes</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/recovery-admin-password-for-grafana/">Recovery admin password for grafana</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/using-a-custom-openconnect-version-for-vpn/">Using a custom openconnect version for VPN</a></li>
 		</ul>
 	</div>
 </div>
@@ -338,6 +363,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
 		<a class="widget-taglist__link widget__link btn" href="/tags/asciinema" title="Asciinema">Asciinema</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/emoji" title="Emoji">Emoji</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gluster" title="Gluster">Gluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/haproxy" title="Haproxy">Haproxy</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/heketi" title="Heketi">Heketi</a>
@@ -345,6 +371,7 @@ Here are the steps to install the new version of haproxy 1.8.14, that include re
 		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes" title="Kubernetes">Kubernetes</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/minio" title="Minio">Minio</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/storage" title="Storage">Storage</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu" title="Ubuntu">Ubuntu</a>
 	</div>
 </div>
 <div class="widget-social widget">
