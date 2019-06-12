@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Heketi on Tech-Blog</title>
+    <title>heketi on Tech-Blog</title>
     <link>https://jenciso.github.io/tags/heketi/</link>
-    <description>Recent content in Heketi on Tech-Blog</description>
+    <description>Recent content in heketi on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
