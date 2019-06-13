@@ -86,6 +86,11 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2019-06-11T00:00:00">June 11, 2019</time>
 </div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux" rel="category">linux</a></span>
+</div>
 </div>
 		</header>
 		<figure class="post__thumbnail">
@@ -93,36 +98,38 @@ if (!doNotTrack) {
 		</figure><div class="content post__content clearfix">
 			
 
-<h1 id="background">Background</h1>
+<h2 id="intro">Intro</h2>
 
-<p>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons.In Ubuntu 16.04 LTS it could be a little hard to install it. So, here are th step to install it manually</p>
+<p>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons, but what about if you want to use color emoji in Ubuntu 16.04 LTS, you need to install the right font to use it, the steps could be a little hard. So, here are the steps that I needed to install it.</p>
 
 <h2 id="steps">Steps</h2>
 
 <ul>
-<li><p>Download from <a href="https://www.google.com/get/noto">https://www.google.com/get/noto</a>. If you prefer, you could download it directly from <a href="https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip">here</a></p></li>
+<li><p>Download the Noto Color Emoji font from <a href="https://www.google.com/get/noto">here</a>, or if you prefer, you could download it directly from <a href="https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip">here</a></p></li>
 
-<li><p>Copy the ttf file into the <code>.fonts</code> dir</p></li>
+<li><p>Then, copy the ttf file into your <code>.fonts</code> dir</p></li>
 </ul>
 
-<pre><code class="language-shell">$ cp NotoColorEmoji.ttf ~/.fonts
+<pre><code class="language-shell">$ cd ~/Downloads
+$ unzip NotoColorEmoji-unhinted.zip
+$ mkdir ~/.fonts
+$ mv NotoColorEmoji.ttf ~/.fonts
 </code></pre>
 
 <ul>
-<li>Edit the <code>.fonts.conf</code> file</li>
+<li>Edit the <code>.fonts.conf</code> configuration file</li>
 </ul>
 
 <pre><code class="language-shell">$ vim ~/.fonts.conf
 </code></pre>
 
 <ul>
-<li>Copy the following text</li>
+<li>And put the following content</li>
 </ul>
 
-<pre><code class="language-html">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
 &lt;fontconfig&gt;
-
    &lt;alias&gt;
      &lt;family&gt;sans-serif&lt;/family&gt;
      &lt;prefer&gt;
@@ -138,26 +145,18 @@ if (!doNotTrack) {
        &lt;family&gt;Noto Emoji&lt;/family&gt;
      &lt;/prefer&gt;
    &lt;/alias&gt;
-
-   &lt;alias&gt;
-    &lt;family&gt;monospace&lt;/family&gt;
-    &lt;prefer&gt;
-      &lt;family&gt;Ubuntu Mono&lt;/family&gt;
-     &lt;/prefer&gt;
-   &lt;/alias&gt;
-
 &lt;/fontconfig&gt;
 </code></pre>
 
 <ul>
-<li>Rebuild the cache font</li>
+<li>You need to rebuild the cache fonts to take effect</li>
 </ul>
 
 <pre><code class="language-shell">$ sudo fc-cache -fv
 </code></pre>
 
 <blockquote>
-<p>You need to restart your chrome and if you have problems with your Terminal, because some characters appears a little big or some wierd, you should setup your Profile to specify the size font and not permit to ubuntu setup for you the fonts</p>
+<p>In chrome web browser you need to restart that application. For your Gnome Terminal, some characters would be a little big, so you should setup your Profile Terminal to specify the specific size font to use, in my case <code>size 13</code></p>
 </blockquote>
 
 		</div>

@@ -17,8 +17,7 @@
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/post/how-setup-your-noto-color-emoji-fonts/</guid>
-      <description>Background Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons.In Ubuntu 16.04 LTS it could be a little hard to install it. So, here are th step to install it manually
-Steps  Download from https://www.google.com/get/noto. If you prefer, you could download it directly from here</description>
+      <description>Intro Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu. Older versions of Ubuntu come with simple black-and-white emoticons, but what about if you want to use color emoji in Ubuntu 16.04 LTS, you need to install the right font to use it, the steps could be a little hard. So, here are the steps that I needed to install it.</description>
     </item>
     
   </channel>
