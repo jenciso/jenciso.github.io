@@ -3,32 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://jenciso.github.io/blog/</loc>
+    <loc>http://enciso.website/blog/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jenciso.github.io/tags/kubernetes/</loc>
+    <loc>http://enciso.website/tags/kubernetes/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</loc>
+    <loc>http://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jenciso.github.io/</loc>
+    <loc>http://enciso.website/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jenciso.github.io/tags/</loc>
+    <loc>http://enciso.website/tags/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jenciso.github.io/categories/</loc>
+    <loc>http://enciso.website/categories/</loc>
   </url>
   
 </urlset>
