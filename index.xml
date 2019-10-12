@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Tech-Blog</title>
+    <link>http://jenciso.github.io/</link>
+    <description>Recent content on My Tech-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Juan Enciso - All rights reserved</copyright>
+    <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://jenciso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Manage TLS Certificates for Kubernetes users</title>
+      <link>http://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</link>
+      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</guid>
+      <description>Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</description>
+    </item>
+    
+  </channel>
+</rss>
