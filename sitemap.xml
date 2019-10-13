@@ -53,6 +53,21 @@
   </url>
   
   <url>
+    <loc>https://enciso.website/tags/haproxy/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/loadbalancer/</loc>
+    <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://enciso.website/tags/grafana/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
   </url>
@@ -94,18 +109,6 @@
   
   <url>
     <loc>https://enciso.website/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/tags/haproxy/</loc>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/tags/loadbalancer/</loc>
   </url>
   
 </urlset>

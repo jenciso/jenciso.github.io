@@ -58,6 +58,24 @@
     </item>
     
     <item>
+      <title>haproxy</title>
+      <link>https://enciso.website/tags/haproxy/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/tags/haproxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>loadbalancer</title>
+      <link>https://enciso.website/tags/loadbalancer/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/tags/loadbalancer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>grafana</title>
       <link>https://enciso.website/tags/grafana/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
@@ -99,24 +117,6 @@
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://enciso.website/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>haproxy</title>
-      <link>https://enciso.website/tags/haproxy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://enciso.website/tags/haproxy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>loadbalancer</title>
-      <link>https://enciso.website/tags/loadbalancer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://enciso.website/tags/loadbalancer/</guid>
       <description></description>
     </item>
     
