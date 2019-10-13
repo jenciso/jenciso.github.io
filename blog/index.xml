@@ -57,5 +57,14 @@
       <description>Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</description>
     </item>
     
+    <item>
+      <title>How setup Haproxy with zero downtime reload from code source</title>
+      <link>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
+      <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.</description>
+    </item>
+    
   </channel>
 </rss>

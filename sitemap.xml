@@ -96,4 +96,16 @@
     <loc>https://enciso.website/categories/</loc>
   </url>
   
+  <url>
+    <loc>https://enciso.website/tags/haproxy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/loadbalancer/</loc>
+  </url>
+  
 </urlset>

@@ -6,21 +6,20 @@
 	
 	<link rel="icon" href="/images/logo.png">
 	
-	<title>Manage TLS Certificates for Kubernetes users | My Tech-Blog</title>
+	<title>How setup Haproxy with zero downtime reload from code source | My Tech-Blog</title>
 	
 	
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/kubernetes-logo-cover.jpg"/>
-<meta name="twitter:title" content="Manage TLS Certificates for Kubernetes users"/>
-<meta name="twitter:description" content="Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service."/>
+<meta name="twitter:image" content="https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/HAProxy_Logo-2-1-cover.png"/>
+<meta name="twitter:title" content="How setup Haproxy with zero downtime reload from code source"/>
+<meta name="twitter:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3."/>
 
-	<meta property="og:title" content="Manage TLS Certificates for Kubernetes users" />
-<meta property="og:description" content="Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service." />
+	<meta property="og:title" content="How setup Haproxy with zero downtime reload from code source" />
+<meta property="og:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/" />
-<meta property="article:published_time" content="2017-09-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-09-27T00:00:00+00:00" />
+<meta property="og:url" content="https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" />
+
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -89,19 +88,19 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Manage%20TLS%20Certificates%20for%20Kubernetes%20users&url=https%3a%2f%2fenciso.website%2fblog%2fmanage-tls-certificates-for-kubernetes-users%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=How%20setup%20Haproxy%20with%20zero%20downtime%20reload%20from%20code%20source&url=https%3a%2f%2fenciso.website%2fblog%2fhow-setup-haproxy-with-zero-downtime-reload-from-code-source%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fenciso.website%2fblog%2fmanage-tls-certificates-for-kubernetes-users%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fenciso.website%2fblog%2fhow-setup-haproxy-with-zero-downtime-reload-from-code-source%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>
 
         <li class="ml-1 mr-1">
-        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fenciso.website%2fblog%2fmanage-tls-certificates-for-kubernetes-users%2f&amp;title=Manage%20TLS%20Certificates%20for%20Kubernetes%20users" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fenciso.website%2fblog%2fhow-setup-haproxy-with-zero-downtime-reload-from-code-source%2f&amp;title=How%20setup%20Haproxy%20with%20zero%20downtime%20reload%20from%20code%20source" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
         <i class="fab fa-linkedin"></i>
         </a>
         </li>        
@@ -134,9 +133,9 @@
                                 <span class="author-description">
                                     Me. Who created this place to share some technology information in order to create a nice blog<br>
                                     <i class="far fa-star"></i>
-                                    Sep 27, 2017
+                                    Jan 1, 0001
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    3 min read
                                 </span>					
                             </div>
                         </div>			
@@ -144,13 +143,13 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Manage TLS Certificates for Kubernetes users</h1> 
+                        <h1 class="posttitle">How setup Haproxy with zero downtime reload from code source</h1> 
                     </div>
 
                     
                     
                     
-                        <img class="featured-image img-fluid" src="https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/kubernetes-logo-cover.jpg" alt="thumbnail for this post">
+                        <img class="featured-image img-fluid" src="https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/HAProxy_Logo-2-1-cover.png" alt="thumbnail for this post">
                     
                     
 
@@ -158,129 +157,116 @@
                     <div class="article-post">
                         
 
-<h3 id="intro">Intro</h3>
+<p>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</p>
 
-<p>Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</p>
+<p>On on-premise scenario, this enable the dynamic scalability and continuous integration into your production datacenter.</p>
 
-<h3 id="user-steps">User Steps</h3>
+<p>Follow the next steps to install a new version of haproxy, in this case the release 1.8.14, it include the reload daemon when the config file (haproxy.cfg) need to be changed.</p>
 
-<p>Here, you have all the steps to do that:</p>
+<h3 id="steps">Steps</h3>
 
-<ol>
-<li><p>Download the cfssl binary. It is a Cloudflare tool help us to create the certificates</p>
+<p>Download the compatible haproxy version</p>
 
-<pre><code class="language-sh">mkdir ~/bin
-curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
-curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
-chmod +x ~/bin/{cfssl,cfssljson}
-export PATH=$PATH:~/bin
-</code></pre></li>
-
-<li><p>Create a key and csr certificate</p>
-
-<pre><code>echo '{&quot;CN&quot;:&quot;juan.enciso&quot;,&quot;hosts&quot;:[&quot;&quot;],&quot;key&quot;:{&quot;algo&quot;:&quot;rsa&quot;,&quot;size&quot;:2048}}' \
-| cfssl genkey  - | cfssljson -bare juan.enciso
-</code></pre></li>
-
-<li><p>Signing this certificate. Create a YAML file named <code>certsignrequest.yml</code> and send it to kubernetes Admin</p>
-
-<pre><code class="language-yml">apiVersion: certificates.k8s.io/v1beta1
-kind: CertificateSigningRequest
-metadata:
-name: user-request-juan.enciso
-spec:
-groups:
-- system:authenticated
-request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2VUQ0NBV0VDQVFBd0ZqRVVNQklHQTFVRUF4TUxhblZoYmk1bGJtTnBjMjh3Z2dFaU1BMEdDU3FHU0liMwpEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNXamNRdDA5WWdIbTVjaER1N2JmVFBUMyttWTZ2bkRSN1ZFTm9tCmpNWkNCVkprRVl1OGt6ZWRqZldiNHdHUXNnZG9YMWxkbGZ0UERRV2xKTHhRanVScURCVjVtZkJ3bnpBamljM2QKQTFlcC9GeHV5YTRFVmRyK0kyWEJ3cGhWRlY0cXFTR0NNWjNIK0FDRFhCaWxkR1p2UTBqMFVlYThMcUJNWExkMAp2dWJWemt6YndCZmJQOFpuSHVqVVdWVjl0bmsxMnpHRXRXOFl3VkZ5SzdzUzdOK3J2RjJpR2FqOUhFTXJoNXRoCk1vVzBzMFdhZEhxWVlIUDF2TDN1b2hRZGRScWxtUFFrRTNLdkN4ZlJPTXBUeVVIL1BpMGVGRGMzekZwVWpwTFIKM3k0T3RIS2w3SG1XM3E4RDdENlVpNEp5OUNjRmUreFNHSlkyejZtajN2Q3I2amMxQWdNQkFBR2dIakFjQmdrcQpoa2lHOXcwQkNRNHhEekFOTUFzR0ExVWRFUVFFTUFLQ0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFBOEdXCnprTTg3a3lYTHdLcTlkcTdFOWNMTUh1SmoyelJKQnNCNzJnd1NvNVVDS1VjYWowblhEMVdKQXhXcllHZVB1SVUKemdqTFpsc1VNWGJ1SEtJTENqaUY1Q0JZVUtPTFdTRmNqNUlreU1hTU9ZdmQ0eHBYdkNOTzRVbWlxSktUYXZiMQplWG9ZZGQ0NzQxRW5qNG5vV0tveDNsSVVQM1VjcVhBa05sZDJaNHpDK2Zqbk9uSWFuaUQ3c0xJWXFIOG9WSXZNClA3dnRjUjJZVUp2bzlzVUdBOEdyYkhJWUFRVmlycTZ1ZkdpNUttb29VQ2hHbmtmQkJ2LytpZ1VlRlowTjkrT0MKNzFTSllMQjFGM3d2eDdvS25XN2pKdU1SdTkvNmJMUzRKK1ZjNTJsRk9YUWhjc29jYVdmU3lUbVJETDAvejcwNAoxcllhMFNMTldaN3pSbU5Hcnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0K
-usages:
-- digital signature
-- key encipherment
-- client auth
-</code></pre></li>
-
-<li><p>The YAML file has to contain base64 encoded version of your signing <code>request</code> (the .csr file). You can easily encode it using:</p>
-
-<pre><code class="language-sh">cat juan.enciso.csr | base64 | tr -d '\n'
-</code></pre></li>
-</ol>
-
-<h3 id="admin-steps">Admin steps</h3>
-
-<ol>
-<li><p>create the resource</p>
-
-<pre><code class="language-sh">kubectl create -f certsignrequest.yml
-</code></pre></li>
-
-<li><p>Approve certificate</p>
-
-<pre><code class="language-sh">kubectl certificate approve user-request-juan.enciso
-</code></pre></li>
-
-<li><p>Create Roles and ClusterRole in a file <code>juan.enciso-rbac.yaml</code>. E.g. Role: Edit default namespace, ClusterRole: View All Only</p>
-
-<pre><code class="language-yaml">kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-name: juan.enciso-view-all
-subjects:
-- kind: User
-name: juan.enciso
-apiGroup: rbac.authorization.k8s.io
-roleRef:
-kind: ClusterRole
-name: view
-apiGroup: rbac.authorization.k8s.io
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
-metadata:
-name: juan.enciso-edit-default
-namespace: default # This only grants permissions within the &quot;default&quot; namespace.
-subjects:
-- kind: User
-name: juan.enciso
-apiGroup: rbac.authorization.k8s.io
-roleRef:
-kind: ClusterRole
-name: edit
-apiGroup: rbac.authorization.k8s.io
-</code></pre></li>
-
-<li><p>Apply Roles and ClusterRole</p>
-
-<pre><code class="language-shell">kubectl create -f juan.enciso-rbac.yaml
-</code></pre></li>
-
-<li><p>Download the certificate and give the user <code>juan.enciso</code> via a secure channel</p>
-
-<pre><code>kubectl get csr user-request-juan.enciso -o jsonpath='{.status.certificate}'\
-| base64 -d &gt; juan.enciso.pem
-</code></pre></li>
-</ol>
-
-<h3 id="user-steps-part-2">User Steps (Part 2)</h3>
-
-<p>Create the kubectl configurations in the user desktop</p>
-
-<pre><code class="language-shell">kubectl config set-cluster k8s-lab --insecure-skip-tls-verify=true \
-  --server=https://apik8s-lab.e-unicred.com.br
-kubectl config set-credentials juan.enciso-lab --embed-certs=true \
-  --client-certificate=juan.enciso.pem --client-key=juan.enciso-key.pem 
-kubectl config set-context k8s-lab --cluster=k8s-lab --user=juan.enciso-lab
-kubectl  config use-context k8s-lab
+<pre><code class="language-sh">export HAPROXY_MAJOR=1.8
+export HAPROXY_VERSION=1.8.14
 </code></pre>
 
-<p>So, for testing purpose you could add the options <code>--kubeconfig ~/.kube/config-juan.enciso</code> in each command of above. On this way, you won&rsquo;t overwrite your default config file <code>~/kube/config</code></p>
+<pre><code>wget -O haproxy.tar.gz \
+ &quot;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
+</code></pre>
 
-<h3 id="testing">Testing</h3>
+<p>Installing the prerequisites packages to compile</p>
 
-<pre><code class="language-sh">kubectl version
-kubectl get nodes
-kubectl get pods --all-namespaces
+<p>For ubuntu 16.04:</p>
+
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
+  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget \
+  zlib1g-dev libsystemd-dev
+</code></pre>
+
+<p>For Centos 7.5:</p>
+
+<pre><code>yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
+  openssl openssl-devel openssl-libs systemd-devel
+</code></pre>
+
+<p>Compiling</p>
+
+<pre><code class="language-console">tar xvfz haproxy.tar.gz
+cd haproxy-1.8.14/
+</code></pre>
+
+<p>For ubuntu:</p>
+
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+  USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+make install
+</code></pre>
+
+<p>For Centos 7.5:</p>
+
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+  USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+make install
+</code></pre>
+
+<p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
+
+<pre><code>HA-Proxy version 1.8.14-52e4d43 2018/09/20
+Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
+
+Build options :
+  TARGET  = linux2628
+  CPU     = generic
+  CC      = gcc
+  CFLAGS  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
+  OPTIONS = USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
+
+Default settings :
+  maxconn = 2000, bufsize = 16384, maxrewrite = 1024, maxpollevents = 200
+
+Built with OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
+Running on OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
+OpenSSL library supports TLS extensions : yes
+OpenSSL library supports SNI : yes
+OpenSSL library supports : TLSv1.0 TLSv1.1 TLSv1.2
+Built with Lua version : Lua 5.3.1
+Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
+Encrypted password support via crypt(3): yes
+Built with multi-threading support.
+Built with PCRE version : 8.38 2015-11-23
+Running on PCRE version : 8.38 2015-11-23
+PCRE library supports JIT : yes
+Built with zlib version : 1.2.8
+Running on zlib version : 1.2.8
+Compression algorithms supported : identity(&quot;identity&quot;), deflate(&quot;deflate&quot;), raw-deflate(&quot;deflate&quot;), gzip(&quot;gzip&quot;)
+Built with network namespace support.
+
+Available polling systems :
+      epoll : pref=300,  test result OK
+       poll : pref=200,  test result OK
+     select : pref=150,  test result OK
+Total: 3 (3 usable), will use epoll.
+
+Available filters :
+	[SPOE] spoe
+	[COMP] compression
+	[TRACE] trace
 </code></pre>
 
 <hr />
+
+<h2 id="references">References:</h2>
+
+<p><a href="https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/">https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/</a></p>
+
+<p><a href="https://midiroot.com/post/haproxy-getting-started/">https://midiroot.com/post/haproxy-getting-started/</a></p>
+
+<p><a href="https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/">https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/</a></p>
+
+<p><a href="https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html">https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html</a></p>
+
+<p><a href="https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/">https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/</a></p>
 
                     </div>
                     
@@ -289,7 +275,11 @@ kubectl get pods --all-namespaces
                         <ul class="tags">
                         
                         <li>
-                        <a href="/tags/kubernetes">kubernetes</a>
+                        <a href="/tags/haproxy">haproxy</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/loadbalancer">loadbalancer</a>
                         </li>
                         
                         </ul>
@@ -299,10 +289,8 @@ kubectl get pods --all-namespaces
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
                     
-                        <a class="d-block col-md-6" href="https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/"> &laquo; Using a custom openconnect version for VPN</a>
+                        <a class="d-block col-md-6" href="https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/"> &laquo; Manage TLS Certificates for Kubernetes users</a>
                     
-                    
-                        <a class="d-block col-md-6 text-lg-right" href="https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/">How setup Haproxy with zero downtime reload from code source &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
