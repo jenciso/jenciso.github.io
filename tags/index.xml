@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Wed, 27 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://enciso.website/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>asciinema</title>
+      <link>https://enciso.website/tags/asciinema/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/tags/asciinema/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://enciso.website/tags/hugo/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>kubernetes</title>
