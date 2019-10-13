@@ -43,11 +43,6 @@
   </url>
   
   <url>
-    <loc>https://enciso.website/categories/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://enciso.website/blog/embedding-asciinema-cast-in-your-hugo-site/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
@@ -58,8 +53,33 @@
   </url>
   
   <url>
-    <loc>https://enciso.website/categories/linux/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <loc>https://enciso.website/tags/grafana/</loc>
+    <lastmod>2018-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/monitoring/</loc>
+    <lastmod>2018-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/blog/how-to-recovery-the-admin-password-in-grafana/</loc>
+    <lastmod>2018-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/openconnect/</loc>
+    <lastmod>2017-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</loc>
+    <lastmod>2017-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/vpn/</loc>
+    <lastmod>2017-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +90,10 @@
   <url>
     <loc>https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/categories/</loc>
   </url>
   
 </urlset>
