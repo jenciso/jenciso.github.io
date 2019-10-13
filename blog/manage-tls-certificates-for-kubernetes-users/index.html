@@ -264,13 +264,10 @@ apiGroup: rbac.authorization.k8s.io
 <p>Create the kubectl configurations in the user desktop</p>
 
 <pre><code class="language-shell">kubectl config set-cluster k8s-lab --insecure-skip-tls-verify=true \
---server=https://apik8s-lab.e-unicred.com.br
-
+  --server=https://apik8s-lab.e-unicred.com.br
 kubectl config set-credentials juan.enciso-lab --embed-certs=true \
---client-certificate=juan.enciso.pem --client-key=juan.enciso-key.pem 
-
+  --client-certificate=juan.enciso.pem --client-key=juan.enciso-key.pem 
 kubectl config set-context k8s-lab --cluster=k8s-lab --user=juan.enciso-lab
-
 kubectl  config use-context k8s-lab
 </code></pre>
 
@@ -356,9 +353,15 @@ kubectl get pods --all-namespaces
 			
 			<a class="mt-1 mb-1" href="/tags/asciinema">asciinema</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
+			
+			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
+			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
 			
 			<a class="mt-1 mb-1" href="/tags/kubernetes">kubernetes</a>
+			
+			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			
 		</div>
 	</div>

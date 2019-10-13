@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://enciso.website/tags/asciinema/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <loc>https://enciso.website/blog/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/</loc>
+    <loc>https://enciso.website/tags/gluster/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/heketi/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/blog/how-to-clean-a-gluster-heketi-volume/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/storage/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/</loc>
+    <lastmod>2019-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/tags/asciinema/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,16 +59,6 @@
   
   <url>
     <loc>https://enciso.website/categories/linux/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/tags/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
