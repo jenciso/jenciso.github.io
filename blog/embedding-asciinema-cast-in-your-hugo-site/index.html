@@ -165,10 +165,7 @@
 <p>Asciinema is an excellent tool when you need to show how to do something else, and very useful in technical blogs, documentation and landing pages alike. It allows you to create compact animations of commands along with their output and formatting with far less overhead than the alternative of creating a gif or mp4.</p>
 
 <p>You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:</p>
-
-<pre><code class="language-html">&lt;script src=&quot;https://asciinema.org/a/186686.js&quot; id=&quot;asciicast-186686&quot; async&gt;&lt;/script&gt;
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#8b008b;font-weight:bold">script</span> <span style="color:#658b00">src</span>=<span style="color:#cd5555">&#34;https://asciinema.org/a/186686.js&#34;</span> <span style="color:#658b00">id</span>=<span style="color:#cd5555">&#34;asciicast-186686&#34;</span> <span style="color:#658b00">async</span>&gt;&lt;/<span style="color:#8b008b;font-weight:bold">script</span>&gt;</code></pre></div>
 <p>Although, this method works quietly, you also have another option to use that in your blog and with a better behavior, without upload the cast file created on the asciinema public site. Be careful, you need to think sometimes in security issues when you externalize some information and take care with some internal processes.</p>
 
 <h2 id="embedding-in-hugo-with-shortcodes">Embedding in Hugo with shortcodes</h2>
@@ -176,59 +173,44 @@
 <p>I will show you how you should setup you hugo template to use asciinema. Follow these steps to accomplish it.</p>
 
 <h3 id="download-the-latest-asciinema-player-release-https-github-com-asciinema-asciinema-player-releases">Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</h3>
-
-<pre><code>wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
-wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
+wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js</pre></div>
 <p>Now, you have 2 files. you need to put both into the <code>static/</code> folder</p>
-
-<pre><code>$ ls -l static/css/asciinema-player.css 
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ ls -l static/css/asciinema-player.css 
 -rw-rw-r-- 1 jenciso jenciso 50722 Fev 21  2018 static/css/asciinema-player.css
 $ ls -l static/js/asciinema-player.js 
--rw-rw-r-- 1 jenciso jenciso 582376 Fev 21  2018 static/js/asciinema-player.js
-</code></pre>
-
+-rw-rw-r-- 1 jenciso jenciso 582376 Fev 21  2018 static/js/asciinema-player.js</pre></div>
 <p>Then, you need to configure your template to use this files. So you have to add this block of code in your <code>head</code> template section. In my case it was here: <code>layouts/partials/_shared/head.html</code></p>
-
-<pre><code class="language-html">{{ if .Params.asciinema }}
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{{ .Site.BaseURL }}css/asciinema-player.css&quot; /&gt;
-{{ end }}
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
+    &lt;<span style="color:#8b008b;font-weight:bold">link</span> <span style="color:#658b00">rel</span>=<span style="color:#cd5555">&#34;stylesheet&#34;</span> <span style="color:#658b00">type</span>=<span style="color:#cd5555">&#34;text/css&#34;</span> <span style="color:#658b00">href</span>=<span style="color:#cd5555">&#34;{{ .Site.BaseURL }}css/asciinema-player.css&#34;</span> /&gt;
+{{ end }}</code></pre></div>
 <p>And the last one, before the <code>&lt;/body&gt;</code> tag in your template’s baseof, in my case it was here: <code>layouts/_default/baseof.html</code></p>
-
-<pre><code class="language-html">{{ if .Params.asciinema }}
-    &lt;script src=&quot;{{ .Site.BaseURL }}js/asciinema-player.js&quot;&gt;&lt;/script&gt;
-{{ end }}
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
+    &lt;<span style="color:#8b008b;font-weight:bold">script</span> <span style="color:#658b00">src</span>=<span style="color:#cd5555">&#34;{{ .Site.BaseURL }}js/asciinema-player.js&#34;</span>&gt;&lt;/<span style="color:#8b008b;font-weight:bold">script</span>&gt;
+{{ end }}</code></pre></div>
 <h4 id="create-a-shortcode">Create a shortcode</h4>
 
 <p>Create a file <code>layouts/shortcodes/asciinema.html</code> with the following contents:</p>
-
-<pre><code class="language-html">&lt;p&gt;
-    &lt;asciinema-player
-        src=&quot;/casts/{{ with .Get &quot;key&quot; }}{{ . }}{{ end }}.cast&quot;
-        cols=&quot;{{ if .Get &quot;cols&quot; }}{{ .Get &quot;cols&quot; }}{{ else }}640{{ end }}&quot;
-        rows=&quot;{{ if .Get &quot;rows&quot; }}{{ .Get &quot;rows&quot; }}{{ else }}10{{ end }}&quot;
-        {{ if .Get &quot;autoplay&quot; }}autoplay=&quot;{{ .Get &quot;autoplay&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;preload&quot; }}preload=&quot;{{ .Get &quot;preload&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;loop&quot; }}loop=&quot;{{ .Get &quot;loop&quot; }}&quot;{{ end }}
-        start-at=&quot;{{ if .Get &quot;start-at&quot; }}{{ .Get &quot;start-at&quot; }}{{ else }}0{{ end }}&quot;
-        speed=&quot;{{ if .Get &quot;speed&quot; }}{{ .Get &quot;speed&quot; }}{{ else }}1{{ end }}&quot;
-        {{ if .Get &quot;idle-time-limit&quot; }}idle-time-limit=&quot;{{ .Get &quot;idle-time-limit&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;poster&quot; }}poster=&quot;{{ .Get &quot;poster&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;font-size&quot; }}font-size=&quot;{{ .Get &quot;font-size&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;theme&quot; }}theme=&quot;{{ .Get &quot;theme&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;title&quot; }}title=&quot;{{ .Get &quot;title&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;author&quot; }}author=&quot;{{ .Get &quot;author&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;author-url&quot; }}author-url=&quot;{{ .Get &quot;author-url&quot; }}&quot;{{ end }}
-        {{ if .Get &quot;author-img-url&quot; }}author-img-url=&quot;{{ .Get &quot;author-img-url&quot; }}&quot;{{ end }}
-    &gt;&lt;/asciinema-player&gt;
-&lt;/p&gt;
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#8b008b;font-weight:bold">p</span>&gt;
+    &lt;<span style="color:#8b008b;font-weight:bold">asciinema-player</span>
+        <span style="color:#658b00">src</span>=<span style="color:#cd5555">&#34;/casts/{{ with .Get &#34;</span><span style="color:#658b00">key</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#a61717;background-color:#e3d2d2">.</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}.</span><span style="color:#658b00">cast</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span>
+        <span style="color:#658b00">cols</span>=<span style="color:#cd5555">&#34;{{ if .Get &#34;</span><span style="color:#658b00">cols</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">cols</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#658b00">else</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">640</span><span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;</span>
+        <span style="color:#658b00">rows</span>=<span style="color:#cd5555">&#34;{{ if .Get &#34;</span><span style="color:#658b00">rows</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">rows</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#658b00">else</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">10</span><span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">autoplay</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">autoplay</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">autoplay</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">preload</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">preload</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">preload</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">loop</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">loop</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">loop</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#658b00">start-at</span>=<span style="color:#cd5555">&#34;{{ if .Get &#34;</span><span style="color:#658b00">start-at</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">start-at</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#658b00">else</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">0</span><span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;</span>
+        <span style="color:#658b00">speed</span>=<span style="color:#cd5555">&#34;{{ if .Get &#34;</span><span style="color:#658b00">speed</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">speed</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}{{</span> <span style="color:#658b00">else</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">1</span><span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">idle-time-limit</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">idle-time-limit</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">idle-time-limit</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">poster</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">poster</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">poster</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">font-size</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">font-size</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">font-size</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">theme</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">theme</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">theme</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">title</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">title</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">title</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">author</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">author</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">author</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">author-url</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">author-url</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">author-url</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+        <span style="color:#a61717;background-color:#e3d2d2">{{</span> <span style="color:#658b00">if</span> <span style="color:#a61717;background-color:#e3d2d2">.</span><span style="color:#658b00">Get</span> <span style="color:#a61717;background-color:#e3d2d2">&#34;</span><span style="color:#658b00">author-img-url</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span><span style="color:#658b00">author-img-url</span>=<span style="color:#cd5555">&#34;{{ .Get &#34;</span><span style="color:#658b00">author-img-url</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span> <span style="color:#a61717;background-color:#e3d2d2">}}&#34;{{</span> <span style="color:#658b00">end</span> <span style="color:#a61717;background-color:#e3d2d2">}}</span>
+    &gt;&lt;/<span style="color:#8b008b;font-weight:bold">asciinema-player</span>&gt;
+&lt;/<span style="color:#8b008b;font-weight:bold">p</span>&gt;</code></pre></div>
 <blockquote>
 <p>The fields map directly to those documented <a href="https://github.com/asciinema/asciinema-player#asciinema-player-element-attributes">here</a>. All fields are supported, but only the key is required.</p>
 </blockquote>
@@ -239,16 +221,13 @@ $ ls -l static/js/asciinema-player.js
 
 <ol>
 <li><p>You can now embed asciinema casts in your Hugo posts and pages with the following shortcode:</p>
-
-<pre><code class="language-sh">{{&lt; asciinema key=&quot;demo-cast&quot; rows=&quot;10&quot; preload=&quot;1&quot; &gt;}}
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">{{&lt; asciinema <span style="color:#00688b">key</span>=<span style="color:#cd5555">&#34;demo-cast&#34;</span> <span style="color:#00688b">rows</span>=<span style="color:#cd5555">&#34;10&#34;</span> <span style="color:#00688b">preload</span>=<span style="color:#cd5555">&#34;1&#34;</span> &gt;}}</code></pre></div></li>
 
 <li><p>You also need to include <code>asciinema = true</code> in the frontmatter for you post too, to make sure the javascript and css assets are included.</p></li>
 </ol>
 
 <p>Finally, you should end up with something like this:</p>
-
-<pre><code class="language-shell"><p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><p>
     <asciinema-player
         src="/casts/249623.cast"
         cols="158"
@@ -268,9 +247,7 @@ $ ls -l static/js/asciinema-player.js
         
     ></asciinema-player>
 </p>
-
-</code></pre>
-
+</code></pre></div>
 <h4 id="references">References</h4>
 
 <p><a href="https://www.tonylykke.com/posts/custom-fonts-in-asciinema/">https://www.tonylykke.com/posts/custom-fonts-in-asciinema/</a></p>

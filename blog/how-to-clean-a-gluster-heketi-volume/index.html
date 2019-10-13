@@ -171,44 +171,26 @@
 <h4 id="steps">Steps</h4>
 
 <p>Scale down your heketi service</p>
-
-<pre><code class="language-shell">kubectl scale deployment -n gluster-heketi heketi --replicas=0
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl scale deployment -n gluster-heketi heketi --replicas=<span style="color:#b452cd">0</span></code></pre></div>
 <p>Find out your <code>heketidbstorage</code> mount point</p>
-
-<pre><code class="language-shell">kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl <span style="color:#658b00">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k</code></pre></div>
 <p>Mount the gluster volume of <code>heketi.db</code></p>
-
-<pre><code class="language-shell">sudo apt-get -y install glusterfs-client
-sudo mount -t glusterfs 10.64.14.47:/heketidbstorage  /mnt
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get -y install glusterfs-client
+sudo mount -t glusterfs <span style="color:#b452cd">10</span>.64.14.47:/heketidbstorage  /mnt</code></pre></div>
 <blockquote>
 <p><code>10.64.14.47</code> is one of my gluster servers</p>
 </blockquote>
 
 <p>Download the heketi binary</p>
-
-<pre><code class="language-shell">wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz 
-cd heketi
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz 
+<span style="color:#658b00">cd</span> heketi
 sudo ./heketi db delete-bricks-with-empty-path --dbfile=/mnt/heketi.db --all
-umount /mnt
-</code></pre>
-
+umount /mnt</code></pre></div>
 <p>Scale up your heketi service</p>
-
-<pre><code class="language-shell">kubectl scale deployment -n gluster-heketi heketi --replicas=1
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl scale deployment -n gluster-heketi heketi --replicas=<span style="color:#b452cd">1</span></code></pre></div>
 <p>Resync your devices in all the nodes</p>
-
-<pre><code class="language-shell">kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- \ 
-  heketi-cli device resync 4c2a876a7829f3660e5a08cd1c0a5b1c
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl <span style="color:#658b00">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- <span style="color:#cd5555">\ </span>
+  heketi-cli device resync 4c2a876a7829f3660e5a08cd1c0a5b1c</code></pre></div>
 <blockquote>
 <p>You need to do that in all your devices</p>
 </blockquote>
@@ -216,10 +198,7 @@ umount /mnt
 <h3 id="testing">Testing</h3>
 
 <p>Checking your heketi environment</p>
-
-<pre><code class="language-shell">kubectl exec -it -n gluster-heketi heketi-5c88f4574d-jxkpl heketi-cli topology info
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl <span style="color:#658b00">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl heketi-cli topology info</code></pre></div>
 <hr />
 
 <p>Source: <a href="https://github.com/heketi/heketi/issues/926">https://github.com/heketi/heketi/issues/926</a></p>

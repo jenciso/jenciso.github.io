@@ -167,53 +167,31 @@
 <h3 id="steps">Steps</h3>
 
 <p>Download the compatible haproxy version</p>
-
-<pre><code class="language-sh">export HAPROXY_MAJOR=1.8
-export HAPROXY_VERSION=1.8.14
-</code></pre>
-
-<pre><code>wget -O haproxy.tar.gz \
- &quot;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#658b00">export</span> <span style="color:#00688b">HAPROXY_MAJOR</span>=<span style="color:#b452cd">1</span>.8
+<span style="color:#658b00">export</span> <span style="color:#00688b">HAPROXY_VERSION</span>=<span style="color:#b452cd">1</span>.8.14</code></pre></div><div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wget -O haproxy.tar.gz \
+ &#34;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&#34;</pre></div>
 <p>Installing the prerequisites packages to compile</p>
 
 <p>For ubuntu 16.04:</p>
-
-<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
   libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget \
-  zlib1g-dev libsystemd-dev
-</code></pre>
-
+  zlib1g-dev libsystemd-dev</pre></div>
 <p>For Centos 7.5:</p>
-
-<pre><code>yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
-  openssl openssl-devel openssl-libs systemd-devel
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
+  openssl openssl-devel openssl-libs systemd-devel</pre></div>
 <p>Compiling</p>
-
-<pre><code class="language-console">tar xvfz haproxy.tar.gz
-cd haproxy-1.8.14/
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">tar xvfz haproxy.tar.gz
+cd haproxy-1.8.14/</code></pre></div>
 <p>For ubuntu:</p>
-
-<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
   USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
-make install
-</code></pre>
-
+make install</pre></div>
 <p>For Centos 7.5:</p>
-
-<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
   USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
-make install
-</code></pre>
-
+make install</pre></div>
 <p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
-
-<pre><code>HA-Proxy version 1.8.14-52e4d43 2018/09/20
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">HA-Proxy version 1.8.14-52e4d43 2018/09/20
 Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :
@@ -240,7 +218,7 @@ Running on PCRE version : 8.38 2015-11-23
 PCRE library supports JIT : yes
 Built with zlib version : 1.2.8
 Running on zlib version : 1.2.8
-Compression algorithms supported : identity(&quot;identity&quot;), deflate(&quot;deflate&quot;), raw-deflate(&quot;deflate&quot;), gzip(&quot;gzip&quot;)
+Compression algorithms supported : identity(&#34;identity&#34;), deflate(&#34;deflate&#34;), raw-deflate(&#34;deflate&#34;), gzip(&#34;gzip&#34;)
 Built with network namespace support.
 
 Available polling systems :
@@ -252,9 +230,7 @@ Total: 3 (3 usable), will use epoll.
 Available filters :
 	[SPOE] spoe
 	[COMP] compression
-	[TRACE] trace
-</code></pre>
-
+	[TRACE] trace</pre></div>
 <hr />
 
 <h2 id="references">References:</h2>

@@ -162,20 +162,14 @@
 
 <ol>
 <li><p>In your local machine, install the sqlite3 package</p>
-
-<pre><code class="language-shell">sudo apt-get install sqlite3
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3</code></pre></div></li>
 
 <li><p>Login int your sql database</p>
-
-<pre><code class="language-shell">sudo sqlite3 /var/lib/grafana/grafana.db
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db</code></pre></div></li>
 
 <li><p>Reset the admin password using SQL update</p>
-
-<pre><code class="language-sql">sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin';
-sqlite&gt; .exit
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sqlite&gt; <span style="color:#8b008b;font-weight:bold">update</span> <span style="color:#8b008b;font-weight:bold">user</span> <span style="color:#8b008b;font-weight:bold">set</span> password = <span style="color:#cd5555">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span>, salt = <span style="color:#cd5555">&#39;F3FAxVm33R&#39;</span> <span style="color:#8b008b;font-weight:bold">where</span> login = <span style="color:#cd5555">&#39;admin&#39;</span>;
+sqlite&gt; .exit</code></pre></div></li>
 
 <li><p>Using the same string for the sql update command, now you should can to login using this credential: <code>username: admin</code> and <code>password: admin</code></p></li>
 </ol>

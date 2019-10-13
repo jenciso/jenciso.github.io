@@ -165,52 +165,37 @@
 <h4 id="requeriments">Requeriments</h4>
 
 <p>Fedora users</p>
-
-<pre><code class="language-console">sudo dnf -f install libxml2-devel \
-  zlib-devel \
-  openssl-devel \
-  pkg-config \
-  p11-kit \
-  libp11 \
-  libproxy \
-  trous \
-  libproxy-devel \
-  libstoken 
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  zlib-devel <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  openssl-devel <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  pkg-config <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  p11-kit <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libp11 <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libproxy <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  trous <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libproxy-devel <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libstoken </code></pre></div>
 <p>Ubuntu users</p>
-
-<pre><code>sudo apt-get install \
-  build-essential gettext autoconf automake libproxy-dev \
-  libxml2-dev libtool vpnc-scripts pkg-config \
-  libgnutls-dev
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#cd5555">\
+</span><span style="color:#cd5555"></span>  libgnutls-dev</code></pre></div>
 <h4 id="build-and-install">Build and Install</h4>
 
 <p>After, you need to download the repo for dlenski github pages and compile it</p>
-
-<pre><code class="language-console">git clone https://github.com/dlenski/openconnect.git
-cd openconnect
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
+<span style="color:#658b00">cd</span> openconnect
 git checkout globalprotect
 ./autogen.sh
 ./configure
 make
-sudo make install
-</code></pre>
-
+sudo make install</code></pre></div>
 <p>Load the shared libraries</p>
-
-<pre><code class="language-console">sudo ldconfig
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
 <h4 id="testing">Testing</h4>
 
 <p>Finally, you can test it!</p>
-
-<pre><code>sudo /usr/local/sbin/openconnect --protocol=gp vpn.mycompany.com.br --dump -v
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol=gp vpn.mycompany.com.br --dump -v</code></pre></div>
 <h3 id="notes">Notes</h3>
 
 <p><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">Here</a> you have some ideas to create a init script.</p>
