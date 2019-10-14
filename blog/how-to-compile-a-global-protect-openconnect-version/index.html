@@ -165,37 +165,37 @@
 <h4 id="requeriments">Requeriments</h4>
 
 <p>Fedora users</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  zlib-devel <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  openssl-devel <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  pkg-config <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  p11-kit <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libp11 <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libproxy <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  trous <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libproxy-devel <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libstoken </code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  zlib-devel <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  openssl-devel <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  pkg-config <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  p11-kit <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libp11 <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libproxy <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  trous <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libproxy-devel <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libstoken </code></pre></div>
 <p>Ubuntu users</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libgnutls-dev</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libgnutls-dev</code></pre></div>
 <h4 id="build-and-install">Build and Install</h4>
 
 <p>After, you need to download the repo for dlenski github pages and compile it</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
-<span style="color:#658b00">cd</span> openconnect
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
+<span style="color:#007020">cd</span> openconnect
 git checkout globalprotect
 ./autogen.sh
 ./configure
 make
 sudo make install</code></pre></div>
 <p>Load the shared libraries</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
 <h4 id="testing">Testing</h4>
 
 <p>Finally, you can test it!</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol=gp vpn.mycompany.com.br --dump -v</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#666">=</span>gp vpn.mycompany.com.br --dump -v</code></pre></div>
 <h3 id="notes">Notes</h3>
 
 <p><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">Here</a> you have some ideas to create a init script.</p>

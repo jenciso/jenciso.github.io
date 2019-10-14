@@ -167,70 +167,70 @@
 <h3 id="steps">Steps</h3>
 
 <p>Download the compatible haproxy version</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#658b00">export</span> <span style="color:#00688b">HAPROXY_MAJOR</span>=<span style="color:#b452cd">1</span>.8
-<span style="color:#658b00">export</span> <span style="color:#00688b">HAPROXY_VERSION</span>=<span style="color:#b452cd">1</span>.8.14</code></pre></div><div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -O haproxy.tar.gz <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span> <span style="color:#cd5555">&#34;https://www.haproxy.org/download/</span><span style="color:#cd5555">${</span><span style="color:#00688b">HAPROXY_MAJOR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/src/haproxy-</span><span style="color:#cd5555">${</span><span style="color:#00688b">HAPROXY_VERSION</span><span style="color:#cd5555">}</span><span style="color:#cd5555">.tar.gz&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#007020">export</span> <span style="color:#bb60d5">HAPROXY_MAJOR</span><span style="color:#666">=</span><span style="color:#40a070">1</span>.8
+<span style="color:#007020">export</span> <span style="color:#bb60d5">HAPROXY_VERSION</span><span style="color:#666">=</span><span style="color:#40a070">1</span>.8.14</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget -O haproxy.tar.gz <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span> <span style="color:#4070a0">&#34;https://www.haproxy.org/download/</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">HAPROXY_MAJOR</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">/src/haproxy-</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">HAPROXY_VERSION</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">.tar.gz&#34;</span></code></pre></div>
 <p>Installing the prerequisites packages to compile</p>
 
 <p>For ubuntu 16.04:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  zlib1g-dev libsystemd-dev</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update <span style="color:#666">&amp;&amp;</span> sudo apt-get install -y ca-certificates gcc <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  zlib1g-dev libsystemd-dev</code></pre></div>
 <p>For Centos 7.5:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  openssl openssl-devel openssl-libs systemd-devel</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  openssl openssl-devel openssl-libs systemd-devel</code></pre></div>
 <p>Compiling</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tar xvfz haproxy.tar.gz
-<span style="color:#658b00">cd</span> haproxy-1.8.14/</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tar xvfz haproxy.tar.gz
+<span style="color:#007020">cd</span> haproxy-1.8.14/</code></pre></div>
 <p>For ubuntu:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#00688b">TARGET</span>=linux2628 <span style="color:#00688b">USE_GETADDRINFO</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_ZLIB</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_REGPARM</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_OPENSSL</span>=<span style="color:#b452cd">1</span> <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  <span style="color:#00688b">USE_LUA</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_SYSTEMD</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE_JIT</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_NS</span>=<span style="color:#b452cd">1</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#bb60d5">TARGET</span><span style="color:#666">=</span>linux2628 <span style="color:#bb60d5">USE_GETADDRINFO</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_ZLIB</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_REGPARM</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_OPENSSL</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  <span style="color:#bb60d5">USE_LUA</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_SYSTEMD</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE_JIT</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_NS</span><span style="color:#666">=</span><span style="color:#40a070">1</span>
 make install</code></pre></div>
 <p>For Centos 7.5:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#00688b">TARGET</span>=linux2628 <span style="color:#00688b">USE_GETADDRINFO</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_ZLIB</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_REGPARM</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_OPENSSL</span>=<span style="color:#b452cd">1</span> <span style="color:#cd5555">\
-</span><span style="color:#cd5555"></span>  <span style="color:#00688b">USE_SYSTEMD</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE_JIT</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_NS</span>=<span style="color:#b452cd">1</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#bb60d5">TARGET</span><span style="color:#666">=</span>linux2628 <span style="color:#bb60d5">USE_GETADDRINFO</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_ZLIB</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_REGPARM</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_OPENSSL</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  <span style="color:#bb60d5">USE_SYSTEMD</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE_JIT</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_NS</span><span style="color:#666">=</span><span style="color:#40a070">1</span>
 make install</code></pre></div>
 <p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">HA-Proxy version <span style="color:#b452cd">1</span>.8.14-52e4d43 <span style="color:#b452cd">2018</span>/09/20
-Copyright <span style="color:#b452cd">2000</span>-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">HA-Proxy version <span style="color:#40a070">1</span>.8.14-52e4d43 <span style="color:#40a070">2018</span>/09/20
+Copyright <span style="color:#40a070">2000</span>-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :
-  <span style="color:#00688b">TARGET</span>  = linux2628
-  <span style="color:#00688b">CPU</span>     = generic
-  <span style="color:#00688b">CC</span>      = gcc
-  <span style="color:#00688b">CFLAGS</span>  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
-  <span style="color:#00688b">OPTIONS</span> = <span style="color:#00688b">USE_GETADDRINFO</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_ZLIB</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_REGPARM</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_OPENSSL</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_LUA</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_SYSTEMD</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_PCRE_JIT</span>=<span style="color:#b452cd">1</span> <span style="color:#00688b">USE_NS</span>=<span style="color:#b452cd">1</span>
+  <span style="color:#bb60d5">TARGET</span>  <span style="color:#666">=</span> linux2628
+  <span style="color:#bb60d5">CPU</span>     <span style="color:#666">=</span> generic
+  <span style="color:#bb60d5">CC</span>      <span style="color:#666">=</span> gcc
+  <span style="color:#bb60d5">CFLAGS</span>  <span style="color:#666">=</span> -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
+  <span style="color:#bb60d5">OPTIONS</span> <span style="color:#666">=</span> <span style="color:#bb60d5">USE_GETADDRINFO</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_ZLIB</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_REGPARM</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_OPENSSL</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_LUA</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_SYSTEMD</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_PCRE_JIT</span><span style="color:#666">=</span><span style="color:#40a070">1</span> <span style="color:#bb60d5">USE_NS</span><span style="color:#666">=</span><span style="color:#40a070">1</span>
 
 Default settings :
-  <span style="color:#00688b">maxconn</span> = <span style="color:#b452cd">2000</span>, <span style="color:#00688b">bufsize</span> = <span style="color:#b452cd">16384</span>, <span style="color:#00688b">maxrewrite</span> = <span style="color:#b452cd">1024</span>, <span style="color:#00688b">maxpollevents</span> = <span style="color:#b452cd">200</span>
+  <span style="color:#bb60d5">maxconn</span> <span style="color:#666">=</span> <span style="color:#40a070">2000</span>, <span style="color:#bb60d5">bufsize</span> <span style="color:#666">=</span> <span style="color:#40a070">16384</span>, <span style="color:#bb60d5">maxrewrite</span> <span style="color:#666">=</span> <span style="color:#40a070">1024</span>, <span style="color:#bb60d5">maxpollevents</span> <span style="color:#666">=</span> <span style="color:#40a070">200</span>
 
-Built with OpenSSL version : OpenSSL <span style="color:#b452cd">1</span>.0.2g  <span style="color:#b452cd">1</span> Mar <span style="color:#b452cd">2016</span>
-Running on OpenSSL version : OpenSSL <span style="color:#b452cd">1</span>.0.2g  <span style="color:#b452cd">1</span> Mar <span style="color:#b452cd">2016</span>
+Built with OpenSSL version : OpenSSL <span style="color:#40a070">1</span>.0.2g  <span style="color:#40a070">1</span> Mar <span style="color:#40a070">2016</span>
+Running on OpenSSL version : OpenSSL <span style="color:#40a070">1</span>.0.2g  <span style="color:#40a070">1</span> Mar <span style="color:#40a070">2016</span>
 OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports : TLSv1.0 TLSv1.1 TLSv1.2
-Built with Lua version : Lua <span style="color:#b452cd">5</span>.3.1
+Built with Lua version : Lua <span style="color:#40a070">5</span>.3.1
 Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
-Encrypted password support via crypt(<span style="color:#b452cd">3</span>): yes
+Encrypted password support via crypt<span style="color:#666">(</span><span style="color:#40a070">3</span><span style="color:#666">)</span>: yes
 Built with multi-threading support.
-Built with PCRE version : <span style="color:#b452cd">8</span>.38 <span style="color:#b452cd">2015</span>-11-23
-Running on PCRE version : <span style="color:#b452cd">8</span>.38 <span style="color:#b452cd">2015</span>-11-23
+Built with PCRE version : <span style="color:#40a070">8</span>.38 <span style="color:#40a070">2015</span>-11-23
+Running on PCRE version : <span style="color:#40a070">8</span>.38 <span style="color:#40a070">2015</span>-11-23
 PCRE library supports JIT : yes
-Built with zlib version : <span style="color:#b452cd">1</span>.2.8
-Running on zlib version : <span style="color:#b452cd">1</span>.2.8
-Compression algorithms supported : identity(<span style="color:#cd5555">&#34;identity&#34;</span>), deflate(<span style="color:#cd5555">&#34;deflate&#34;</span>), raw-deflate(<span style="color:#cd5555">&#34;deflate&#34;</span>), gzip(<span style="color:#cd5555">&#34;gzip&#34;</span>)
+Built with zlib version : <span style="color:#40a070">1</span>.2.8
+Running on zlib version : <span style="color:#40a070">1</span>.2.8
+Compression algorithms supported : identity<span style="color:#666">(</span><span style="color:#4070a0">&#34;identity&#34;</span><span style="color:#666">)</span>, deflate<span style="color:#666">(</span><span style="color:#4070a0">&#34;deflate&#34;</span><span style="color:#666">)</span>, raw-deflate<span style="color:#666">(</span><span style="color:#4070a0">&#34;deflate&#34;</span><span style="color:#666">)</span>, gzip<span style="color:#666">(</span><span style="color:#4070a0">&#34;gzip&#34;</span><span style="color:#666">)</span>
 Built with network namespace support.
 
 Available polling systems :
-      epoll : <span style="color:#00688b">pref</span>=<span style="color:#b452cd">300</span>,  <span style="color:#658b00">test</span> result OK
-       poll : <span style="color:#00688b">pref</span>=<span style="color:#b452cd">200</span>,  <span style="color:#658b00">test</span> result OK
-     <span style="color:#8b008b;font-weight:bold">select</span> : <span style="color:#00688b">pref</span>=<span style="color:#b452cd">150</span>,  <span style="color:#658b00">test</span> result OK
-Total: <span style="color:#b452cd">3</span> (<span style="color:#b452cd">3</span> usable), will use epoll.
+      epoll : <span style="color:#bb60d5">pref</span><span style="color:#666">=</span><span style="color:#40a070">300</span>,  <span style="color:#007020">test</span> result OK
+       poll : <span style="color:#bb60d5">pref</span><span style="color:#666">=</span><span style="color:#40a070">200</span>,  <span style="color:#007020">test</span> result OK
+     <span style="color:#007020;font-weight:bold">select</span> : <span style="color:#bb60d5">pref</span><span style="color:#666">=</span><span style="color:#40a070">150</span>,  <span style="color:#007020">test</span> result OK
+Total: <span style="color:#40a070">3</span> <span style="color:#666">(</span><span style="color:#40a070">3</span> usable<span style="color:#666">)</span>, will use epoll.
 
 Available filters :
-	[SPOE] spoe
-	[COMP] compression
-	[TRACE] trace</code></pre></div>
+	<span style="color:#666">[</span>SPOE<span style="color:#666">]</span> spoe
+	<span style="color:#666">[</span>COMP<span style="color:#666">]</span> compression
+	<span style="color:#666">[</span>TRACE<span style="color:#666">]</span> trace</code></pre></div>
 <hr />
 
 <h2 id="references">References:</h2>

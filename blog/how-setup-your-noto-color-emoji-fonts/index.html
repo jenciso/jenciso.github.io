@@ -168,37 +168,37 @@
 <li><p>Download the Noto Color Emoji font from <a href="https://www.google.com/get/noto">here</a>, or if you prefer, you could download it directly from <a href="https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip">here</a></p></li>
 
 <li><p>Then, copy the ttf file into your <code>.fonts</code> dir</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#658b00">cd</span> ~/Downloads
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#007020">cd</span> ~/Downloads
 unzip NotoColorEmoji-unhinted.zip
 mkdir ~/.fonts
 mv NotoColorEmoji.ttf ~/.fonts</code></pre></div></li>
 
 <li><p>Edit the <code>.fonts.conf</code> configuration file</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.fonts.conf</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.fonts.conf</code></pre></div></li>
 
 <li><p>And put the following content</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#1e889b">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-<span style="color:#1e889b">&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;</span>
-<span style="color:#8b008b;font-weight:bold">&lt;fontconfig&gt;</span>
-<span style="color:#8b008b;font-weight:bold">&lt;alias&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>sans-serif<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;prefer&gt;</span>
-   <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>Noto Color Emoji<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
-   <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>Noto Emoji<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;/prefer&gt;</span>
-<span style="color:#8b008b;font-weight:bold">&lt;/alias&gt;</span>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#007020">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#007020">&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;</span>
+<span style="color:#062873;font-weight:bold">&lt;fontconfig&gt;</span>
+<span style="color:#062873;font-weight:bold">&lt;alias&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>sans-serif<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;prefer&gt;</span>
+   <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>Noto Color Emoji<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+   <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>Noto Emoji<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;/prefer&gt;</span>
+<span style="color:#062873;font-weight:bold">&lt;/alias&gt;</span>
 
-<span style="color:#8b008b;font-weight:bold">&lt;alias&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>serif<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;prefer&gt;</span>
-   <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>Noto Color Emoji<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
-   <span style="color:#8b008b;font-weight:bold">&lt;family&gt;</span>Noto Emoji<span style="color:#8b008b;font-weight:bold">&lt;/family&gt;</span>
- <span style="color:#8b008b;font-weight:bold">&lt;/prefer&gt;</span>
-<span style="color:#8b008b;font-weight:bold">&lt;/alias&gt;</span>
-<span style="color:#8b008b;font-weight:bold">&lt;/fontconfig&gt;</span></code></pre></div></li>
+<span style="color:#062873;font-weight:bold">&lt;alias&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>serif<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;prefer&gt;</span>
+   <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>Noto Color Emoji<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+   <span style="color:#062873;font-weight:bold">&lt;family&gt;</span>Noto Emoji<span style="color:#062873;font-weight:bold">&lt;/family&gt;</span>
+ <span style="color:#062873;font-weight:bold">&lt;/prefer&gt;</span>
+<span style="color:#062873;font-weight:bold">&lt;/alias&gt;</span>
+<span style="color:#062873;font-weight:bold">&lt;/fontconfig&gt;</span></code></pre></div></li>
 
 <li><p>You need to rebuild the cache fonts to take effect</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo fc-cache -fv</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo fc-cache -fv</code></pre></div></li>
 </ul>
 
 <blockquote>
