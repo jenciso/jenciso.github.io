@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Tue, 11 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to limit the allow characters in the jenkins creation item</title>
+      <link>https://jenciso.github.io/blog/howto-limit-the-allow-character-in-the-jenkins-item-creation/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/howto-limit-the-allow-character-in-the-jenkins-item-creation/</guid>
+      <description>Normally, Jenkins doesn&amp;rsquo;t limit the allowed characters when you try to create a item, like folder, project name, etc.
+Sometimes, one special character could break the dashboard and your text search box won&amp;rsquo;t works.</description>
+    </item>
     
     <item>
       <title>How setup the Noto Color Emoji in your Ubuntu</title>
