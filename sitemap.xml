@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://enciso.website/static/imprint/</loc>
+    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/</loc>
+    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://enciso.website/static/</loc>
+    <lastmod>2019-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://enciso.website/blog/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
@@ -14,11 +29,6 @@
   
   <url>
     <loc>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</loc>
-    <lastmod>2019-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://enciso.website/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
