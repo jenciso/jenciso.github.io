@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My Tech-Blog</title>
-    <link>https://enciso.website/</link>
+    <link>https://jenciso.github.io/</link>
     <description>Recent content on My Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
     <lastBuildDate>Sun, 13 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://enciso.website/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Imprint</title>
-      <link>https://enciso.website/static/imprint/</link>
+      <link>https://jenciso.github.io/static/imprint/</link>
       <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/static/imprint/</guid>
+      <guid>https://jenciso.github.io/static/imprint/</guid>
       <description></description>
     </item>
     
     <item>
       <title>How setup the Noto Color Emoji in your Ubuntu</title>
-      <link>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</link>
+      <link>https://jenciso.github.io/blog/how-setup-your-noto-color-emoji-fonts/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</guid>
+      <guid>https://jenciso.github.io/blog/how-setup-your-noto-color-emoji-fonts/</guid>
       <description>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu.</description>
     </item>
     
     <item>
       <title>How to cleanup a Gluster Heketi volume</title>
-      <link>https://enciso.website/blog/how-to-clean-a-gluster-heketi-volume/</link>
+      <link>https://jenciso.github.io/blog/how-to-clean-a-gluster-heketi-volume/</link>
       <pubDate>Mon, 03 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-to-clean-a-gluster-heketi-volume/</guid>
+      <guid>https://jenciso.github.io/blog/how-to-clean-a-gluster-heketi-volume/</guid>
       <description>Currently, I&amp;rsquo;m using gluster + heketi in my kubernetes cluster to give a persistent storage service on demand. I know that there are other options to implement simliar service, like a rooks using ceph.</description>
     </item>
     
     <item>
       <title>Embedding asciinema cast in your Hugo site</title>
-      <link>https://enciso.website/blog/embedding-asciinema-cast-in-your-hugo-site/</link>
+      <link>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
+      <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
       <description>Often, I use asciinema as a tool to show a specific command result or to explain step by step some linux setup, commonly runned in my terminal.</description>
     </item>
     
     <item>
       <title>How setup Haproxy with zero downtime reload from code source</title>
-      <link>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
+      <link>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
+      <guid>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
       <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.</description>
     </item>
     
     <item>
       <title>Recovery admin password for grafana</title>
-      <link>https://enciso.website/blog/how-to-recovery-the-admin-password-in-grafana/</link>
+      <link>https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-to-recovery-the-admin-password-in-grafana/</guid>
+      <guid>https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/</guid>
       <description>For some reason, you lost your grafana admin password. So, if you&amp;rsquo;ve been using sqlite as your grafana backend storage, to recovery this password is easy.</description>
     </item>
     
     <item>
       <title>Using a custom openconnect version for VPN</title>
-      <link>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</link>
+      <link>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
+      <guid>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
       <description>My company use the Palo Alto Networks solution to offer a VPN service for their employees. Personally, I prefer to use Openvpn when I need to setup a VPN connection.</description>
     </item>
     
     <item>
       <title>Manage TLS Certificates for Kubernetes users</title>
-      <link>https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/</link>
+      <link>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</link>
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/</guid>
+      <guid>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</guid>
       <description>Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</description>
     </item>
     

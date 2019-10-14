@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vpn on My Tech-Blog</title>
-    <link>https://enciso.website/tags/vpn/</link>
+    <link>https://jenciso.github.io/tags/vpn/</link>
     <description>Recent content in vpn on My Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
     <lastBuildDate>Sat, 21 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://enciso.website/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using a custom openconnect version for VPN</title>
-      <link>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</link>
+      <link>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
+      <guid>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
       <description>My company use the Palo Alto Networks solution to offer a VPN service for their employees. Personally, I prefer to use Openvpn when I need to setup a VPN connection.</description>
     </item>
     

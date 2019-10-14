@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ubuntu on My Tech-Blog</title>
-    <link>https://enciso.website/tags/ubuntu/</link>
+    <link>https://jenciso.github.io/tags/ubuntu/</link>
     <description>Recent content in ubuntu on My Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
     <lastBuildDate>Tue, 11 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://enciso.website/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How setup the Noto Color Emoji in your Ubuntu</title>
-      <link>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</link>
+      <link>https://jenciso.github.io/blog/how-setup-your-noto-color-emoji-fonts/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</guid>
+      <guid>https://jenciso.github.io/blog/how-setup-your-noto-color-emoji-fonts/</guid>
       <description>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu.</description>
     </item>
     

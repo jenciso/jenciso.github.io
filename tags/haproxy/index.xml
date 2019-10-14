@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>haproxy on My Tech-Blog</title>
-    <link>https://enciso.website/tags/haproxy/</link>
+    <link>https://jenciso.github.io/tags/haproxy/</link>
     <description>Recent content in haproxy on My Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
     <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://enciso.website/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jenciso.github.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How setup Haproxy with zero downtime reload from code source</title>
-      <link>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
+      <link>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
+      <guid>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
       <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.</description>
     </item>
     

@@ -3,137 +3,137 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://enciso.website/static/imprint/</loc>
+    <loc>https://jenciso.github.io/static/imprint/</loc>
     <lastmod>2019-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/</loc>
+    <loc>https://jenciso.github.io/</loc>
     <lastmod>2019-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/static/</loc>
+    <loc>https://jenciso.github.io/static/</loc>
     <lastmod>2019-10-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/</loc>
+    <loc>https://jenciso.github.io/blog/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/emoji/</loc>
+    <loc>https://jenciso.github.io/tags/emoji/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</loc>
+    <loc>https://jenciso.github.io/blog/how-setup-your-noto-color-emoji-fonts/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/</loc>
+    <loc>https://jenciso.github.io/tags/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/ubuntu/</loc>
+    <loc>https://jenciso.github.io/tags/ubuntu/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/gluster/</loc>
+    <loc>https://jenciso.github.io/tags/gluster/</loc>
     <lastmod>2019-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/heketi/</loc>
+    <loc>https://jenciso.github.io/tags/heketi/</loc>
     <lastmod>2019-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/how-to-clean-a-gluster-heketi-volume/</loc>
+    <loc>https://jenciso.github.io/blog/how-to-clean-a-gluster-heketi-volume/</loc>
     <lastmod>2019-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/storage/</loc>
+    <loc>https://jenciso.github.io/tags/storage/</loc>
     <lastmod>2019-06-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/asciinema/</loc>
+    <loc>https://jenciso.github.io/tags/asciinema/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/embedding-asciinema-cast-in-your-hugo-site/</loc>
+    <loc>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/hugo/</loc>
+    <loc>https://jenciso.github.io/tags/hugo/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/haproxy/</loc>
+    <loc>https://jenciso.github.io/tags/haproxy/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
+    <loc>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/loadbalancer/</loc>
+    <loc>https://jenciso.github.io/tags/loadbalancer/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/grafana/</loc>
+    <loc>https://jenciso.github.io/tags/grafana/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/monitoring/</loc>
+    <loc>https://jenciso.github.io/tags/monitoring/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/how-to-recovery-the-admin-password-in-grafana/</loc>
+    <loc>https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/</loc>
     <lastmod>2018-01-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/openconnect/</loc>
+    <loc>https://jenciso.github.io/tags/openconnect/</loc>
     <lastmod>2017-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/how-to-compile-a-global-protect-openconnect-version/</loc>
+    <loc>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</loc>
     <lastmod>2017-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/vpn/</loc>
+    <loc>https://jenciso.github.io/tags/vpn/</loc>
     <lastmod>2017-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/tags/kubernetes/</loc>
+    <loc>https://jenciso.github.io/tags/kubernetes/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/blog/manage-tls-certificates-for-kubernetes-users/</loc>
+    <loc>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://enciso.website/categories/</loc>
+    <loc>https://jenciso.github.io/categories/</loc>
   </url>
   
 </urlset>
