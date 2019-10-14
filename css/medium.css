@@ -855,20 +855,28 @@ iframe {
 }
 .highlight-copy-btn {
     position: absolute;
-    bottom: 7px;
-    right: 7px;
+    bottom: 5px;
+    right: 5px;
     border: 0;
     border-radius: 4px;
     padding: 1px;
-    font-size: 0.7em;
+    font-size: 0.625rem;
     font-family: monospace;
     line-height: 1.8;
-    color: #fff;
-    background-color: #777;
-    min-width: 55px;
+    color: #9e9494;
+    background-color: #f0f0f0;
+    min-width: 43px;
     text-align: center;
 }
 .highlight-copy-btn:hover {
-    background-color: #666;
+    background-color: #ffdd57;
     font-family: monospace;
+}
+
+p code {
+    font-size: 87.5%;
+    color: #e83e8c;
+    word-break: break-word;
+    padding: .25em .5em .25em;
+    background-color: #f0f0f0;
 }
