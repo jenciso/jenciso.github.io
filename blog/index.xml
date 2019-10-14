@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Mon, 03 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://enciso.website/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How setup the Noto Color Emoji in your Ubuntu</title>
+      <link>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</link>
+      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://enciso.website/blog/how-setup-your-noto-color-emoji-fonts/</guid>
+      <description>Ubuntu 18.04 LTS ships with all-new color emoji for use in messaging apps, text editors, and also on the web. Emoji is nothing new for Ubuntu.</description>
+    </item>
     
     <item>
       <title>How to cleanup a Gluster Heketi volume</title>
