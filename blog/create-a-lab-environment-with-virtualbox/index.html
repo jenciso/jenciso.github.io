@@ -152,12 +152,17 @@
 
 <p><a href="https://www.virtualbox.org/">VirtualBox</a> is a great tool used to use for simulate a entire lab. It could create for you all the needed to accomplish this goal. It can create multiples Nat networks and differents kind of virtual machines. In this post, we will show you, step by step, how to create a lab environment for test purpose.</p>
 
+<p>We will use 2 networks: <code>Nat Network</code> and <code>Host Only Adapter</code></p>
+
+<hr />
+
 <h4 id="virtualbox-installation">VirtualBox Installation</h4>
 
 <p>Choose your appropiate package from this <a href="https://www.virtualbox.org/wiki/Linux_Downloads">URL</a></p>
 
 <p>In my case, Ubuntu, I only use this command:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install virtualbox</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
+sudo apt-get install virtualbox</code></pre></div>
 <hr />
 
 <h4 id="host-network">Host Network</h4>
