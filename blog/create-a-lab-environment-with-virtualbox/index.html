@@ -150,22 +150,26 @@
                     <div class="article-post">
                         
 
-<p><a href="https://www.virtualbox.org/">VirtualBox</a> is a great tool used to use for simulate a entire lab. It could create for you all the needed to accomplish this goal. It can create multiples Nat networks and differents kind of virtual machines. In this post, we will show you, step by step, how to create a lab environment for test purpose.</p>
+<p><a href="https://www.virtualbox.org/">VirtualBox</a> is a great tool often used to simulate a entire lab. It could create for you all the needed to accomplish this goal.</p>
 
-<p>We will use 2 networks: <code>Nat Network</code> and <code>Host Only Adapter</code></p>
+<p>VirtualBox can create multiples Networks and differents kind of virtual machines. On this post, I will show you, how to create a lab environment step by step.</p>
+
+<p>On this scenario I will use two types of networks: <code>Nat Network</code>, the main nic will use it to ougoing packages and to communicate among the others VMs, and <code>Host-Only Adapter</code>, it will be use to get access from your desktop into any VMs.</p>
 
 <hr />
 
-<h4 id="virtualbox-installation">VirtualBox Installation</h4>
+<h2 id="steps">Steps</h2>
+
+<h4 id="installation">Installation</h4>
 
 <p>Choose your appropiate package from this <a href="https://www.virtualbox.org/wiki/Linux_Downloads">URL</a></p>
 
-<p>In my case, Ubuntu, I only use this command:</p>
+<p>In my case,  I use Ubuntu, and it is simple:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
 sudo apt-get install virtualbox</code></pre></div>
 <hr />
 
-<h4 id="host-network">Host Network</h4>
+<h4 id="setup-host-network">Setup Host Network</h4>
 
 <p><img src="https://www.nakivo.com/blog/wp-content/uploads/2019/07/VirtualBox-network-settings-%E2%80%93-VMs-use-the-host-only-network.png" alt="" /></p>
 
@@ -175,7 +179,7 @@ sudo apt-get install virtualbox</code></pre></div>
 
 <hr />
 
-<h4 id="nat-network">Nat Network</h4>
+<h4 id="setup-nat-network">Setup Nat Network</h4>
 
 <p><img src="https://www.nakivo.com/blog/wp-content/uploads/2019/07/VirtualBox-network-modes-%E2%80%93-how-the-NAT-mode-works.png" alt="" /></p>
 
@@ -186,38 +190,38 @@ VBoxManage natnetwork start --netname natnet</code></pre></div>
 
 <h4 id="create-a-vm-base">Create a VM base</h4>
 
-<p>We need to create a VM to use it as base to create other VM&rsquo;s. In this example, we will use Centos 7 image, and the VM will be named <code>centos7</code></p>
+<p>I need to create a VM to use it as base to create other VM&rsquo;s. In this example, I will use Centos 7 image, and the VM will be named <code>centos7</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#007020">export</span> <span style="color:#bb60d5">VM</span><span style="color:#666">=</span>centos7</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage createvm --name <span style="color:#bb60d5">$VM</span> --ostype RedHat_64 --register</code></pre></div>
-<p>Now, we need to associate the natnetwork created previously with the nic1 interface of the VM</p>
+<p>Now, we need to associate the natnetwork created previously with the nic1 interface</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --nic1 natnetwork --nat-network1 natnet</code></pre></div>
 <p>Create another nic2 type <code>Host-Only Adapter</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --nic2 hostonly --hostonlyadapter2 vboxnet0</code></pre></div>
-<p>Increase the vCPU and Memory</p>
+<p>If you want to increase the CPU and Memory, here is a good opportunity</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --cpus <span style="color:#40a070">2</span> --memory <span style="color:#40a070">512</span></code></pre></div>
-<p>Storage: Create a dynamic disk with 10GB and SATA Controller</p>
+<p>The VM will need a storage, then create a dynamic disk with 10GB and a SATA Controller to attach the disk at the sequence</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage createhd --filename ~/VirtualBox<span style="color:#4070a0;font-weight:bold">\ </span>VMs/<span style="color:#bb60d5">$VM</span>/<span style="color:#bb60d5">$VM</span>.vdi --size <span style="color:#40a070">10240</span>
 VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;SATA Controller&#34;</span> --add sata --controller IntelAHCI
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;SATA Controller&#34;</span> --port <span style="color:#40a070">0</span> --device <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --type hdd --medium ~/VirtualBox<span style="color:#4070a0;font-weight:bold">\ </span>VMs/<span style="color:#bb60d5">$VM</span>/<span style="color:#bb60d5">$VM</span>.vdi</code></pre></div>
-<p>Create a IDE controller to mount the iso installer image</p>
+<p>Create a IDE controller to mount the iso installer image. in my case CentOS 7 minimal iso</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --add ide
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --port <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1810.iso</code></pre></div>
-<p>Misc system options</p>
+<p>Finally, you could setup other misc system options</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --ioapic on
 VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --boot1 dvd --boot2 disk --boot3 none --boot4 none</code></pre></div>
-<p>Finally you will have this configuration</p>
+<p>And done, you will have some VM created like this:</p>
 
 <p><img src="/images/virtualbox_centos7.png" alt="" /></p>
 
-<p>Starting the VM</p>
+<p>Starting the VM (in headless mode) to install you new Centos7 VM</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxHeadless -s <span style="color:#bb60d5">$VM</span></code></pre></div>
 <p>Once you have configured the operating system, you can shutdown and eject the DVD.</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">VBoxManage storageattach $VM --storagectl &#34;IDE Controller&#34; --port 0 \
   --device 0 --type dvddrive --medium none</pre></div>
 <hr />
 
-<h3 id="tips">Tips #</h3>
+<h3 id="others-usefull-commands">Others usefull commands #</h3>
 
 <p>Remove nat network</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork remove --netname natnet</code></pre></div>
