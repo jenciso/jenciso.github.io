@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 23:45:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>lab</title>
+      <link>https://jenciso.github.io/tags/lab/</link>
+      <pubDate>Mon, 14 Oct 2019 23:45:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/tags/lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualbox</title>
+      <link>https://jenciso.github.io/tags/virtualbox/</link>
+      <pubDate>Mon, 14 Oct 2019 23:45:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/tags/virtualbox/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>jenkins</title>
