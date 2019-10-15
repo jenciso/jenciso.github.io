@@ -154,7 +154,7 @@
 
 <p>VirtualBox can create multiples Networks and differents kind of virtual machines. On this post, I will show you, how to create a lab environment step by step.</p>
 
-<p>On this scenario I will use two types of networks: <code>Nat Network</code>, the main nic will use it to ougoing packages and to communicate among the others VMs, and <code>Host-Only Adapter</code>, it will be use to get access from your desktop into any VMs.</p>
+<p>On this scenario, I will use two types of networks: <code>Nat Network</code>, the main nic will use it to ougoing packages and to communicate among the others VMs, and <code>Host-Only Adapter</code>, it will be use to get access from your desktop into any VMs.</p>
 
 <hr />
 
@@ -203,7 +203,7 @@ VBoxManage natnetwork start --netname natnet</code></pre></div>
 VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;SATA Controller&#34;</span> --add sata --controller IntelAHCI
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;SATA Controller&#34;</span> --port <span style="color:#40a070">0</span> --device <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --type hdd --medium ~/VirtualBox<span style="color:#4070a0;font-weight:bold">\ </span>VMs/<span style="color:#bb60d5">$VM</span>/<span style="color:#bb60d5">$VM</span>.vdi</code></pre></div>
-<p>Create a IDE controller to mount the iso installer image. in my case CentOS 7 minimal iso</p>
+<p>Create a IDE controller to mount the iso installer image. In my case, I use CentOS 7 minimal iso</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --add ide
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --port <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1810.iso</code></pre></div>
