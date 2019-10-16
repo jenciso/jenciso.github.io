@@ -186,7 +186,7 @@ sudo apt-get install virtualbox</code></pre></div>
 
 <h4 id="setup-host-network">Setup Host Network</h4>
 
-<p><img src="https://www.nakivo.com/blog/wp-content/uploads/2019/07/VirtualBox-network-settings-%E2%80%93-VMs-use-the-host-only-network.png" alt="" /></p>
+<p><img src="host-only-network.png" alt="" /></p>
 
 <p>By default, VirtualBox creates a <code>Host-Only Adapter</code> network, and it use this CIDR: <code>192.168.56.0/24</code>.</p>
 
@@ -196,9 +196,9 @@ sudo apt-get install virtualbox</code></pre></div>
 
 <h4 id="setup-nat-network">Setup Nat Network</h4>
 
-<p><img src="https://www.nakivo.com/blog/wp-content/uploads/2019/07/VirtualBox-network-modes-%E2%80%93-how-the-NAT-mode-works.png" alt="" /></p>
+<p><img src="NAT-mode-works.png" alt="" /></p>
 
-<p>A Nat network is use by the VMs, to give access to external world. Virtualbox creates this network using theses steps.</p>
+<p>A Nat network is use by the VMs, to give access to external world. Virtualbox creates this network using these steps.</p>
 
 <p>E.g. Create the network <code>10.0.2.0/24</code> with name <code>natnet</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork add --netname natnet --network <span style="color:#4070a0">&#34;10.0.2.0/24&#34;</span> --enable --dhcp on

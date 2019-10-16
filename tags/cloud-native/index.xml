@@ -18,7 +18,7 @@
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/12-factor-app/</guid>
-      <description>Twelve factor App is a great pattern to guide you in create cloud native software. The format is inspired by Martin Fowler’s books Patterns of Enterprise Application Architecture and Refactoring.</description>
+      <description>Twelve factor App are great patterns to create cloud native applications. The guide was inspired by Martin Fowler’s books Patterns of Enterprise Application Architecture and Refactoring.</description>
     </item>
     
   </channel>
