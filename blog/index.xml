@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Mon, 14 Oct 2019 23:45:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12-Factor App</title>
+      <link>https://jenciso.github.io/blog/12-factor-app/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/12-factor-app/</guid>
+      <description>Twelve factor App is a great pattern to guide you in create cloud native software. The format is inspired by Martin Fowler’s books Patterns of Enterprise Application Architecture and Refactoring.</description>
+    </item>
     
     <item>
       <title>Create a lab environment with VirtualBox</title>

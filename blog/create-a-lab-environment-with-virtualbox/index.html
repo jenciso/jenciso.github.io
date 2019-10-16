@@ -136,7 +136,7 @@
                                     <i class="far fa-star"></i>
                                     Oct 14, 2019
                                     <i class="far fa-clock clock"></i>
-                                    3 min read
+                                    4 min read
                                 </span>					
                             </div>
                         </div>			
@@ -233,9 +233,79 @@ VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --boot1 dvd --boot2 d
 
 <p>Starting the VM (in headless mode) to install you new Centos7 VM</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxHeadless -s <span style="color:#bb60d5">$VM</span></code></pre></div>
+<hr />
+
+<h4 id="install-centos-os">Install Centos OS</h4>
+
+<p>Start the installation</p>
+
+<p><img src="vb-centos7-01.png" alt="" /></p>
+
+<p>Setup your localtime. In my case, as I live in Brazil, it is <code>America/Sao_Paulo</code></p>
+
+<p><img src="vb-centos7-02.png" alt="" /></p>
+
+<p>Create a <code>ansible</code> user, and make it Administrator</p>
+
+<p><img src="vb-centos7-03.png" alt="" /></p>
+
+<p>Also, you need to setup the root password</p>
+
+<p><img src="vb-centos7-04.png" alt="" /></p>
+
+<p>Finished the installation, login into the VM as root user and edit the first one NIC</p>
+
+<p><img src="vb-centos7-05.png" alt="" /></p>
+
+<p>You need to pay attention on this variables:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">BOOTPROTO=static
+ONBOOT=yes
+IPADDR=<span style="color:#40a070">10.0</span>.<span style="color:#40a070">2.2</span>
+PREFIX=<span style="color:#40a070">24</span>
+GATEWAY=<span style="color:#40a070">10.0</span>.<span style="color:#40a070">2.1</span>
+DNS1=<span style="color:#40a070">10.0</span>.<span style="color:#40a070">2.1</span></code></pre></div>
+<p><img src="vb-centos7-06.png" alt="" /></p>
+
+<p>Edit the second NIC</p>
+
+<p><img src="vb-centos7-07.png" alt="" /></p>
+
+<p>Pay attention on this variables</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">BOOTPROTO=static
+DEFROUTE=no
+ONBOOT=yes
+IPADDR=<span style="color:#40a070">192.168</span>.<span style="color:#40a070">56.2</span>
+PREFIX=<span style="color:#40a070">24</span></code></pre></div>
+<p><img src="vb-centos7-08.png" alt="" /></p>
+
+<p>Restart the system network service and check the network</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart network 
+ip addr | grep <span style="color:#4070a0">&#34;inet &#34;</span>
+ip route</code></pre></div>
+<p><img src="vb-centos7-09.png" alt="" /></p>
+
+<h4 id="testing">Testing</h4>
+
+<p>SSH access to VM from the <code>Host-only Adapter</code></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
+root@192.168.56.2&#39;s password: 
+Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
+[root@localhost ~]# ping www.terra.com
+PING www.terra.com (208.70.188.57) 56(84) bytes of data.
+64 bytes from www.terra.com (208.70.188.57): icmp_seq=1 ttl=53 time=151 ms
+64 bytes from www.terra.com (208.70.188.57): icmp_seq=2 ttl=53 time=151 ms
+^C
+--- www.terra.com ping statistics ---
+3 packets transmitted, 2 received, 33% packet loss, time 2002ms
+[root@localhost ~]# </code></pre></div>
+<h4 id="final-step">Final Step</h4>
+
 <p>Once you have configured the operating system, you can shutdown and eject the DVD.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">VBoxManage storageattach $VM --storagectl &#34;IDE Controller&#34; --port 0 \
-  --device 0 --type dvddrive --medium none</pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
+root@192.168.56.2&#39;s password:
+Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
+[root@localhost ~]# halt -p</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --port <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
+</span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium none</code></pre></div>
 <hr />
 
 <h3 id="others-usefull-commands">Others usefull commands #</h3>
@@ -288,6 +358,8 @@ VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --boot1 dvd --boot2 d
                     
                     
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="https://jenciso.github.io/blog/12-factor-app/"> &laquo; 12-Factor App</a>
                     
                     
                         <a class="d-block col-md-6 text-lg-right" href="https://jenciso.github.io/blog/howto-limit-the-allow-character-in-the-jenkins-item-creation/">How to limit the allowed characters in Jenkins items &raquo;</a>
@@ -361,6 +433,8 @@ VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --boot1 dvd --boot2 d
 		<div class="col-md-8 p-5 align-self-center text-center">
 			
 			<a class="mt-1 mb-1" href="/tags/asciinema">asciinema</a>
+			
+			<a class="mt-1 mb-1" href="/tags/cloud-native">cloud-native</a>
 			
 			<a class="mt-1 mb-1" href="/tags/emoji">emoji</a>
 			
