@@ -27,7 +27,8 @@
       <pubDate>Mon, 14 Oct 2019 23:45:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/create-a-lab-environment-with-virtualbox/</guid>
-      <description>VirtualBox is a great tool often used to simulate a entire lab. It could create for you all the needed to accomplish this goal.</description>
+      <description>VirtualBox is a great tool often used to simulate an entire lab. It could create all need to accomplish this goal for you.
+VirtualBox can create multiples Networks and different virtual machines (VMs).</description>
     </item>
     
     <item>
