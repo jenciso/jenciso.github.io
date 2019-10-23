@@ -13,10 +13,10 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/kubernetes-logo-cover.jpg"/>
 <meta name="twitter:title" content="Manage TLS Certificates for Kubernetes users"/>
-<meta name="twitter:description" content="Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service."/>
+<meta name="twitter:description" content="Intro After to create your kubernetes cluster, the most common next step is create user&rsquo;s access to the cluster. In order to do that, you&rsquo;ll need to create certificates to give authentication via kube-apiserver service."/>
 
 	<meta property="og:title" content="Manage TLS Certificates for Kubernetes users" />
-<meta property="og:description" content="Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service." />
+<meta property="og:description" content="Intro After to create your kubernetes cluster, the most common next step is create user&rsquo;s access to the cluster. In order to do that, you&rsquo;ll need to create certificates to give authentication via kube-apiserver service." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/" />
 <meta property="article:published_time" content="2017-09-27T00:00:00+00:00" />
@@ -160,11 +160,9 @@
 
 <h3 id="intro">Intro</h3>
 
-<p>Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</p>
+<p>After to create your kubernetes cluster, the most common next step is create user&rsquo;s access to the cluster. In order to do that, you&rsquo;ll need to create certificates to give authentication via kube-apiserver service. This process has two defined steps, the user steps, who will get access, and admin steps, who will give the access.</p>
 
 <h3 id="user-steps">User Steps</h3>
-
-<p>Here, you have all the steps to do that:</p>
 
 <ol>
 <li><p>Download the cfssl binary. It is a Cloudflare tool help us to create the certificates</p>
@@ -192,7 +190,7 @@ chmod +x ~/bin/<span style="color:#666">{</span>cfssl,cfssljson<span style="colo
 </span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>key<span style="color:#bbb"> </span>encipherment<span style="color:#bbb">
 </span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>client<span style="color:#bbb"> </span>auth</code></pre></div></li>
 
-<li><p>The YAML file has to contain base64 encoded version of your signing <code>request</code> (the .csr file). You can easily encode it using:</p>
+<li><p>The YAML file should contain base64 encoded version of your signing <code>request</code> (the .csr file). To encode this, execute base64 command:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat juan.enciso.csr | base64 | tr -d <span style="color:#4070a0">&#39;\n&#39;</span></code></pre></div></li>
 </ol>
 
@@ -202,10 +200,10 @@ chmod +x ~/bin/<span style="color:#666">{</span>cfssl,cfssljson<span style="colo
 <li><p>create the resource</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create -f certsignrequest.yml</code></pre></div></li>
 
-<li><p>Approve certificate</p>
+<li><p>Approve the certificate created</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl certificate approve user-request-juan.enciso</code></pre></div></li>
 
-<li><p>Create Roles and ClusterRole in a file <code>juan.enciso-rbac.yaml</code>. E.g. Role: Edit default namespace, ClusterRole: View All Only</p>
+<li><p>Create Roles and ClusterRole using a file, e.g <code>juan.enciso-rbac.yaml</code>. In this case, the role will be: Only <code>edit</code> into the default namespace, and the ClusterRole will be <code>View All Only</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">kind:<span style="color:#bbb"> </span>ClusterRoleBinding<span style="color:#bbb">
 </span><span style="color:#bbb"></span>apiVersion:<span style="color:#bbb"> </span>rbac.authorization.k8s.io/v1beta1<span style="color:#bbb">
 </span><span style="color:#bbb"></span>metadata:<span style="color:#bbb">
@@ -253,11 +251,11 @@ kubectl  config use-context k8s-lab</code></pre></div>
 <p>So, for testing purpose you could add the options <code>--kubeconfig ~/.kube/config-juan.enciso</code> in each command of above. On this way, you won&rsquo;t overwrite your default config file <code>~/kube/config</code></p>
 
 <h3 id="testing">Testing</h3>
+
+<p>Execute common commands</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl version
 kubectl get nodes
 kubectl get pods --all-namespaces</code></pre></div>
-<hr />
-
                     </div>
                     
                     
