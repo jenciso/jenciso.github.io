@@ -95,14 +95,5 @@ Sometimes, one special character could break the dashboard and your text search 
       <description>My company use the Palo Alto Networks solution to offer a VPN service for their employees. Personally, I prefer to use Openvpn when I need to setup a VPN connection.</description>
     </item>
     
-    <item>
-      <title>Manage TLS Certificates for Kubernetes users</title>
-      <link>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</link>
-      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</guid>
-      <description>Intro After to create your kubernetes cluster, the most common next step is create user&amp;rsquo;s access to the cluster. In order to do that, you&amp;rsquo;ll need to create certificates to give authentication via kube-apiserver service.</description>
-    </item>
-    
   </channel>
 </rss>

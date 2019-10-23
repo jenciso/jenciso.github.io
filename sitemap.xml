@@ -163,7 +163,12 @@
   </url>
   
   <url>
-    <loc>https://jenciso.github.io/blog/manage-tls-certificates-for-kubernetes-users/</loc>
+    <loc>https://jenciso.github.io/personal/manage-tls-certificates-for-kubernetes-users/</loc>
+    <lastmod>2017-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/personal/</loc>
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url>
   
