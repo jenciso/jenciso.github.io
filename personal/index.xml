@@ -18,7 +18,7 @@
       <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/personal/manage-tls-certificates-for-kubernetes-users/</guid>
-      <description>Intro Probably, after to create your kubernetes cluster you will need to create access for other users, and for accomplish this task, you need to create certificates to authentication against the kube-apiserver service.</description>
+      <description>Intro After to create your kubernetes cluster, the most common next step is create user&amp;rsquo;s access to the cluster. In order to do that, you&amp;rsquo;ll need to create certificates to give authentication via kube-apiserver service.</description>
     </item>
     
   </channel>
