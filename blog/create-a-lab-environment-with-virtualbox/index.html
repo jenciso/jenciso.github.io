@@ -327,7 +327,7 @@ Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 <h3 id="others-usefull-commands">Others usefull commands #</h3>
 
 <p>Start in headless mode</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">VBoxHeadless -s $VM</pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage startvm <span style="color:#bb60d5">$VM</span> --type headless</code></pre></div>
 <p>Remove nat network</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork remove --netname natnet</code></pre></div>
 <p>Disable the dhcp</p>
