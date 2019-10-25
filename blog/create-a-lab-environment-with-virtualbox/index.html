@@ -227,9 +227,15 @@ VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style=
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;SATA Controller&#34;</span> --port <span style="color:#40a070">0</span> --device <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --type hdd --medium ~/VirtualBox<span style="color:#4070a0;font-weight:bold">\ </span>VMs/<span style="color:#bb60d5">$VM</span>/<span style="color:#bb60d5">$VM</span>.vdi</code></pre></div>
 <p>Create a IDE controller to mount the iso installer image in order to begin the installation process. E.g. I will use the CentOS 7 minimal image iso.</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --add ide
+
+<blockquote>
+<p>Previously you need to download the iso image</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/isos/
+wget http://centos.usetelecom.com.br/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso 
+  -O ~/isos/</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --add ide
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --port <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1810.iso</code></pre></div>
+</span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1908.iso</code></pre></div>
 <p>You could setup others miscellaneous system options</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --ioapic on
 VBoxManage modifyvm <span style="color:#bb60d5">$VM</span> --boot1 dvd --boot2 disk --boot3 none --boot4 none</code></pre></div>
