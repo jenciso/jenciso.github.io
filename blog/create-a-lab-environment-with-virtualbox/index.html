@@ -2,7 +2,7 @@
 <html lang="en-us"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="generator" content="Hugo 0.58.3" />
+	<meta name="generator" content="Hugo 0.59.1" />
 	
 	<link rel="icon" href="/images/logo.png">
 	
@@ -180,11 +180,8 @@
 <p>For ubuntu users:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
 sudo apt-get install virtualbox</code></pre></div>
-<p>or</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb
-sudo dpgk -i virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</code></pre></div>
 <blockquote>
-<p>Consider install the VirtualBox Extension Pack from <a href="https://download.virtualbox.org/virtualbox/6.0.14/Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack">here</a></p>
+<p>Consider install the VirtualBox Extension Pack from <a href="https://download.virtualbox.org/virtualbox/6.0.12/Oracle_VM_VirtualBox_Extension_Pack-6.0.12.vbox-extpack">here</a></p>
 </blockquote>
 
 <hr />
@@ -235,8 +232,7 @@ VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <sp
 <p>Previously you need to download the iso image</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/isos/
-wget <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  http://centos.usetelecom.com.br/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso 
+wget http://centos.usetelecom.com.br/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso 
   -O ~/isos/</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span style="color:#bb60d5">$VM</span> --name <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --add ide
 VBoxManage storageattach <span style="color:#bb60d5">$VM</span> --storagectl <span style="color:#4070a0">&#34;IDE Controller&#34;</span> --port <span style="color:#40a070">0</span> <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  --device <span style="color:#40a070">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1908.iso</code></pre></div>
@@ -327,7 +323,7 @@ Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 <h3 id="others-usefull-commands">Others usefull commands #</h3>
 
 <p>Start in headless mode</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage startvm <span style="color:#bb60d5">$VM</span> --type headless</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">VBoxHeadless -s $VM</pre></div>
 <p>Remove nat network</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork remove --netname natnet</code></pre></div>
 <p>Disable the dhcp</p>

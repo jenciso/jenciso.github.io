@@ -2,7 +2,7 @@
 <html lang="en-us"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="generator" content="Hugo 0.58.3" />
+	<meta name="generator" content="Hugo 0.59.1" />
 	
 	<link rel="icon" href="/images/logo.png">
 	
@@ -136,7 +136,7 @@
                                     <i class="far fa-star"></i>
                                     Oct 21, 2017
                                     <i class="far fa-clock clock"></i>
-                                    1 min read
+                                    2 min read
                                 </span>					
                             </div>
                         </div>			
@@ -179,7 +179,7 @@
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#4070a0;font-weight:bold">\
 </span><span style="color:#4070a0;font-weight:bold"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libgnutls-dev</code></pre></div>
+</span><span style="color:#4070a0;font-weight:bold"></span>  libgnutls28-dev</code></pre></div>
 <h4 id="build-and-install">Build and Install</h4>
 
 <p>After, you need to download the repo for dlenski github pages and compile it</p>
@@ -195,7 +195,37 @@ sudo make install</code></pre></div>
 <h4 id="testing">Testing</h4>
 
 <p>Finally, you can test it!</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#666">=</span>gp vpn.mycompany.com.br --dump -v</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#666">=</span>gp vpn.mycompany.com --dump -v</code></pre></div>
+<h4 id="scripts">Scripts</h4>
+
+<p><code>mycompany-vpn.sh</code></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007020">#!/bin/bash
+</span><span style="color:#007020"></span>
+<span style="color:#007020;font-weight:bold">case</span> <span style="color:#bb60d5">$1</span> in
+        disconnect|stop<span style="color:#666">)</span>
+                sudo <span style="color:#007020">kill</span> <span style="color:#007020;font-weight:bold">$(</span>pidof openconnect<span style="color:#007020;font-weight:bold">)</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect was disconnected&#34;</span>
+                sudo systemctl restart systemd-resolved.service <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;DNS service was restarted&#34;</span>
+                ;;
+        status<span style="color:#666">)</span>
+                <span style="color:#bb60d5">pid</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>pidof openconnect<span style="color:#007020;font-weight:bold">)</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is running | pidof: </span><span style="color:#bb60d5">$pid</span><span style="color:#4070a0">&#34;</span> <span style="color:#666">||</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is stopped&#34;</span>
+                ;;
+        *<span style="color:#666">)</span>
+                <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is trying to connect...&#34;</span>
+                <span style="color:#007020">echo</span> <span style="color:#007020;font-weight:bold">$(</span>cat ~/mycompany.ocvpn.pass<span style="color:#007020;font-weight:bold">)</span> | sudo openconnect -b --config<span style="color:#666">=</span>/home/jenciso/mycompany.ocvpn
+                ;;
+<span style="color:#007020;font-weight:bold">esac</span></code></pre></div>
+<p><code>~/mycompany.ocvpn.pass</code></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SuperSecretPass</pre></div>
+<p><code>mycompany.ocvpn</code></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">user=juan.enciso
+passwd-on-stdin
+servercert=pin-sha256:axzKF1qMn0Ncyh8FIvSyg9SIRuSFfyn7ILk/20roII4=
+protocol=gp
+server=vpn.mycompany.com</pre></div>
+<p>Testing:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
+mycomapny-vpn.sh status
+mycomapny-vpn.sh disconnect</code></pre></div>
 <h3 id="notes">Notes</h3>
 
 <p><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">Here</a> you have some ideas to create a init script.</p>
@@ -371,6 +401,10 @@ if (!doNotTrack) {
 
 
 
+
+
+
+    <script src="https://jenciso.github.io/js/clipboard.js"></script>
 
 
     </body>
