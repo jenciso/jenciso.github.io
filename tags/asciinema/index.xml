@@ -18,7 +18,8 @@
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
-      <description>Often, I use asciinema as a tool to show a specific command result or to explain step by step some linux setup, commonly runned in my terminal.</description>
+      <description>Every now and then I use asciinema tool to show or to explain some linux command step by step.
+Asciinema is an excellent tool when you need to show how to do something else and it is very useful to create technical blogs, to do documentation and landing pages alike.</description>
     </item>
     
   </channel>
