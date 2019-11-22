@@ -2,7 +2,7 @@
 <html lang="en-us"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="generator" content="Hugo 0.58.3" />
+	<meta name="generator" content="Hugo 0.59.1" />
 	
 	<link rel="icon" href="/images/logo.png">
 	
@@ -199,6 +199,8 @@ sudo dpgk -i virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</code></pre></
 
 <p>This network will be use only to communicate with your Host (a.k.a your desktop machine). Also, on this lab environment we need a Nat Network, whch is another kind of network</p>
 
+<p>If you don&rsquo;t have this adapter, you need to create it with this simple command</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage hostonlyif create</code></pre></div>
 <hr />
 
 <h4 id="nat-network">Nat Network</h4>
