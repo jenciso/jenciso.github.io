@@ -3,27 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jenciso.github.io/tags/active-directory/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/blog/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/centos/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/</loc>
+    <lastmod>2019-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jenciso.github.io/blog/12-factor-app/</loc>
     <lastmod>2019-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jenciso.github.io/blog/</loc>
-    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jenciso.github.io/tags/cloud-native/</loc>
-    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/</loc>
-    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/tags/</loc>
     <lastmod>2019-10-15T00:00:00+00:00</lastmod>
   </url>
   
