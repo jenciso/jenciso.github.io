@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.59.1" />
+	
+	<link rel="icon" href="/images/logo.png">
+	
+	<title>Deploy NGINX container using Terraform | My Tech-Blog</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jenciso.github.io/blog/deploy-nginx-container-nginx/terraform-logo-cover.png"/>
+<meta name="twitter:title" content="Deploy NGINX container using Terraform"/>
+<meta name="twitter:description" content="Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
+A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource."/>
+
+	<meta property="og:title" content="Deploy NGINX container using Terraform" />
+<meta property="og:description" content="Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
+A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jenciso.github.io/blog/deploy-nginx-container-nginx/" />
+<meta property="article:published_time" content="2020-01-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-19T00:00:00+00:00" />
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/css/medium.css" rel="stylesheet">
+	<link href="/css/additional.css" rel="stylesheet">
+
+        
+        <link rel="stylesheet" type="text/css" href="https://jenciso.github.io/css/asciinema-player.css" />
+        
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://jenciso.github.io//">
+
+            
+            <img src="/images/logo.png" alt="logo">
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">About Me</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/cv">CV</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">My Tech-Blog</h1>
+    <p class="lead">
+         Read, write, share and be curious!
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Deploy%20NGINX%20container%20using%20Terraform&url=https%3a%2f%2fjenciso.github.io%2fblog%2fdeploy-nginx-container-nginx%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fjenciso.github.io%2fblog%2fdeploy-nginx-container-nginx%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fjenciso.github.io%2fblog%2fdeploy-nginx-container-nginx%2f&amp;title=Deploy%20NGINX%20container%20using%20Terraform" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>        
+    </ul>
+
+    
+        <div class="sep">
+        </div>				
+        <ul>
+            <li> 
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                                <img class="author-thumb" src="/images/author.png" alt="Juan Enciso">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                                <a target="_blank" class="link-dark">Juan Enciso</a><br>
+                                <span class="author-description">
+                                    Me. Who created this place to share some technology information in order to create a nice blog<br>
+                                    <i class="far fa-star"></i>
+                                    Jan 19, 2020
+                                    <i class="far fa-clock clock"></i>
+                                    4 min read
+                                </span>					
+                            </div>
+                        </div>			
+                        	
+                        
+                                                
+                        
+                        <h1 class="posttitle">Deploy NGINX container using Terraform</h1> 
+                    </div>
+
+                    
+                    
+                    
+                        <img class="featured-image img-fluid" src="https://jenciso.github.io/blog/deploy-nginx-container-nginx/terraform-logo-cover.png" alt="thumbnail for this post">
+                    
+                    
+
+                    
+                    <div class="article-post">
+                        
+
+<p>Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.</p>
+
+<p>A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource.</p>
+
+<p>A resource are components of your infrastructure, for example a container or image.</p>
+
+<p>We will use a <code>config.tf</code> file to setup our lab environment.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; config.tf <span style="color:#4070a0">&lt;&lt; EOF
+</span><span style="color:#4070a0">provider &#34;docker&#34; {
+</span><span style="color:#4070a0">  host = &#34;unix:///var/run/docker.sock&#34;
+</span><span style="color:#4070a0">}
+</span><span style="color:#4070a0">EOF</span></code></pre></div>
+<p>We can now start defining the resources of our infrastructure. The first resource is our Docker image. A resource has two parameters, one is a <code>TYPE</code> and second a <code>NAME</code>. The type is <code>docker_image</code> and the name is <code>nginx</code>. Within the block we define the name and tag of the Docker Image.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#4070a0">&lt;&lt; EOF
+</span><span style="color:#4070a0">resource &#34;docker_image&#34; &#34;nginx&#34; {
+</span><span style="color:#4070a0">  name = &#34;nginx:1.11-alpine&#34;
+</span><span style="color:#4070a0">}
+</span><span style="color:#4070a0">EOF</span></code></pre></div>
+<p>We can define our container resource. The resource type is <code>docker_container</code> and name as <code>nginx-server</code>. Within the block we set the resource parameters. We can reference other resources, such as a the <code>image</code>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#4070a0">&lt;&lt; EOF
+</span><span style="color:#4070a0">resource &#34;docker_container&#34; &#34;nginx-server&#34; {
+</span><span style="color:#4070a0">  name = &#34;nginx-server-1&#34;
+</span><span style="color:#4070a0">  image = docker_image.nginx.latest
+</span><span style="color:#4070a0">  ports {
+</span><span style="color:#4070a0">    internal = 80
+</span><span style="color:#4070a0">    external = 8081
+</span><span style="color:#4070a0">  }
+</span><span style="color:#4070a0">  volumes {
+</span><span style="color:#4070a0">    container_path  = &#34;/usr/share/nginx/html&#34;
+</span><span style="color:#4070a0">    host_path = &#34;/tmp/tutorial/www&#34;
+</span><span style="color:#4070a0">    read_only = true
+</span><span style="color:#4070a0">  }
+</span><span style="color:#4070a0">}
+</span><span style="color:#4070a0">EOF</span></code></pre></div>
+<h2 id="plan-terraform-actions">Plan Terraform Actions</h2>
+
+<p>Once the configuration has been defined we need to create an execution plan. Terraform describes the actions required to achieve the desired state. The plan can be saved using -out. We&rsquo;ll apply the execution plan in the next step.</p>
+
+<p>First at all:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform init</code></pre></div>
+<p>Now, to create a plan, use the CLI</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform plan -out config.tfplan</code></pre></div>
+<p>The output of the command indicates the changes. In this case, you&rsquo;ll see a <em>dockercontainer.nginx-server</em> and <em>dockerimage.nginx</em> to highlight adding the new resources.</p>
+
+<p>Finally a summary of Plan: <code>2 to add, 0 to change, 0 to destroy</code>.</p>
+
+<h2 id="adding-some-content">Adding some content</h2>
+
+<p>We could add a some content to serve via our nginx server.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /tmp/tutorial/www
+<span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;&lt;h1&gt;hello world&lt;/h1&gt;&#34;</span> &gt; /tmp/tutorial/www/index.html</code></pre></div>
+<h2 id="apply-terraform-actions">Apply Terraform Actions</h2>
+
+<p>Once the plan has been created we need to apply it to reach our desired state.</p>
+
+<p>Using the CLI, terraform will pull any images required and launch new containers.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply</code></pre></div>
+<h2 id="inspecting-infrastructure">Inspecting Infrastructure</h2>
+
+<p>You can use the Docker CLI to view the changes and see the newly launched container.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker ps
+docker ps -f <span style="color:#bb60d5">name</span><span style="color:#666">=</span>nginx-server-1 --format <span style="color:#4070a0">&#34;table {{.Names}}\t{{.Status}}&#34;</span></code></pre></div>
+<p>you can inspect this in future using the terraform CLI</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform show</code></pre></div>
+<h2 id="testing">Testing</h2>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl http://localhost:8081
+firefox http://localhost:8081</code></pre></div>
+<h2 id="updating-infrastructure">Updating Infrastructure</h2>
+
+<p>As our infrastructure grows and changes, terraform will manage and ensure we always have our defined desired state.</p>
+
+<p>We can change our container to launch two instances, each with different names.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">resource <span style="color:#4070a0">&#34;docker_container&#34;</span> <span style="color:#4070a0">&#34;nginx-server&#34;</span> {
+  count <span style="color:#666">=</span> <span style="color:#40a070">2</span>
+  <span style="color:#007020">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#34;nginx-server-${count.index+1}&#34;</span>
+  image <span style="color:#666">=</span> docker_image<span style="color:#666">.</span>nginx<span style="color:#666">.</span>latest
+  ports {
+    internal <span style="color:#666">=</span> <span style="color:#40a070">80</span>
+    external <span style="color:#666">=</span> <span style="color:#4070a0">&#34;808${count.index+1}&#34;</span>
+  }
+  volumes {
+    container_path  <span style="color:#666">=</span> <span style="color:#4070a0">&#34;/usr/share/nginx/html&#34;</span>
+    host_path <span style="color:#666">=</span> <span style="color:#4070a0">&#34;/tmp/tutorial/www&#34;</span>
+    read_only <span style="color:#666">=</span> <span style="color:#007020">true</span>
+  }
+}</code></pre></div>
+<p>If we create a plan you will see the actions Terraform will need to apply to adapt our infrastructure to match our configuration.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform validate
+terraform plan -out config.tfplan</code></pre></div>
+<p>The plan will outline the changes. Because we&rsquo;re changing the name and adding a resource we&rsquo;ll see <code>Plan: 1 to add, 0 to change, 0 to destroy.</code></p>
+
+<p>In the details it will explain that changing a container name forces the resource to be recreated name: &ldquo;nginx-server&rdquo; =&gt; &ldquo;nginx-server-1&rdquo; (forces new resource) along with adding the new container <em>dockercontainer.nginx-server.1</em></p>
+
+<p>We can then apply the plan as we did in the previous step.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply -auto-approve</code></pre></div>
+<p>Now, scale your nginx-server to 8 replicas:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">resource <span style="color:#4070a0">&#34;docker_container&#34;</span> <span style="color:#4070a0">&#34;nginx-server&#34;</span> {
+  count <span style="color:#666">=</span> <span style="color:#40a070">8</span>
+  <span style="color:#007020">name</span> <span style="color:#666">=</span> <span style="color:#4070a0">&#34;nginx-server-${count.index+1}&#34;</span>
+  image <span style="color:#666">=</span> docker_image<span style="color:#666">.</span>nginx<span style="color:#666">.</span>latest
+  ports {
+    internal <span style="color:#666">=</span> <span style="color:#40a070">80</span>
+    external <span style="color:#666">=</span> <span style="color:#4070a0">&#34;808${count.index+1}&#34;</span>
+  }
+  volumes {
+    container_path  <span style="color:#666">=</span> <span style="color:#4070a0">&#34;/usr/share/nginx/html&#34;</span>
+    host_path <span style="color:#666">=</span> <span style="color:#4070a0">&#34;/tmp/tutorial/www&#34;</span>
+    read_only <span style="color:#666">=</span> <span style="color:#007020">true</span>
+  }
+}</code></pre></div><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform plan
+terraform apply -auto-approve</code></pre></div>
+<h2 id="clean-up">Clean UP</h2>
+
+<p>To destroy all the resources created</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform destroy</code></pre></div>
+<p>To delete all files created</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">rm -rf config.tf* terraform.tfstate* .terraform/
+rm -rf /tmp/tutorial</pre></div>
+<h3 id="demo">DEMO</h3>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><p>
+    <asciinema-player
+        src="/casts/294493.cast"
+        cols="127"
+        rows="33"
+        
+        preload="1"
+        
+        start-at="0"
+        speed="1"
+        
+        
+        
+        
+        
+        
+        
+        
+    ></asciinema-player>
+</p>
+</code></pre></div>
+<h2 id="references">References</h2>
+
+<p><a href="https://www.terraform.io/docs/providers/docker/index.html">https://www.terraform.io/docs/providers/docker/index.html</a>
+<a href="https://gist.github.com/brianshumate/09adf967c563731ca1b0c4d39f7bcdc2">https://gist.github.com/brianshumate/09adf967c563731ca1b0c4d39f7bcdc2</a></p>
+
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/tags/terraform">terraform</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/">How To Join CentOS Linux To An Active Directory Domain &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jenciso-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+<div class="alertbar">
+	<div class="container text-center">
+        <span>
+            
+                <img src="/images/logo.png" alt="logo" width="30px">
+            
+            &nbsp; Never miss a <b>story</b>, subscribe to our newsletter
+        </span>
+
+        <form action="https://gmail.us20.list-manage.com/subscribe/post?u=fcd0d13593259ece3901cc6b1&amp;amp;id=658aa507ab" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+		<input type="email" placeholder="Email" name="EMAIL" autocomplete="on" required>
+	    	
+	    	<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+		<input type="submit" value="Subscribe" name="subscribe" >
+        </form>
+
+	</div>
+</div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/tags/active-directory">active-directory</a>
+			
+			<a class="mt-1 mb-1" href="/tags/asciinema">asciinema</a>
+			
+			<a class="mt-1 mb-1" href="/tags/centos">centos</a>
+			
+			<a class="mt-1 mb-1" href="/tags/cloud-native">cloud-native</a>
+			
+			<a class="mt-1 mb-1" href="/tags/emoji">emoji</a>
+			
+			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
+			
+			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
+			
+			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
+			
+			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
+			
+			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
+			
+			<a class="mt-1 mb-1" href="/tags/kubernetes">kubernetes</a>
+			
+			<a class="mt-1 mb-1" href="/tags/lab">lab</a>
+			
+			<a class="mt-1 mb-1" href="/tags/loadbalancer">loadbalancer</a>
+			
+			<a class="mt-1 mb-1" href="/tags/monitoring">monitoring</a>
+			
+			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
+			
+			<a class="mt-1 mb-1" href="/tags/terraform">terraform</a>
+			
+			<a class="mt-1 mb-1" href="/tags/ubuntu">ubuntu</a>
+			
+			<a class="mt-1 mb-1" href="/tags/virtualbox">virtualbox</a>
+			
+			<a class="mt-1 mb-1" href="/tags/vpn">vpn</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright Juan Enciso - All rights reserved
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106539950-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+    <script src="https://jenciso.github.io/js/asciinema-player.js"></script>
+
+
+
+
+    </body>
+</html>

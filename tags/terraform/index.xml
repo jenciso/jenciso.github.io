@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>terraform on My Tech-Blog</title>
+    <link>https://jenciso.github.io/tags/terraform/</link>
+    <description>Recent content in terraform on My Tech-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Juan Enciso - All rights reserved</copyright>
+    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jenciso.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deploy NGINX container using Terraform</title>
+      <link>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</guid>
+      <description>Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
+A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deploy NGINX container using Terraform</title>
+      <link>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</link>
+      <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</guid>
+      <description>Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
+A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource.</description>
+    </item>
     
     <item>
       <title>How To Join CentOS Linux To An Active Directory Domain</title>
