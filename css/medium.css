@@ -325,8 +325,8 @@ span.post-read-more a:hover {
 }
 
 .article-post {
-    font-family: Merriweather;
-    font-size: 1.1rem;
+    font-family: Ubuntu,"Helvetica Neue",Cantarell,Merriweather;
+    font-size: 1.063rem;
     line-height: 1.84;
     color: rgba(0, 0, 0, .8);
 }
