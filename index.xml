@@ -95,8 +95,7 @@ Sometimes, one special character could break the dashboard and your text search 
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
-      <description>Every now and then I use asciinema tool to show or to explain some linux command step by step.
-Asciinema is an excellent tool when you need to show how to do something else and it is very useful to create technical blogs, to do documentation and landing pages alike.</description>
+      <description>Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use asciinema.</description>
     </item>
     
     <item>

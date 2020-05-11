@@ -13,12 +13,10 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/asciinema-cover.png"/>
 <meta name="twitter:title" content="Embedding asciinema cast in your Hugo site"/>
-<meta name="twitter:description" content="Every now and then I use asciinema tool to show or to explain some linux command step by step.
-Asciinema is an excellent tool when you need to show how to do something else and it is very useful to create technical blogs, to do documentation and landing pages alike."/>
+<meta name="twitter:description" content="Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use asciinema."/>
 
 	<meta property="og:title" content="Embedding asciinema cast in your Hugo site" />
-<meta property="og:description" content="Every now and then I use asciinema tool to show or to explain some linux command step by step.
-Asciinema is an excellent tool when you need to show how to do something else and it is very useful to create technical blogs, to do documentation and landing pages alike." />
+<meta property="og:description" content="Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use asciinema." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/" />
 <meta property="article:published_time" content="2019-06-02T00:00:00+00:00" />
@@ -162,37 +160,39 @@ Asciinema is an excellent tool when you need to show how to do something else an
                     <div class="article-post">
                         
 
-<p>Every now and then I use <a href="https://github.com/asciinema/asciinema">asciinema</a> tool to show or to explain some linux command step by step.</p>
+<p>Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use <a href="https://github.com/asciinema/asciinema">asciinema</a>.</p>
 
-<p>Asciinema is an excellent tool when you need to show how to do something else and it is very useful to create technical blogs, to do documentation and landing pages alike. It help you to create a compact animations along with their output and formatting with far less overhead, if you compare it with another alternative like a gif or mp4.</p>
+<p>Asciinema is an excellent tool very useful for create content with good explanation. It could help you to create compact animations along with their output and formatting with far less overhead, if you compare it with others alternative like a gif or mp4 files.</p>
 
-<p>You can embed casts hosted on asciinema into your Hugo posts and pages by embedding a snippet like this directly into the markdown:</p>
+<p>use asciinema in your Hugo posts and pages by embedding a snippet like this directly as markdown:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">src</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;https://asciinema.org/a/186686.js&#34;</span> <span style="color:#4070a0">id</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;asciicast-186686&#34;</span> <span style="color:#4070a0">async</span>&gt;&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;</code></pre></div>
-<p>Although, this method works quietly, you also have another option to use that in your blog and with a better behavior, without upload the cast file created on the asciinema public site. Be careful, you need to think sometimes in security issues when you externalize some information and take care with some internal processes.</p>
+<p>Although, this method works quietly, you have another method to use asciinema in your blog site without upload the cast file on public.</p>
 
 <h2 id="embedding-in-hugo-with-shortcodes">Embedding in Hugo with shortcodes</h2>
 
-<p>I will show you how you should setup you hugo template to use asciinema. Follow these steps to accomplish it.</p>
+<p>I will show you how to setup you hugo to use asciinema. Follow these steps to accomplish it.</p>
 
 <h3 id="download-the-latest-asciinema-player-release-https-github-com-asciinema-asciinema-player-releases">Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</h3>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
 wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js</code></pre></div>
-<p>Now, you have 2 files. you need to put both into the <code>static/</code> folder</p>
+<p>You need to put this files into <code>static/</code> folder</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls -l static/css/asciinema-player.css 
 -rw-rw-r-- <span style="color:#40a070">1</span> jenciso jenciso <span style="color:#40a070">50722</span> Fev <span style="color:#40a070">21</span>  <span style="color:#40a070">2018</span> static/css/asciinema-player.css
 $ ls -l static/js/asciinema-player.js 
 -rw-rw-r-- <span style="color:#40a070">1</span> jenciso jenciso <span style="color:#40a070">582376</span> Fev <span style="color:#40a070">21</span>  <span style="color:#40a070">2018</span> static/js/asciinema-player.js</code></pre></div>
-<p>Then, you need to configure your template to use this files. So you have to add this block of code in your <code>head</code> template section. In my case it was here: <code>layouts/partials/_shared/head.html</code></p>
+<p>You need to configure your hugo template files to use css and js files previously downloaded.</p>
+
+<p>Insert this block in your <code>head</code> template section. In my case it&rsquo;s here: <code>layouts/partials/_shared/head.html</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
     &lt;<span style="color:#062873;font-weight:bold">link</span> <span style="color:#4070a0">rel</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;stylesheet&#34;</span> <span style="color:#4070a0">type</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;text/css&#34;</span> <span style="color:#4070a0">href</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;{{ .Site.BaseURL }}css/asciinema-player.css&#34;</span> /&gt;
 {{ end }}</code></pre></div>
-<p>And the last one, before the <code>&lt;/body&gt;</code> tag in your template’s baseof, in my case it was here: <code>layouts/_default/baseof.html</code></p>
+<p>And before the <code>&lt;/body&gt;</code> tag in your template’s baseof. Ex.: <code>layouts/_default/baseof.html</code></p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
     &lt;<span style="color:#062873;font-weight:bold">script</span> <span style="color:#4070a0">src</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;{{ .Site.BaseURL }}js/asciinema-player.js&#34;</span>&gt;&lt;/<span style="color:#062873;font-weight:bold">script</span>&gt;
 {{ end }}</code></pre></div>
 <h4 id="create-a-shortcode">Create a shortcode</h4>
 
-<p>Create a file <code>layouts/shortcodes/asciinema.html</code> with the following contents:</p>
+<p>Create a file <code>layouts/shortcodes/asciinema.html</code> with the this content:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#666">&lt;</span>p<span style="color:#666">&gt;</span>
     <span style="color:#666">&lt;</span>asciinema<span style="color:#666">-</span>player
         src<span style="color:#666">=</span><span style="color:#4070a0">&#34;/casts/{{ with .Get &#34;</span>key<span style="color:#4070a0">&#34; }}{{ . }}{{ end }}.cast&#34;</span>
@@ -219,16 +219,23 @@ $ ls -l static/js/asciinema-player.js
 
 <h3 id="testing">Testing</h3>
 
-<p>Follow the instructions to create new casts. Save them to <code>static/casts/&lt;key&gt;.cast</code>.</p>
+<p>Create a new cast ans save it here <code>static/casts/&lt;key&gt;.cast</code>.</p>
 
-<ol>
+<ul>
 <li><p>You can now embed asciinema casts in your Hugo posts and pages with the following shortcode:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#666">{{</span>&lt; asciinema <span style="color:#bb60d5">key</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;demo-cast&#34;</span> <span style="color:#bb60d5">rows</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;10&#34;</span> <span style="color:#bb60d5">preload</span><span style="color:#666">=</span><span style="color:#4070a0">&#34;1&#34;</span> &gt;<span style="color:#666">}}</span></code></pre></div></li>
 
-<li><p>You also need to include <code>asciinema = true</code> in the frontmatter for you post too, to make sure the javascript and css assets are included.</p></li>
-</ol>
+<li><p>You also need to include <code>asciinema = true</code> in the frontmatter for you post too, to make sure the javascript and css assets are included. Ex:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---<span style="color:#bbb">
+</span><span style="color:#bbb"></span>title:<span style="color:#bbb"> </span>Kubernetes<span style="color:#bbb"> </span>Backup<span style="color:#bbb"> </span>-<span style="color:#bbb"> </span>ARK<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>description:<span style="color:#bbb"> </span>Kubernetes<span style="color:#bbb"> </span>backup<span style="color:#bbb"> </span>process<span style="color:#bbb"> </span>using<span style="color:#bbb"> </span>ark<span style="color:#bbb">
+</span><span style="color:#bbb"></span>asciinema:<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>tags:<span style="color:#bbb">
+</span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>kubernetes<span style="color:#bbb">
+</span><span style="color:#bbb"></span>-<span style="color:#bbb"> </span>backup<span style="color:#bbb">
+</span><span style="color:#bbb"></span>---</code></pre></div></li>
 
-<p>Finally, you should end up with something like this:</p>
+<li><p>Finally, the result should show something like this:</p>
 <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><p>
     <asciinema-player
         src="/casts/249623.cast"
@@ -249,7 +256,9 @@ $ ls -l static/js/asciinema-player.js
         
     ></asciinema-player>
 </p>
-</code></pre></div>
+</code></pre></div></li>
+</ul>
+
 <h4 id="references">References</h4>
 
 <p><a href="https://www.tonylykke.com/posts/custom-fonts-in-asciinema/">https://www.tonylykke.com/posts/custom-fonts-in-asciinema/</a></p>
