@@ -13,10 +13,10 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/asciinema-cover.png"/>
 <meta name="twitter:title" content="Embedding asciinema cast in your Hugo site"/>
-<meta name="twitter:description" content="Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use asciinema."/>
+<meta name="twitter:description" content="Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use asciinema to do that."/>
 
 	<meta property="og:title" content="Embedding asciinema cast in your Hugo site" />
-<meta property="og:description" content="Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use asciinema." />
+<meta property="og:description" content="Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use asciinema to do that." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/" />
 <meta property="article:published_time" content="2019-06-02T00:00:00+00:00" />
@@ -160,27 +160,33 @@
                     <div class="article-post">
                         
 
-<p>Every now and I need a tool to show step by step a process or simply recorded a output of my terminal, in this case, commonly I use <a href="https://github.com/asciinema/asciinema">asciinema</a>.</p>
+<p>Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use <a href="https://github.com/asciinema/asciinema">asciinema</a> to do that.</p>
 
-<p>Asciinema is an excellent tool very useful for create content with good explanation. It could help you to create compact animations along with their output and formatting with far less overhead, if you compare it with others alternative like a gif or mp4 files.</p>
+<p>It is an excellent tool very useful to dynamic content which give you a good explanation of your process. It will create a compact animation along with their output and formatting with far less overhead, if you compare it with others alternative like a gif or mp4 files.</p>
 
-<p>use asciinema in your Hugo posts and pages by embedding a snippet like this directly as markdown:</p>
+<p>You could use asciinema in your Hugo posts and pages by embedding a snippet like this directly as markdown:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://asciinema.org/a/186686.js&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;asciicast-186686&#34;</span> <span style="color:#a6e22e">async</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
-<p>Although, this method works quietly, you have another method to use asciinema in your blog site without upload the cast file on public.</p>
+<p>Although, this method works quietly, you have another method to use asciinema in your blog site without upload the cast file on public, it is embedding the cast file</p>
 
-<h2 id="embedding-in-hugo-with-shortcodes">Embedding in Hugo with shortcodes</h2>
+<h2 id="setup">Setup</h2>
 
 <p>I will show you how to setup you hugo to use asciinema. Follow these steps to accomplish it.</p>
 
-<h3 id="download-the-latest-asciinema-player-release-https-github-com-asciinema-asciinema-player-releases">Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</h3>
+<ul>
+<li>Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</li>
+</ul>
+
+<p>Using wget:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
 wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js</code></pre></div>
-<p>You need to put this files into <code>static/</code> folder</p>
+<p>Put these files into <code>static/css</code> and <code>static/js</code> folders. Like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls -l static/css/asciinema-player.css 
 -rw-rw-r-- <span style="color:#ae81ff">1</span> jenciso jenciso <span style="color:#ae81ff">50722</span> Fev <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2018</span> static/css/asciinema-player.css
 $ ls -l static/js/asciinema-player.js 
 -rw-rw-r-- <span style="color:#ae81ff">1</span> jenciso jenciso <span style="color:#ae81ff">582376</span> Fev <span style="color:#ae81ff">21</span>  <span style="color:#ae81ff">2018</span> static/js/asciinema-player.js</code></pre></div>
-<p>You need to configure your hugo template files to use css and js files previously downloaded.</p>
+<ul>
+<li>You need to configure your hugo template files to use css and js files previously downloaded.</li>
+</ul>
 
 <p>Insert this block in your <code>head</code> template section. In my case it&rsquo;s here: <code>layouts/partials/_shared/head.html</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
@@ -190,7 +196,9 @@ $ ls -l static/js/asciinema-player.js
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Site.BaseURL }}js/asciinema-player.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
 {{ end }}</code></pre></div>
-<h4 id="create-a-shortcode">Create a shortcode</h4>
+<ul>
+<li>Create a shortcode</li>
+</ul>
 
 <p>Create a file <code>layouts/shortcodes/asciinema.html</code> with the this content:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&lt;</span>p<span style="color:#f92672">&gt;</span>
@@ -234,8 +242,11 @@ tags:
 - kubernetes
 - backup
 ---</code></pre></div></li>
+</ul>
 
-<li><p>Finally, the result should show something like this:</p>
+<h3 id="result">Result</h3>
+
+<p>Finally, the result should show something like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><p>
     <asciinema-player
         src="/casts/249623.cast"
@@ -256,9 +267,7 @@ tags:
         
     ></asciinema-player>
 </p>
-</code></pre></div></li>
-</ul>
-
+</code></pre></div>
 <h4 id="references">References</h4>
 
 <p><a href="https://www.tonylykke.com/posts/custom-fonts-in-asciinema/">https://www.tonylykke.com/posts/custom-fonts-in-asciinema/</a></p>
