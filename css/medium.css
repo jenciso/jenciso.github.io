@@ -23,7 +23,7 @@ pre {
     border: #E3EDF3 1px solid;
     width: 100%;
     padding: 20px;
-    font-family: monospace, sans-serif;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     font-size: 13.5px;
     white-space: pre;
     overflow: auto;
