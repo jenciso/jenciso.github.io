@@ -22,13 +22,13 @@ pre {
     box-sizing: border-box;
     border: #E3EDF3 1px solid;
     width: 100%;
-    padding: 7px;
+    padding: 20px;
     font-family: monospace, sans-serif;
     font-size: 13.5px;
     white-space: pre;
     overflow: auto;
     background: #f7f7f7;
-    border-radius: 0px;
+    border-radius: 8px;
     line-height: 1.6;
     color: #333;
     margin-bottom: -rem;
@@ -851,7 +851,7 @@ iframe {
     position: relative;
 }
 .highlight pre {
-    padding-right: 5px;
+    padding-right: 18px;
 }
 .highlight-copy-btn {
     position: absolute;

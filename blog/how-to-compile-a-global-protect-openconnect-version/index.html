@@ -165,65 +165,65 @@
 <h4 id="requeriments">Requeriments</h4>
 
 <p>Fedora users</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  zlib-devel <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  openssl-devel <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  pkg-config <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  p11-kit <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libp11 <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libproxy <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  trous <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libproxy-devel <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libstoken </code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  zlib-devel <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  openssl-devel <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  pkg-config <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  p11-kit <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libp11 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libproxy <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  trous <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libproxy-devel <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libstoken </code></pre></div>
 <p>Ubuntu users</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  libgnutls28-dev</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  libgnutls28-dev</code></pre></div>
 <h4 id="build-and-install">Build and Install</h4>
 
 <p>After, you need to download the repo for dlenski github pages and compile it</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
-<span style="color:#007020">cd</span> openconnect
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
+cd openconnect
 git checkout globalprotect
 ./autogen.sh
 ./configure
 make
 sudo make install</code></pre></div>
 <p>Load the shared libraries</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
 <h4 id="testing">Testing</h4>
 
 <p>Finally, you can test it!</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#666">=</span>gp vpn.mycompany.com --dump -v</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#f92672">=</span>gp vpn.mycompany.com --dump -v</code></pre></div>
 <h4 id="scripts">Scripts</h4>
 
 <p><code>mycompany-vpn.sh</code></p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#007020">#!/bin/bash
-</span><span style="color:#007020"></span>
-<span style="color:#007020;font-weight:bold">case</span> <span style="color:#bb60d5">$1</span> in
-        disconnect|stop<span style="color:#666">)</span>
-                sudo <span style="color:#007020">kill</span> <span style="color:#007020;font-weight:bold">$(</span>pidof openconnect<span style="color:#007020;font-weight:bold">)</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect was disconnected&#34;</span>
-                sudo systemctl restart systemd-resolved.service <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;DNS service was restarted&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">case</span> $1 in
+        disconnect|stop<span style="color:#f92672">)</span>
+                sudo kill <span style="color:#66d9ef">$(</span>pidof openconnect<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;the openconnect was disconnected&#34;</span>
+                sudo systemctl restart systemd-resolved.service <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;DNS service was restarted&#34;</span>
                 ;;
-        status<span style="color:#666">)</span>
-                <span style="color:#bb60d5">pid</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>pidof openconnect<span style="color:#007020;font-weight:bold">)</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is running | pidof: </span><span style="color:#bb60d5">$pid</span><span style="color:#4070a0">&#34;</span> <span style="color:#666">||</span> <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is stopped&#34;</span>
+        status<span style="color:#f92672">)</span>
+                pid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>pidof openconnect<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;the openconnect is running | pidof: </span>$pid<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34;the openconnect is stopped&#34;</span>
                 ;;
-        *<span style="color:#666">)</span>
-                <span style="color:#007020">echo</span> <span style="color:#4070a0">&#34;the openconnect is trying to connect...&#34;</span>
-                <span style="color:#007020">echo</span> <span style="color:#007020;font-weight:bold">$(</span>cat ~/mycompany.ocvpn.pass<span style="color:#007020;font-weight:bold">)</span> | sudo openconnect -b --config<span style="color:#666">=</span>/home/jenciso/mycompany.ocvpn
+        *<span style="color:#f92672">)</span>
+                echo <span style="color:#e6db74">&#34;the openconnect is trying to connect...&#34;</span>
+                echo <span style="color:#66d9ef">$(</span>cat ~/mycompany.ocvpn.pass<span style="color:#66d9ef">)</span> | sudo openconnect -b --config<span style="color:#f92672">=</span>/home/jenciso/mycompany.ocvpn
                 ;;
-<span style="color:#007020;font-weight:bold">esac</span></code></pre></div>
+<span style="color:#66d9ef">esac</span></code></pre></div>
 <p><code>~/mycompany.ocvpn.pass</code></p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SuperSecretPass</pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SuperSecretPass</pre></div>
 <p><code>mycompany.ocvpn</code></p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4">user=juan.enciso
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">user=juan.enciso
 passwd-on-stdin
 servercert=pin-sha256:axzKF1qMn0Ncyh8FIvSyg9SIRuSFfyn7ILk/20roII4=
 protocol=gp
 server=vpn.mycompany.com</pre></div>
 <p>Testing:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
 mycomapny-vpn.sh status
 mycomapny-vpn.sh disconnect</code></pre></div>
 <h3 id="notes">Notes</h3>
