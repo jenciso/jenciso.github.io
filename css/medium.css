@@ -3,6 +3,17 @@ Template Name: Mediumish
 Copyright: Sal, WowThemes.net, https://www.wowthemes.net 
 License: https://www.wowthemes.net/freebies-license/ 
 */
+
+   ::-webkit-scrollbar{
+        height: 4px;
+        width: 4px;
+        background: 1px gray;
+    }
+    ::-webkit-scrollbar-thumb:horizontal{
+        background: #343a40;
+        border-radius: 10px;
+    }
+
 .mainheading {
     padding: 1rem 0rem;
 }
