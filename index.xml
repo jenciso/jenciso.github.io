@@ -108,12 +108,12 @@ Sometimes, one special character could break the dashboard and your text search 
     </item>
     
     <item>
-      <title>Recovery admin password for grafana</title>
+      <title>Recover your grafana admin password using sqlite shell</title>
       <link>https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/</guid>
-      <description>For some reason, you lost your grafana admin password. So, if you&amp;rsquo;ve been using sqlite as your grafana backend storage, to recovery this password is easy.</description>
+      <description>One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using sqlite as backend storage, the recover process is easy.</description>
     </item>
     
     <item>

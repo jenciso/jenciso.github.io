@@ -6,17 +6,17 @@
 	
 	<link rel="icon" href="/images/logo.png">
 	
-	<title>Recovery admin password for grafana | My Tech-Blog</title>
+	<title>Recover your grafana admin password using sqlite shell | My Tech-Blog</title>
 	
 	
 
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/grafana-cover.png"/>
-<meta name="twitter:title" content="Recovery admin password for grafana"/>
-<meta name="twitter:description" content="For some reason, you lost your grafana admin password. So, if you&rsquo;ve been using sqlite as your grafana backend storage, to recovery this password is easy."/>
+<meta name="twitter:title" content="Recover your grafana admin password using sqlite shell"/>
+<meta name="twitter:description" content="One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using sqlite as backend storage, the recover process is easy."/>
 
-	<meta property="og:title" content="Recovery admin password for grafana" />
-<meta property="og:description" content="For some reason, you lost your grafana admin password. So, if you&rsquo;ve been using sqlite as your grafana backend storage, to recovery this password is easy." />
+	<meta property="og:title" content="Recover your grafana admin password using sqlite shell" />
+<meta property="og:description" content="One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using sqlite as backend storage, the recover process is easy." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/" />
 <meta property="article:published_time" content="2018-01-13T00:00:00+00:00" />
@@ -89,7 +89,7 @@
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Recovery%20admin%20password%20for%20grafana&url=https%3a%2f%2fjenciso.github.io%2fblog%2fhow-to-recovery-the-admin-password-in-grafana%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Recover%20your%20grafana%20admin%20password%20using%20sqlite%20shell&url=https%3a%2f%2fjenciso.github.io%2fblog%2fhow-to-recovery-the-admin-password-in-grafana%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
@@ -101,7 +101,7 @@
         </li>
 
         <li class="ml-1 mr-1">
-        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fjenciso.github.io%2fblog%2fhow-to-recovery-the-admin-password-in-grafana%2f&amp;title=Recovery%20admin%20password%20for%20grafana" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fjenciso.github.io%2fblog%2fhow-to-recovery-the-admin-password-in-grafana%2f&amp;title=Recover%20your%20grafana%20admin%20password%20using%20sqlite%20shell" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
         <i class="fab fa-linkedin"></i>
         </a>
         </li>        
@@ -144,7 +144,7 @@
                         
                                                 
                         
-                        <h1 class="posttitle">Recovery admin password for grafana</h1> 
+                        <h1 class="posttitle">Recover your grafana admin password using sqlite shell</h1> 
                     </div>
 
                     
@@ -156,27 +156,21 @@
 
                     
                     <div class="article-post">
-                        
-
-<p>For some reason, you lost your grafana admin password. So, if you&rsquo;ve been using <code>sqlite</code> as your grafana backend storage, to recovery this password is easy. In order to do that, follow these steps:</p>
+                        <p>One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using <code>sqlite</code> as backend storage, the recover process is easy. Here are the steps to do that:</p>
 
 <ol>
 <li><p>In your local machine, install the sqlite3 package</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3</code></pre></div></li>
 
-<li><p>Login int your sql database</p>
+<li><p>Login into your sql database</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db</code></pre></div></li>
 
-<li><p>Reset the admin password using SQL update</p>
+<li><p>Reset the admin password using SQL update (the new password will be <code>admin</code>)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sqlite<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">user</span> <span style="color:#66d9ef">set</span> password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span>, salt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;F3FAxVm33R&#39;</span> <span style="color:#66d9ef">where</span> login <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;admin&#39;</span>;
 sqlite<span style="color:#f92672">&gt;</span> .exit</code></pre></div></li>
-
-<li><p>Using the same string for the sql update command, now you should can to login using this credential: <code>username: admin</code> and <code>password: admin</code></p></li>
 </ol>
 
-<h4 id="note">Note:</h4>
-
-<p>Of course, the final step will be change your grafana password, via its web interface</p>
+<p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
 
                     </div>
                     
