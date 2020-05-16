@@ -4,15 +4,19 @@ Copyright: Sal, WowThemes.net, https://www.wowthemes.net
 License: https://www.wowthemes.net/freebies-license/ 
 */
 
-   ::-webkit-scrollbar{
-        height: 4px;
-        width: 4px;
-        background: 1px gray;
-    }
-    ::-webkit-scrollbar-thumb:horizontal{
-        background: #343a40;
-        border-radius: 10px;
-    }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
 
 .mainheading {
     padding: 1rem 0rem;
@@ -869,18 +873,18 @@ iframe {
     bottom: 5px;
     right: 5px;
     border: 0;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 1px;
     font-size: 0.625rem;
     font-family: monospace;
     line-height: 1.8;
-    color: #9e9494;
-    background-color: #f0f0f0;
-    min-width: 43px;
+    color: white;
+    background-color: gray;
+    min-width: 40px;
     text-align: center;
 }
 .highlight-copy-btn:hover {
-    background-color: #ffdd57;
+    background-color: #1c9963;
     font-family: monospace;
 }
 
