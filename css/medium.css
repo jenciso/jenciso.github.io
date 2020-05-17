@@ -347,10 +347,11 @@ span.post-read-more a:hover {
 }
 
 blockquote {
-    border-left: 4px solid #00ab6b;
+    border-left: 5px solid #dbdbdb;
     padding: 0 20px;
     font-style: italic;
-    color: rgba(0, 0, 0, .5);
+    background-color: whitesmoke;
+    color: #656c7a;
 }
 
 .article-post p,
