@@ -868,6 +868,11 @@ iframe {
 .highlight {
     position: relative;
 }
+
+.highlight:hover .highlight-copy-btn {
+    display: block;
+}   
+
 .highlight pre {
     padding-right: 18px;
 }
@@ -885,6 +890,7 @@ iframe {
     background-color: gray;
     min-width: 40px;
     text-align: center;
+    display: none;
 }
 .highlight-copy-btn:hover {
     background-color: #1c9963;
