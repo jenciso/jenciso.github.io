@@ -18,8 +18,7 @@
       <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</guid>
-      <description>Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
-A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource.</description>
+      <description>Intro Terraform works using a configuration file named config.tf, it defines all the infrastructure to be created. You need to describe your providers and resources.</description>
     </item>
     
     <item>

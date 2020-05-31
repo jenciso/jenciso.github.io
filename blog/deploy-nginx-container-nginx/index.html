@@ -13,12 +13,10 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/deploy-nginx-container-nginx/terraform-logo-cover.png"/>
 <meta name="twitter:title" content="Deploy NGINX container using Terraform"/>
-<meta name="twitter:description" content="Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
-A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource."/>
+<meta name="twitter:description" content="Intro Terraform works using a configuration file named config.tf, it defines all the infrastructure to be created. You need to describe your providers and resources."/>
 
 	<meta property="og:title" content="Deploy NGINX container using Terraform" />
-<meta property="og:description" content="Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.
-A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource." />
+<meta property="og:description" content="Intro Terraform works using a configuration file named config.tf, it defines all the infrastructure to be created. You need to describe your providers and resources." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/deploy-nginx-container-nginx/" />
 <meta property="article:published_time" content="2020-01-19T00:00:00+00:00" />
@@ -162,25 +160,31 @@ A provider is an abstract way of handling the underlying infrastructure and resp
                     <div class="article-post">
                         
 
-<p>Terraform works based on a configuration file, in this case config.tf. The configuration defines your infrastructure, in this instance as providers and resources.</p>
+<h2 id="intro">Intro</h2>
 
-<p>A provider is an abstract way of handling the underlying infrastructure and responsible for managing the lifecycle of a resource.</p>
+<p>Terraform works using a configuration file named <code>config.tf</code>, it defines all the infrastructure to be created. You need to describe your providers and resources.</p>
 
-<p>A resource are components of your infrastructure, for example a container or image.</p>
+<p>A <em>provider</em> is an abstract way of handling the underlying infrastructure responsible for managing the lifecycle of a resource. E.g. docker, aws, etc</p>
 
-<p>We will use a <code>config.tf</code> file to setup our lab environment.</p>
+<p>A <em>resource</em> are components of your infrastructure, for example a container or image.</p>
+
+<p>We will explain this process using a simple <code>config.tf</code> file in orden to setup our lab environment.</p>
+
+<h3 id="defining-a-provider">Defining a provider</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
 </span><span style="color:#e6db74">provider &#34;docker&#34; {
 </span><span style="color:#e6db74">  host = &#34;unix:///var/run/docker.sock&#34;
 </span><span style="color:#e6db74">}
 </span><span style="color:#e6db74">EOF</span></code></pre></div>
-<p>We can now start defining the resources of our infrastructure. The first resource is our Docker image. A resource has two parameters, one is a <code>TYPE</code> and second a <code>NAME</code>. The type is <code>docker_image</code> and the name is <code>nginx</code>. Within the block we define the name and tag of the Docker Image.</p>
+<p>We can now start defining the resources of our infrastructure. The first resource is our docker image. A resource has two parameters, one is a <code>TYPE</code> and the second is the <code>NAME</code>. The type is <code>docker_image</code> and name as <code>nginx</code>.</p>
+
+<p>Here we can define the name and the tag of or docker Image.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
 </span><span style="color:#e6db74">resource &#34;docker_image&#34; &#34;nginx&#34; {
 </span><span style="color:#e6db74">  name = &#34;nginx:1.11-alpine&#34;
 </span><span style="color:#e6db74">}
 </span><span style="color:#e6db74">EOF</span></code></pre></div>
-<p>We can define our container resource. The resource type is <code>docker_container</code> and name as <code>nginx-server</code>. Within the block we set the resource parameters. We can reference other resources, such as a the <code>image</code>.</p>
+<p>The second resource to be use is the container resource. Here, the resource type is <code>docker_container</code> and name as <code>nginx-server</code>. Within the block we set the resource parameters. We can reference other resources, such as a the <code>image</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
 </span><span style="color:#e6db74">resource &#34;docker_container&#34; &#34;nginx-server&#34; {
 </span><span style="color:#e6db74">  name = &#34;nginx-server-1&#34;
@@ -200,9 +204,9 @@ A provider is an abstract way of handling the underlying infrastructure and resp
 
 <p>Once the configuration has been defined we need to create an execution plan. Terraform describes the actions required to achieve the desired state. The plan can be saved using -out. We&rsquo;ll apply the execution plan in the next step.</p>
 
-<p>First at all:</p>
+<p>Before we need to initialize our project</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform init</code></pre></div>
-<p>Now, to create a plan, use the CLI</p>
+<p>And the we could create our terraform plan</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform plan -out config.tfplan</code></pre></div>
 <p>The output of the command indicates the changes. In this case, you&rsquo;ll see a <em>dockercontainer.nginx-server</em> and <em>dockerimage.nginx</em> to highlight adding the new resources.</p>
 
@@ -217,14 +221,16 @@ echo <span style="color:#e6db74">&#34;&lt;h1&gt;hello world&lt;/h1&gt;&#34;</spa
 
 <p>Once the plan has been created we need to apply it to reach our desired state.</p>
 
-<p>Using the CLI, terraform will pull any images required and launch new containers.</p>
+<blockquote>
+<p>terraform will pull the image required and launch the new containers.</p>
+</blockquote>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply</code></pre></div>
 <h2 id="inspecting-infrastructure">Inspecting Infrastructure</h2>
 
-<p>You can use the Docker CLI to view the changes and see the newly launched container.</p>
+<p>Using the docker command to see the changes and the newly launched container.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker ps
 docker ps -f name<span style="color:#f92672">=</span>nginx-server-1 --format <span style="color:#e6db74">&#34;table {{.Names}}\t{{.Status}}&#34;</span></code></pre></div>
-<p>you can inspect this in future using the terraform CLI</p>
+<p>You can inspect this in future using the terraform CLI</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform show</code></pre></div>
 <h2 id="testing">Testing</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl http://localhost:8081
@@ -257,7 +263,7 @@ terraform plan -out config.tfplan</code></pre></div>
 
 <p>We can then apply the plan as we did in the previous step.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply -auto-approve</code></pre></div>
-<p>Now, scale your nginx-server to 8 replicas:</p>
+<p>Now, we scale our nginx-server up to 8 replicas:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">resource <span style="color:#e6db74">&#34;docker_container&#34;</span> <span style="color:#e6db74">&#34;nginx-server&#34;</span> {
   count <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
   name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nginx-server-${count.index+1}&#34;</span>
