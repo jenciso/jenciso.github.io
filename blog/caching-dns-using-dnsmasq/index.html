@@ -198,7 +198,7 @@ wifi.scan-rand-mac-address=no</pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;nameserver 1.1.1.1&#34;</span> | sudo tee /etc/resolv.dnsmaq
 echo <span style="color:#e6db74">&#34;nameserver 8.8.8.8&#34;</span> | sudo tee -a /etc/resolv.dnsmaq</code></pre></div>
 <p>Config your <code>dnsmasq.conf</code> file. Use a cache-size parameter:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tee /etc/dnsmasq.conf <span style="color:#e6db74">&lt;&lt; EOF
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo tee /etc/dnsmasq.conf <span style="color:#e6db74">&lt;&lt; EOF
 </span><span style="color:#e6db74">listen-address=127.0.0.1
 </span><span style="color:#e6db74">resolv-file=/etc/resolv.dnsmasq
 </span><span style="color:#e6db74">cache-size=2048
