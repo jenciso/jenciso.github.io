@@ -131,7 +131,7 @@ Sometimes, one special character could break the dashboard and your text search 
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
-      <description>Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&amp;rsquo;t work with Palo Alto devices.</description>
+      <description>Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I needed to setup some VPN connection, but these clients don&amp;rsquo;t work with Palo Alto devices.</description>
     </item>
     
     <item>

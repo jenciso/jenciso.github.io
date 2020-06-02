@@ -13,10 +13,10 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/openconnet-cover.png"/>
 <meta name="twitter:title" content="Custom openconnect vpn setup for use in Palo Alto appliances"/>
-<meta name="twitter:description" content="Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&rsquo;t work with Palo Alto devices."/>
+<meta name="twitter:description" content="Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I needed to setup some VPN connection, but these clients don&rsquo;t work with Palo Alto devices."/>
 
 	<meta property="og:title" content="Custom openconnect vpn setup for use in Palo Alto appliances" />
-<meta property="og:description" content="Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&rsquo;t work with Palo Alto devices." />
+<meta property="og:description" content="Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I needed to setup some VPN connection, but these clients don&rsquo;t work with Palo Alto devices." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/" />
 <meta property="article:published_time" content="2017-10-21T00:00:00+00:00" />
@@ -160,13 +160,13 @@
 
 <h2 id="intro">Intro</h2>
 
-<p>My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&rsquo;t work with Palo Alto devices. Openconnect client can&rsquo;t implement the gloabl protect protocol, at least not now.</p>
+<p>My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I needed to setup some VPN connection, but these clients don&rsquo;t work with Palo Alto devices. Openconnect client can&rsquo;t implement the gloabl protect protocol, at least not now.</p>
 
-<p>By default, the OpenVpn can not implement the global protect protocol and it is necessary to build from scratch using the code <a href="https://github.com/dlenski/openconnect/tree/globalprotect">source</a></p>
+<p>By default, the OpenVpn can not implement the global protect protocol and it is necessary to build from scratch from the code <a href="https://github.com/dlenski/openconnect/tree/globalprotect">source</a></p>
 
 <h2 id="build-your-openconnect-to-use-global-protect-protocol">Build your openconnect to use Global Protect Protocol</h2>
 
-<p>The prerequisites is to install the libraries and packages needed to compile successfully the openconnect.</p>
+<p>The prerequisites are install libraries and packages needed to compile it.</p>
 
 <p>For Fedora users the packages needed are:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#ae81ff">\
@@ -184,7 +184,7 @@
 </span><span style="color:#ae81ff"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  libgnutls28-dev</code></pre></div>
-<p>Then, you need to download the git repository and make it:</p>
+<p>Finished the prerequisites steps, you need to download the git repository and compile the package using the branch <code>globalprotect</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
 cd openconnect
 git checkout globalprotect
@@ -231,7 +231,7 @@ mycomapny-vpn.sh disconnect</code></pre></div>
 <h2 id="references">References:</h2>
 
 <ul>
-<li><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">Here</a> you have some ideas to create a init script.</li>
+<li><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon</a>. Here you will get more ideas to create an init script.</li>
 </ul>
 
                     </div>
