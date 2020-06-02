@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dnsmasq</title>
+      <link>https://jenciso.github.io/tags/dnsmasq/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/tags/dnsmasq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>networkmanager</title>
+      <link>https://jenciso.github.io/tags/networkmanager/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/tags/networkmanager/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>terraform</title>

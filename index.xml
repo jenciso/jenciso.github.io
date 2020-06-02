@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jenciso.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using dnsmasq with networkManager in Ubuntu</title>
+      <link>https://jenciso.github.io/blog/caching-dns-using-dnsmasq/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/caching-dns-using-dnsmasq/</guid>
+      <description>Intro In pandemic times, remote work increased VPN use in employees that need to consume internal services hosted in companies on-premise environment.
+Normally, this VPN connection will be use the DNS server of your company in order to resolve all DNS names of your company and outside internet urls.</description>
+    </item>
     
     <item>
       <title>Deploy NGINX container using Terraform</title>
@@ -116,12 +126,12 @@ Sometimes, one special character could break the dashboard and your text search 
     </item>
     
     <item>
-      <title>Using a custom openconnect version for VPN</title>
+      <title>Custom openconnect vpn setup for use in Palo Alto appliances</title>
       <link>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
-      <description>My company use the Palo Alto Networks solution to offer a VPN service for their employees. Personally, I prefer to use Openvpn when I need to setup a VPN connection.</description>
+      <description>Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&amp;rsquo;t work with Palo Alto devices.</description>
     </item>
     
     <item>

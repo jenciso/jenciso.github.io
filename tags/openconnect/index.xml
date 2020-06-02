@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>Using a custom openconnect version for VPN</title>
+      <title>Custom openconnect vpn setup for use in Palo Alto appliances</title>
       <link>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</link>
       <pubDate>Sat, 21 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</guid>
-      <description>My company use the Palo Alto Networks solution to offer a VPN service for their employees. Personally, I prefer to use Openvpn when I need to setup a VPN connection.</description>
+      <description>Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I need to setup some VPN connection, but it doesn&amp;rsquo;t work with Palo Alto devices.</description>
     </item>
     
   </channel>
