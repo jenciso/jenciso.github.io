@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -168,37 +169,37 @@
 <li><p>Download the Noto Color Emoji font from <a href="https://www.google.com/get/noto">here</a>, or if you prefer, you could download it directly from <a href="https://noto-website-2.storage.googleapis.com/pkgs/NotoColorEmoji-unhinted.zip">here</a></p></li>
 
 <li><p>Then, copy the ttf file into your <code>.fonts</code> dir</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/Downloads
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads
 unzip NotoColorEmoji-unhinted.zip
 mkdir ~/.fonts
 mv NotoColorEmoji.ttf ~/.fonts</code></pre></div></li>
 
 <li><p>Edit the <code>.fonts.conf</code> configuration file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim ~/.fonts.conf</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">vim ~/.fonts.conf</code></pre></div></li>
 
 <li><p>And put the following content</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-<span style="color:#75715e">&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;</span>
-<span style="color:#f92672">&lt;fontconfig&gt;</span>
-<span style="color:#f92672">&lt;alias&gt;</span>
- <span style="color:#f92672">&lt;family&gt;</span>sans-serif<span style="color:#f92672">&lt;/family&gt;</span>
- <span style="color:#f92672">&lt;prefer&gt;</span>
-   <span style="color:#f92672">&lt;family&gt;</span>Noto Color Emoji<span style="color:#f92672">&lt;/family&gt;</span>
-   <span style="color:#f92672">&lt;family&gt;</span>Noto Emoji<span style="color:#f92672">&lt;/family&gt;</span>
- <span style="color:#f92672">&lt;/prefer&gt;</span>
-<span style="color:#f92672">&lt;/alias&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;</span>
+<span class="nt">&lt;fontconfig&gt;</span>
+<span class="nt">&lt;alias&gt;</span>
+ <span class="nt">&lt;family&gt;</span>sans-serif<span class="nt">&lt;/family&gt;</span>
+ <span class="nt">&lt;prefer&gt;</span>
+   <span class="nt">&lt;family&gt;</span>Noto Color Emoji<span class="nt">&lt;/family&gt;</span>
+   <span class="nt">&lt;family&gt;</span>Noto Emoji<span class="nt">&lt;/family&gt;</span>
+ <span class="nt">&lt;/prefer&gt;</span>
+<span class="nt">&lt;/alias&gt;</span>
 
-<span style="color:#f92672">&lt;alias&gt;</span>
- <span style="color:#f92672">&lt;family&gt;</span>serif<span style="color:#f92672">&lt;/family&gt;</span>
- <span style="color:#f92672">&lt;prefer&gt;</span>
-   <span style="color:#f92672">&lt;family&gt;</span>Noto Color Emoji<span style="color:#f92672">&lt;/family&gt;</span>
-   <span style="color:#f92672">&lt;family&gt;</span>Noto Emoji<span style="color:#f92672">&lt;/family&gt;</span>
- <span style="color:#f92672">&lt;/prefer&gt;</span>
-<span style="color:#f92672">&lt;/alias&gt;</span>
-<span style="color:#f92672">&lt;/fontconfig&gt;</span></code></pre></div></li>
+<span class="nt">&lt;alias&gt;</span>
+ <span class="nt">&lt;family&gt;</span>serif<span class="nt">&lt;/family&gt;</span>
+ <span class="nt">&lt;prefer&gt;</span>
+   <span class="nt">&lt;family&gt;</span>Noto Color Emoji<span class="nt">&lt;/family&gt;</span>
+   <span class="nt">&lt;family&gt;</span>Noto Emoji<span class="nt">&lt;/family&gt;</span>
+ <span class="nt">&lt;/prefer&gt;</span>
+<span class="nt">&lt;/alias&gt;</span>
+<span class="nt">&lt;/fontconfig&gt;</span></code></pre></div></li>
 
 <li><p>You need to rebuild the cache fonts to take effect</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo fc-cache -fv</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo fc-cache -fv</code></pre></div></li>
 </ul>
 
 <blockquote>
@@ -313,6 +314,8 @@ mv NotoColorEmoji.ttf ~/.fonts</code></pre></div></li>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -320,6 +323,8 @@ mv NotoColorEmoji.ttf ~/.fonts</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -334,6 +339,8 @@ mv NotoColorEmoji.ttf ~/.fonts</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

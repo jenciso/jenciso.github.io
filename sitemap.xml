@@ -216,4 +216,20 @@
     <loc>https://jenciso.github.io/categories/</loc>
   </url>
   
+  <url>
+    <loc>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/gradle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/java/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/spring-boot/</loc>
+  </url>
+  
 </urlset>

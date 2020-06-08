@@ -33,6 +33,7 @@ yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-co
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -170,12 +171,12 @@ yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-co
 
 <ul>
 <li><p>Install the packages needed</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \
 samba-common samba-common-tools krb5-workstation \
 openldap-clients policycoreutils-python</code></pre></div></li>
 
 <li><p>Ensure to use your AD as domain server</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]#  cat /etc/resolv.conf
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]#  cat /etc/resolv.conf
 search example.com
 nameserver 192.168.1.2</code></pre></div></li>
 </ul>
@@ -184,11 +185,11 @@ nameserver 192.168.1.2</code></pre></div></li>
 
 <ul>
 <li><p>Using realm command to join into the domain</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# realm join --user=administrator example.com
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# realm join --user=administrator example.com
 Password for administrator:</code></pre></div></li>
 
 <li><p>Look into the CentOS machine</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# realm list
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# realm list
 example.com
 type: kerberos
 realm-name: EXAMPLE.COM
@@ -211,18 +212,18 @@ login-policy: allow-realm-logins</code></pre></div></li>
 
 <ul>
 <li><p>Change the way to get the users in the <code>sssd.conf</code> config file. Modify these lines</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">use_fully_qualified_names</span> = <span style="color:#a6e22e">True</span>
-<span style="color:#a6e22e">fallback_homedir</span> = <span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">home</span><span style="color:#960050;background-color:#1e0010">/%</span><span style="color:#a6e22e">u</span><span style="color:#960050;background-color:#1e0010">@%</span><span style="color:#a6e22e">d</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# systemctl restart sssd</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">use_fully_qualified_names</span> <span class="p">=</span> <span class="nx">True</span>
+<span class="nx">fallback_homedir</span> <span class="p">=</span> <span class="err">/</span><span class="nx">home</span><span class="err">/%</span><span class="nx">u</span><span class="err">@%</span><span class="nx">d</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# systemctl restart sssd</code></pre></div></li>
 
 <li><p>Testing this modification</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# id administrator
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# id administrator
 id: administrator: no such user
 
 [root@centos7 ~]# id administrator@example.com
 uid=1829600500(administrator@example.com) gid=1829600513(domain users@example.com) groups=1829600513(domain users@example.com),1829600512(domain</code></pre></div></li>
 
 <li><p>Enable <code>sudoers</code> group</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# cat /etc/sudoers.d/sudoers
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# cat /etc/sudoers.d/sudoers
 %sudoers    ALL=(ALL)       ALL</code></pre></div></li>
 
 <li><p>Create a user <code>test1</code> and add to group <code>sudoers</code></p></li>
@@ -232,14 +233,14 @@ uid=1829600500(administrator@example.com) gid=1829600513(domain users@example.co
 
 <ul>
 <li><p>Testing</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[user1@centos7 ~]$ sudo su
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[user1@centos7 ~]$ sudo su
 [sudo] password for user1:
 [root@centos7 user1]#
 [root@centos7 user1]# whoami
 root</code></pre></div></li>
 
 <li><p>Leaving the domain</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">[root@centos7 ~]# realm leave example.com</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">[root@centos7 ~]# realm leave example.com</code></pre></div></li>
 </ul>
 
 <p>Source: <a href="https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/">https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/</a></p>
@@ -352,6 +353,8 @@ root</code></pre></div></li>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -359,6 +362,8 @@ root</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -373,6 +378,8 @@ root</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

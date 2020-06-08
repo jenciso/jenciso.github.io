@@ -143,5 +143,14 @@ Sometimes, one special character could break the dashboard and your text search 
       <description>Intro After to create your kubernetes cluster, the most common next step is create user&amp;rsquo;s access to the cluster. In order to do that, you&amp;rsquo;ll need to create certificates to give authentication via kube-apiserver service.</description>
     </item>
     
+    <item>
+      <title>Create a simple spring boot application using gradle</title>
+      <link>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</guid>
+      <description>Intro If you want to create a simple spring boot application likes a hello-world program, you don&amp;rsquo;t need to use a IDE software for it.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -178,10 +179,10 @@
 <p>You need choose your appropiate package from this <a href="https://www.virtualbox.org/wiki/Linux_Downloads">URL</a></p>
 
 <p>For ubuntu users:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get update
 sudo apt-get install virtualbox</code></pre></div>
 <p>or</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget https://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb
 sudo dpgk -i virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</code></pre></div>
 <blockquote>
 <p>Consider install the VirtualBox Extension Pack from <a href="https://download.virtualbox.org/virtualbox/6.0.14/Oracle_VM_VirtualBox_Extension_Pack-6.0.14.vbox-extpack">here</a></p>
@@ -200,7 +201,7 @@ sudo dpgk -i virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</code></pre></
 <p>This network will be use only to communicate with your Host (a.k.a your desktop machine). Also, on this lab environment we need a Nat Network, whch is another kind of network</p>
 
 <p>If you don&rsquo;t have this adapter, you need to create it with this simple command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage hostonlyif create</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage hostonlyif create</code></pre></div>
 <hr />
 
 <h4 id="nat-network">Nat Network</h4>
@@ -210,7 +211,7 @@ sudo dpgk -i virtualbox-6.0_6.0.14-133895~Ubuntu~xenial_amd64.deb</code></pre></
 <p>A Nat network is the main network which will be use to communicate your VM with with the outside world. Virtualbox creates this network using these steps.</p>
 
 <p>E.g. Create the network <code>10.0.2.0/24</code> with name <code>natnet</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork add --netname natnet --network <span style="color:#e6db74">&#34;10.0.2.0/24&#34;</span> --enable --dhcp on
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage natnetwork add --netname natnet --network <span class="s2">&#34;10.0.2.0/24&#34;</span> --enable --dhcp on
 VBoxManage natnetwork start --netname natnet</code></pre></div>
 <hr />
 
@@ -219,38 +220,38 @@ VBoxManage natnetwork start --netname natnet</code></pre></div>
 <h4 id="create-a-vm-base">Create a VM base</h4>
 
 <p>I need to create a VM to use it as base to create other VM&rsquo;s. In this example, I will use Centos 7 image, and the VM will named <code>centos7</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export VM<span style="color:#f92672">=</span>centos7</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage createvm --name $VM --ostype RedHat_64 --register</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">VM</span><span class="o">=</span>centos7</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage createvm --name <span class="nv">$VM</span> --ostype RedHat_64 --register</code></pre></div>
 <p>Now, we need to associate the <code>natnetwork</code> created previously with the <code>nic1</code> interface</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm $VM --nic1 natnetwork --nat-network1 natnet</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span class="nv">$VM</span> --nic1 natnetwork --nat-network1 natnet</code></pre></div>
 <p>Create another nic2 type <code>Host-Only Adapter</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm $VM --nic2 hostonly --hostonlyadapter2 vboxnet0</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span class="nv">$VM</span> --nic2 hostonly --hostonlyadapter2 vboxnet0</code></pre></div>
 <p>If you want to increase the CPU and Memory, this moment is good to do that</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm $VM --cpus <span style="color:#ae81ff">2</span> --memory <span style="color:#ae81ff">512</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span class="nv">$VM</span> --cpus <span class="m">2</span> --memory <span class="m">512</span></code></pre></div>
 <p>The VM will need a storage, then create a dynamic disk with 10GB and a SATA Controller to attach it</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage createhd --filename ~/VirtualBox<span style="color:#ae81ff">\ </span>VMs/$VM/$VM.vdi --size <span style="color:#ae81ff">10240</span>
-VBoxManage storagectl $VM --name <span style="color:#e6db74">&#34;SATA Controller&#34;</span> --add sata --controller IntelAHCI
-VBoxManage storageattach $VM --storagectl <span style="color:#e6db74">&#34;SATA Controller&#34;</span> --port <span style="color:#ae81ff">0</span> --device <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --type hdd --medium ~/VirtualBox<span style="color:#ae81ff">\ </span>VMs/$VM/$VM.vdi</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage createhd --filename ~/VirtualBox<span class="se">\ </span>VMs/<span class="nv">$VM</span>/<span class="nv">$VM</span>.vdi --size <span class="m">10240</span>
+VBoxManage storagectl <span class="nv">$VM</span> --name <span class="s2">&#34;SATA Controller&#34;</span> --add sata --controller IntelAHCI
+VBoxManage storageattach <span class="nv">$VM</span> --storagectl <span class="s2">&#34;SATA Controller&#34;</span> --port <span class="m">0</span> --device <span class="m">0</span> <span class="se">\
+</span><span class="se"></span>  --type hdd --medium ~/VirtualBox<span class="se">\ </span>VMs/<span class="nv">$VM</span>/<span class="nv">$VM</span>.vdi</code></pre></div>
 <p>Create a IDE controller to mount the iso installer image in order to begin the installation process. E.g. I will use the CentOS 7 minimal image iso.</p>
 
 <blockquote>
 <p>Previously you need to download the iso image</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/isos/
-wget <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  http://centos.usetelecom.com.br/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso 
-  -O ~/isos/</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storagectl $VM --name <span style="color:#e6db74">&#34;IDE Controller&#34;</span> --add ide
-VBoxManage storageattach $VM --storagectl <span style="color:#e6db74">&#34;IDE Controller&#34;</span> --port <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --device <span style="color:#ae81ff">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1908.iso</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir ~/isos/
+wget <span class="se">\
+</span><span class="se"></span>  http://centos.usetelecom.com.br/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso 
+  -O ~/isos/</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage storagectl <span class="nv">$VM</span> --name <span class="s2">&#34;IDE Controller&#34;</span> --add ide
+VBoxManage storageattach <span class="nv">$VM</span> --storagectl <span class="s2">&#34;IDE Controller&#34;</span> --port <span class="m">0</span> <span class="se">\
+</span><span class="se"></span>  --device <span class="m">0</span> --type dvddrive --medium ~/isos/CentOS-7-x86_64-Minimal-1908.iso</code></pre></div>
 <p>You could setup others miscellaneous system options</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage modifyvm $VM --ioapic on
-VBoxManage modifyvm $VM --boot1 dvd --boot2 disk --boot3 none --boot4 none</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage modifyvm <span class="nv">$VM</span> --ioapic on
+VBoxManage modifyvm <span class="nv">$VM</span> --boot1 dvd --boot2 disk --boot3 none --boot4 none</code></pre></div>
 <p>And finally, you have a VM created like this:</p>
 
 <p><img src="/images/virtualbox_centos7.png" alt="" /></p>
 
 <p>To start the VM and begin the installation process, use the follow command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage startvm $VM</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage startvm <span class="nv">$VM</span></code></pre></div>
 <hr />
 
 <h4 id="install-centos-os">Install Centos OS</h4>
@@ -276,12 +277,12 @@ VBoxManage modifyvm $VM --boot1 dvd --boot2 disk --boot3 none --boot4 none</code
 <p><img src="vb-centos7-05.png" alt="" /></p>
 
 <p>You need to pay attention on this variables:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">BOOTPROTO</span>=<span style="color:#a6e22e">static</span>
-<span style="color:#a6e22e">ONBOOT</span>=<span style="color:#a6e22e">yes</span>
-<span style="color:#a6e22e">IPADDR</span>=<span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">2.2</span>
-<span style="color:#a6e22e">PREFIX</span>=<span style="color:#ae81ff">24</span>
-<span style="color:#a6e22e">GATEWAY</span>=<span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">2.1</span>
-<span style="color:#a6e22e">DNS1</span>=<span style="color:#ae81ff">10.0</span>.<span style="color:#ae81ff">2.1</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">BOOTPROTO</span><span class="p">=</span><span class="nx">static</span>
+<span class="nx">ONBOOT</span><span class="p">=</span><span class="nx">yes</span>
+<span class="nx">IPADDR</span><span class="p">=</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">2.2</span>
+<span class="nx">PREFIX</span><span class="p">=</span><span class="mi">24</span>
+<span class="nx">GATEWAY</span><span class="p">=</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">2.1</span>
+<span class="nx">DNS1</span><span class="p">=</span><span class="mf">10.0</span><span class="p">.</span><span class="mf">2.1</span></code></pre></div>
 <p><img src="vb-centos7-06.png" alt="" /></p>
 
 <p>Edit the second NIC</p>
@@ -289,23 +290,23 @@ VBoxManage modifyvm $VM --boot1 dvd --boot2 disk --boot3 none --boot4 none</code
 <p><img src="vb-centos7-07.png" alt="" /></p>
 
 <p>Pay attention on this variables</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">BOOTPROTO</span>=<span style="color:#a6e22e">static</span>
-<span style="color:#a6e22e">DEFROUTE</span>=<span style="color:#a6e22e">no</span>
-<span style="color:#a6e22e">ONBOOT</span>=<span style="color:#a6e22e">yes</span>
-<span style="color:#a6e22e">IPADDR</span>=<span style="color:#ae81ff">192.168</span>.<span style="color:#ae81ff">56.2</span>
-<span style="color:#a6e22e">PREFIX</span>=<span style="color:#ae81ff">24</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">BOOTPROTO</span><span class="p">=</span><span class="nx">static</span>
+<span class="nx">DEFROUTE</span><span class="p">=</span><span class="nx">no</span>
+<span class="nx">ONBOOT</span><span class="p">=</span><span class="nx">yes</span>
+<span class="nx">IPADDR</span><span class="p">=</span><span class="mf">192.168</span><span class="p">.</span><span class="mf">56.2</span>
+<span class="nx">PREFIX</span><span class="p">=</span><span class="mi">24</span></code></pre></div>
 <p><img src="vb-centos7-08.png" alt="" /></p>
 
 <p>Restart the system network service and check the network connectivity</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart network 
-ip addr | grep <span style="color:#e6db74">&#34;inet &#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">systemctl restart network 
+ip addr <span class="p">|</span> grep <span class="s2">&#34;inet &#34;</span>
 ip route</code></pre></div>
 <p><img src="vb-centos7-09.png" alt="" /></p>
 
 <h4 id="testing">Testing</h4>
 
 <p>SSH access to VM from the <code>Host-only Adapter</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
 root@192.168.56.2&#39;s password: 
 Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 [root@localhost ~]# ping www.terra.com
@@ -319,29 +320,29 @@ PING www.terra.com (208.70.188.57) 56(84) bytes of data.
 <h4 id="final-step">Final Step</h4>
 
 <p>Once you have configured the operating system, you can shutdown and eject the DVD.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
+<div class="highlight"><pre class="chroma"><code class="language-console" data-lang="console">$ ssh root@192.168.56.2
 root@192.168.56.2&#39;s password:
 Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
-[root@localhost ~]# halt -p</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage storageattach $VM --storagectl <span style="color:#e6db74">&#34;IDE Controller&#34;</span> --port <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --device <span style="color:#ae81ff">0</span> --type dvddrive --medium none</code></pre></div>
+[root@localhost ~]# halt -p</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage storageattach <span class="nv">$VM</span> --storagectl <span class="s2">&#34;IDE Controller&#34;</span> --port <span class="m">0</span> <span class="se">\
+</span><span class="se"></span>  --device <span class="m">0</span> --type dvddrive --medium none</code></pre></div>
 <hr />
 
 <h3 id="others-usefull-commands">Others usefull commands #</h3>
 
 <p>Start in headless mode</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage startvm $VM --type headless</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage startvm <span class="nv">$VM</span> --type headless</code></pre></div>
 <p>Remove nat network</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork remove --netname natnet</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage natnetwork remove --netname natnet</code></pre></div>
 <p>Disable the dhcp</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork modify --netname natnet --dhcp off</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage natnetwork modify --netname natnet --dhcp off</code></pre></div>
 <p>Start the nat network</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage natnetwork start --netname natnet</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage natnetwork start --netname natnet</code></pre></div>
 <p>Take snapshots</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage snapshot $VM take &lt;name of snapshot&gt;</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage snapshot <span class="nv">$VM</span> take &lt;name of snapshot&gt;</code></pre></div>
 <p>Revert snapshot</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage snapshot $VM restore &lt;name of snapshot&gt;</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage snapshot <span class="nv">$VM</span> restore &lt;name of snapshot&gt;</code></pre></div>
 <p>Delete VM</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">VBoxManage unregistervm $VM --delete</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">VBoxManage unregistervm <span class="nv">$VM</span> --delete</code></pre></div>
 <hr />
 
 <h3 id="sources">Sources #</h3>
@@ -466,6 +467,8 @@ Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -473,6 +476,8 @@ Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -487,6 +492,8 @@ Last login: Tue Oct 15 23:10:05 2019 from 192.168.56.1
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

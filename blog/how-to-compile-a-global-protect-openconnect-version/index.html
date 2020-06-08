@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -169,63 +170,63 @@
 <p>The prerequisites are install libraries and packages needed to compile it.</p>
 
 <p>For Fedora users the packages needed are:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  zlib-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  openssl-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  pkg-config <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  p11-kit <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libp11 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libproxy <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  trous <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libproxy-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libstoken </code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span class="se">\
+</span><span class="se"></span>  zlib-devel <span class="se">\
+</span><span class="se"></span>  openssl-devel <span class="se">\
+</span><span class="se"></span>  pkg-config <span class="se">\
+</span><span class="se"></span>  p11-kit <span class="se">\
+</span><span class="se"></span>  libp11 <span class="se">\
+</span><span class="se"></span>  libproxy <span class="se">\
+</span><span class="se"></span>  trous <span class="se">\
+</span><span class="se"></span>  libproxy-devel <span class="se">\
+</span><span class="se"></span>  libstoken </code></pre></div>
 <p>And for Ubuntu users:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  build-essential gettext autoconf automake libproxy-dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libgnutls28-dev</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install <span class="se">\
+</span><span class="se"></span>  build-essential gettext autoconf automake libproxy-dev <span class="se">\
+</span><span class="se"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span class="se">\
+</span><span class="se"></span>  libgnutls28-dev</code></pre></div>
 <p>Finished the prerequisites steps, you need to download the git repository and compile the package using the branch <code>globalprotect</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
-cd openconnect
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
+<span class="nb">cd</span> openconnect
 git checkout globalprotect
 ./autogen.sh
 ./configure
 make
 sudo make install</code></pre></div>
 <p>It is necessary to load the shared libraries</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo ldconfig</code></pre></div>
 <p>Finally, you can test it!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span style="color:#f92672">=</span>gp vpn.mycompany.com --dump -v</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span class="o">=</span>gp vpn.mycompany.com --dump -v</code></pre></div>
 <h2 id="scripts-to-setup-your-credentials">Scripts to setup your credentials</h2>
 
 <p>Here we have are scripts examples to automate your personal credentials and execute your vpn connection automatically</p>
 
 <p>Create a <code>mycompany-vpn.sh</code> file like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">case</span> $1 in
-        disconnect|stop<span style="color:#f92672">)</span>
-                sudo kill <span style="color:#66d9ef">$(</span>pidof openconnect<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;the openconnect was disconnected&#34;</span>
-                sudo systemctl restart systemd-resolved.service <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;DNS service was restarted&#34;</span>
-                ;;
-        status<span style="color:#f92672">)</span>
-                pid<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>pidof openconnect<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;the openconnect is running | pidof: </span>$pid<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34;the openconnect is stopped&#34;</span>
-                ;;
-        *<span style="color:#f92672">)</span>
-                echo <span style="color:#e6db74">&#34;the openconnect is trying to connect...&#34;</span>
-                echo <span style="color:#66d9ef">$(</span>cat ~/mycompany.ocvpn.pass<span style="color:#66d9ef">)</span> | sudo openconnect -b --config<span style="color:#f92672">=</span>/home/jenciso/mycompany.ocvpn
-                ;;
-<span style="color:#66d9ef">esac</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="k">case</span> <span class="nv">$1</span> in
+        disconnect<span class="p">|</span>stop<span class="o">)</span>
+                sudo <span class="nb">kill</span> <span class="k">$(</span>pidof openconnect<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect was disconnected&#34;</span>
+                sudo systemctl restart systemd-resolved.service <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;DNS service was restarted&#34;</span>
+                <span class="p">;;</span>
+        status<span class="o">)</span>
+                <span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof openconnect<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect is running | pidof: </span><span class="nv">$pid</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect is stopped&#34;</span>
+                <span class="p">;;</span>
+        *<span class="o">)</span>
+                <span class="nb">echo</span> <span class="s2">&#34;the openconnect is trying to connect...&#34;</span>
+                <span class="nb">echo</span> <span class="k">$(</span>cat ~/mycompany.ocvpn.pass<span class="k">)</span> <span class="p">|</span> sudo openconnect -b --config<span class="o">=</span>/home/jenciso/mycompany.ocvpn
+                <span class="p">;;</span>
+<span class="k">esac</span></code></pre></div>
 <p>A file <code>~/mycompany.ocvpn.pass</code> with your password:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SuperSecretPass</pre></div>
+<div class="highlight"><pre class="chroma">SuperSecretPass</pre></div>
 <p>And finally a <code>mycompany.ocvpn</code> with aditional configuration:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">user=myuser
+<div class="highlight"><pre class="chroma">user=myuser
 passwd-on-stdin
 servercert=pin-sha256:axzKF1qMn0Ncyh8FIvSyg9SIRuSFfyn7ILk/20roII4=
 protocol=gp
 server=vpn.mycompany.com</pre></div>
 <p>Run your vpn and test it!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
 mycomapny-vpn.sh status
 mycomapny-vpn.sh disconnect</code></pre></div>
 <h2 id="references">References:</h2>
@@ -257,6 +258,8 @@ mycomapny-vpn.sh disconnect</code></pre></div>
                     
                         <a class="d-block col-md-6" href="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/"> &laquo; Recover your grafana admin password using sqlite shell</a>
                     
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/">Create a simple spring boot application using gradle &raquo;</a>
                     
                     <div class="clearfix"></div>
                     </div>
@@ -340,6 +343,8 @@ mycomapny-vpn.sh disconnect</code></pre></div>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -347,6 +352,8 @@ mycomapny-vpn.sh disconnect</code></pre></div>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -361,6 +368,8 @@ mycomapny-vpn.sh disconnect</code></pre></div>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

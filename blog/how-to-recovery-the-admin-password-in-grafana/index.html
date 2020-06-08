@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -160,14 +161,14 @@
 
 <ol>
 <li><p>In your local machine, install the sqlite3 package</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3</code></pre></div></li>
 
 <li><p>Login into your sql database</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db</code></pre></div></li>
 
 <li><p>Reset the admin password using SQL update (the new password will be <code>admin</code>)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sqlite<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">update</span> <span style="color:#66d9ef">user</span> <span style="color:#66d9ef">set</span> password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span>, salt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;F3FAxVm33R&#39;</span> <span style="color:#66d9ef">where</span> login <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;admin&#39;</span>;
-sqlite<span style="color:#f92672">&gt;</span> .exit</code></pre></div></li>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span><span class="p">,</span> <span class="n">salt</span> <span class="o">=</span> <span class="s1">&#39;F3FAxVm33R&#39;</span> <span class="k">where</span> <span class="n">login</span> <span class="o">=</span> <span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">exit</span></code></pre></div></li>
 </ol>
 
 <p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
@@ -280,6 +281,8 @@ sqlite<span style="color:#f92672">&gt;</span> .exit</code></pre></div></li>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -287,6 +290,8 @@ sqlite<span style="color:#f92672">&gt;</span> .exit</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -301,6 +306,8 @@ sqlite<span style="color:#f92672">&gt;</span> .exit</code></pre></div></li>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

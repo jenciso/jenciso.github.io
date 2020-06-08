@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
 </head>
@@ -173,11 +174,11 @@
 <h3 id="prerequisites">Prerequisites</h3>
 
 <p>Uninstall <code>systemd-resolved</code> package. It isn&rsquo;t necessary to have.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl disable systemd-resolved
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl disable systemd-resolved
 sudo systemctl stop systemd-resolved
 sudo apt-get remove systemd-resolved</code></pre></div>
 <p>Disabled <code>dnsmasq</code> in the NetworkManager configuration. Ensure to have the <code>dns=none</code> line</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[main]
+<div class="highlight"><pre class="chroma">[main]
 dns=none
 plugins=ifupdown,keyfile
 
@@ -187,32 +188,32 @@ managed=false
 [device]
 wifi.scan-rand-mac-address=no</pre></div>
 <p>Restart NetworkManager</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl restart NetworkManager</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl restart NetworkManager</code></pre></div>
 <h3 id="install-dnsmasq-1">Install dnsmasq</h3>
 
 <p>Remove the current <code>/etc/resolvconf</code> file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">unlink /etc/resolv.conf</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">unlink /etc/resolv.conf</code></pre></div>
 <p>Install dnsmasq</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install dnsmasq</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install dnsmasq</code></pre></div>
 <p>Config your upstream dns</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;nameserver 1.1.1.1&#34;</span> | sudo tee /etc/resolv.dnsmaq
-echo <span style="color:#e6db74">&#34;nameserver 8.8.8.8&#34;</span> | sudo tee -a /etc/resolv.dnsmaq</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;nameserver 1.1.1.1&#34;</span> <span class="p">|</span> sudo tee /etc/resolv.dnsmaq
+<span class="nb">echo</span> <span class="s2">&#34;nameserver 8.8.8.8&#34;</span> <span class="p">|</span> sudo tee -a /etc/resolv.dnsmaq</code></pre></div>
 <p>Config your <code>dnsmasq.conf</code> file. Use a cache-size parameter:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo tee /etc/dnsmasq.conf <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">listen-address=127.0.0.1
-</span><span style="color:#e6db74">resolv-file=/etc/resolv.dnsmasq
-</span><span style="color:#e6db74">cache-size=2048
-</span><span style="color:#e6db74">EOF</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo tee /etc/dnsmasq.conf <span class="s">&lt;&lt; EOF
+</span><span class="s">listen-address=127.0.0.1
+</span><span class="s">resolv-file=/etc/resolv.dnsmasq
+</span><span class="s">cache-size=2048
+</span><span class="s">EOF</span></code></pre></div>
 <p>Use the dnsmasq as main dns provider</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo &#34;nameserver 127.0.0.1&#34; | sudo tee /etc/resolv.conf</pre></div>
+<div class="highlight"><pre class="chroma">echo &#34;nameserver 127.0.0.1&#34; | sudo tee /etc/resolv.conf</pre></div>
 <p>Restart dnsmasq service</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl restart dnsmasq
-systemctl enable dnsmasq</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">systemctl restart dnsmasq
+systemctl <span class="nb">enable</span> dnsmasq</code></pre></div>
 <h2 id="test">Test</h2>
 
 <p>You should get <code>0 msec</code> in the next dns query.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ dig www.google.com | grep <span style="color:#e6db74">&#34;Query time&#34;</span>
-;; Query time: <span style="color:#ae81ff">0</span> msec
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ dig www.google.com <span class="p">|</span> grep <span class="s2">&#34;Query time&#34;</span>
+<span class="p">;;</span> Query time: <span class="m">0</span> msec
 $</code></pre></div>
 <h2 id="references">References</h2>
 
@@ -325,6 +326,8 @@ $</code></pre></div>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -332,6 +335,8 @@ $</code></pre></div>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -346,6 +351,8 @@ $</code></pre></div>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

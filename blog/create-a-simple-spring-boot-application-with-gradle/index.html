@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.59.1" />
+	
+	<link rel="icon" href="/images/logo.png">
+	
+	<title>Create a simple spring boot application using gradle | Tech-Blog</title>
+	
+	
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Create a simple spring boot application using gradle"/>
+<meta name="twitter:description" content="Gradle is a nice tool to create a java application. You don&#39;t need to use a IDE software in order to create a simple hello world program."/>
+
+	<meta property="og:title" content="Create a simple spring boot application using gradle" />
+<meta property="og:description" content="Gradle is a nice tool to create a java application. You don&#39;t need to use a IDE software in order to create a simple hello world program." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/" />
+
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+	<link href="/css/medium.css" rel="stylesheet">
+	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
+
+        
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        
+        <a class="navbar-brand" href="https://jenciso.github.io//">
+
+            
+            <img src="/images/logo.png" alt="logo">
+            
+        </a>
+        
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">About Me</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/cv">CV</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle">Tech-Blog</h1>
+    <p class="lead">
+         Sharing some technical experiences.
+    </p>
+</div><div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <p>Share</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Create%20a%20simple%20spring%20boot%20application%20using%20gradle&url=https%3a%2f%2fjenciso.github.io%2fblog%2fcreate-a-simple-spring-boot-application-with-gradle%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2fjenciso.github.io%2fblog%2fcreate-a-simple-spring-boot-application-with-gradle%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fjenciso.github.io%2fblog%2fcreate-a-simple-spring-boot-application-with-gradle%2f&amp;title=Create%20a%20simple%20spring%20boot%20application%20using%20gradle" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>        
+    </ul>
+
+    
+</div>
+</div>
+                                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        	
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                                <img class="author-thumb" src="/images/author.png" alt="Juan Enciso">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                                <a target="_blank" class="link-dark">Juan Enciso</a><br>
+                                <span class="author-description">
+                                    IT Architect, SRE Engineer, DevOps Tools Trainer<br>
+                                    <i class="far fa-star"></i>
+                                    Jan 1, 0001
+                                    <i class="far fa-clock clock"></i>
+                                    2 min read
+                                </span>					
+                            </div>
+                        </div>			
+                        	
+                        
+                                                
+                        
+                        <h1 class="posttitle">Create a simple spring boot application using gradle</h1> 
+                    </div>
+
+                    
+                    
+                    
+                    
+
+                    
+                    <div class="article-post">
+                        
+
+<h2 id="intro">Intro</h2>
+
+<p>If you want to create a simple spring boot application likes a hello-world program, you don&rsquo;t need to use a IDE software for it. Gradle website has a simple tutorial that inspire me to writte this post.</p>
+
+<h2 id="steps">Steps</h2>
+
+<p>Initialize your project and choose the default options:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">gradle init --type java-application</code></pre></div>
+<p>The generated project will has the following structure</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ tree spring-hello-world/
+spring-hello-world/
+├── build.gradle
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── spring
+    │   │       └── hello
+    │   │           └── world
+    │   │               └── App.java
+    │   └── resources
+    └── <span class="nb">test</span>
+        ├── java
+        │   └── spring
+        │       └── hello
+        │           └── world
+        │               └── AppTest.java
+        └── resources
+
+<span class="m">15</span> directories, <span class="m">8</span> files</code></pre></div>
+<p>You need to modify the <code>build.gradle</code> file to use the spring boot plugins needed.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">plugins</span> <span class="p">{</span>
+    <span class="c1">// Apply the java plugin to add support for Java
+</span><span class="c1"></span>    <span class="n">id</span> <span class="err">&#39;</span><span class="n">java</span><span class="err">&#39;</span>
+
+    <span class="c1">// Apply the application plugin to add support for building a CLI application.
+</span><span class="c1"></span>    <span class="n">id</span> <span class="err">&#39;</span><span class="n">application</span><span class="err">&#39;</span>
+
+    <span class="c1">// Spring Boot plugins
+</span><span class="c1"></span>    <span class="n">id</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="err">&#39;</span> <span class="n">version</span> <span class="err">&#39;</span><span class="n">2</span><span class="p">.</span><span class="na">0</span><span class="p">.</span><span class="na">5</span><span class="p">.</span><span class="na">RELEASE</span><span class="err">&#39;</span>
+    <span class="n">id</span> <span class="err">&#39;</span><span class="n">io</span><span class="p">.</span><span class="na">spring</span><span class="p">.</span><span class="na">dependency</span><span class="o">-</span><span class="n">management</span><span class="err">&#39;</span> <span class="n">version</span> <span class="err">&#39;</span><span class="n">1</span><span class="p">.</span><span class="na">0</span><span class="p">.</span><span class="na">7</span><span class="p">.</span><span class="na">RELEASE</span><span class="err">&#39;</span>
+<span class="p">}</span></code></pre></div>
+<p>Define the dependencies</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">dependencies</span> <span class="p">{</span>
+    <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">dependencies</span><span class="o">:</span><span class="n">2</span><span class="p">.</span><span class="na">0</span><span class="p">.</span><span class="na">5</span><span class="p">.</span><span class="na">RELEASE</span><span class="err">&#39;</span>
+    <span class="n">implementation</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">web</span><span class="err">&#39;</span>
+
+    <span class="n">testImplementation</span> <span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">starter</span><span class="o">-</span><span class="n">test</span><span class="err">&#39;</span>
+
+    <span class="n">components</span> <span class="p">{</span>
+        <span class="n">withModule</span><span class="p">(</span><span class="err">&#39;</span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="o">:</span><span class="n">spring</span><span class="o">-</span><span class="n">beans</span><span class="err">&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">allVariants</span> <span class="p">{</span>
+                <span class="n">withDependencyConstraints</span> <span class="p">{</span>
+                    <span class="c1">// Need to patch constraints because snakeyaml is an optional dependency
+</span><span class="c1"></span>                    <span class="n">it</span><span class="p">.</span><span class="na">findAll</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="na">name</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">snakeyaml</span><span class="err">&#39;</span> <span class="p">}.</span><span class="na">each</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="na">version</span> <span class="p">{</span> <span class="n">strictly</span> <span class="err">&#39;</span><span class="n">1</span><span class="p">.</span><span class="na">19</span><span class="err">&#39;</span> <span class="p">}</span> <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>Creating a &ldquo;Hello World&rdquo; sample application</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir src/<span class="o">{</span>main,test<span class="o">}</span>/java/hello</code></pre></div>
+<p>Within <code>src/main/java/hello</code> directory, create these two files:</p>
+
+<p>App.java</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="err">package hello</span><span class="p">;</span>
+
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="p">.</span><span class="na">SpringApplication</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="p">.</span><span class="na">autoconfigure</span><span class="p">.</span><span class="na">SpringBootApplication</span><span class="p">;</span>
+
+<span class="nd">@SpringBootApplication</span>
+<span class="err">public class </span><span class="n">App</span> <span class="p">{</span>
+
+    <span class="err">public static void main</span><span class="p">(</span><span class="err">String[] args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></div>
+<p>HelloGradleController.java</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="err">package hello</span><span class="p">;</span>
+
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">bind</span><span class="p">.</span><span class="na">annotation</span><span class="p">.</span><span class="na">GetMapping</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">bind</span><span class="p">.</span><span class="na">annotation</span><span class="p">.</span><span class="na">RestController</span><span class="p">;</span>
+
+<span class="nd">@RestController</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">)</span>
+<span class="err">public class </span><span class="n">HelloGradleController</span> <span class="p">{</span>
+
+    <span class="nd">@GetMapping</span>
+    <span class="err">public String </span><span class="n">helloGradle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;Hello Gradle!&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></div>
+<p>And within the <code>src/test/java/hello</code> create this file:</p>
+
+<p>AppTest.java</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="err">package hello</span><span class="p">;</span>
+
+<span class="err">import org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">Test</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">runner</span><span class="p">.</span><span class="na">RunWith</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">beans</span><span class="p">.</span><span class="na">factory</span><span class="p">.</span><span class="na">annotation</span><span class="p">.</span><span class="na">Autowired</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">autoconfigure</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">AutoConfigureMockMvc</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">boot</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">context</span><span class="p">.</span><span class="na">SpringBootTest</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">context</span><span class="p">.</span><span class="na">junit4</span><span class="p">.</span><span class="na">SpringRunner</span><span class="p">;</span>
+<span class="err">import org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">MockMvc</span><span class="p">;</span>
+
+<span class="err">import static </span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">request</span><span class="p">.</span><span class="na">MockMvcRequestBuilders</span><span class="p">.</span><span class="na">get</span><span class="p">;</span>
+<span class="err">import static </span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">result</span><span class="p">.</span><span class="na">MockMvcResultMatchers</span><span class="p">.</span><span class="na">content</span><span class="p">;</span>
+<span class="err">import static </span><span class="n">org</span><span class="p">.</span><span class="na">springframework</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">web</span><span class="p">.</span><span class="na">servlet</span><span class="p">.</span><span class="na">result</span><span class="p">.</span><span class="na">MockMvcResultMatchers</span><span class="p">.</span><span class="na">status</span><span class="p">;</span>
+
+<span class="nd">@RunWith</span><span class="p">(</span><span class="n">SpringRunner</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@SpringBootTest</span><span class="p">(</span><span class="n">classes</span> <span class="o">=</span> <span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@AutoConfigureMockMvc</span>
+<span class="err">public class </span><span class="n">AppTest</span> <span class="p">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="err">private MockMvc </span><span class="n">mvc</span><span class="p">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="err">public void </span><span class="n">helloGradle</span><span class="p">()</span> <span class="err">throws Exception </span><span class="p">{</span>
+        <span class="n">mvc</span><span class="p">.</span><span class="na">perform</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">))</span>
+            <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">status</span><span class="p">().</span><span class="na">isOk</span><span class="p">())</span>
+            <span class="p">.</span><span class="na">andExpect</span><span class="p">(</span><span class="n">content</span><span class="p">().</span><span class="na">string</span><span class="p">(</span><span class="s">&#34;Hello Gradle!&#34;</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></div>
+<p>Define the main class name for the spring boot jar file.</p>
+
+<p>build.gradle</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">bootJar</span> <span class="p">{</span>
+    <span class="n">mainClassName</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">hello</span><span class="p">.</span><span class="na">App</span><span class="err">&#39;</span>
+<span class="p">}</span></code></pre></div>
+                    </div>
+                    
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags">
+                        
+                        <li>
+                        <a href="/tags/spring-boot">spring-boot</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gradle">gradle</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/java">java</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    
+                        <a class="d-block col-md-6" href="https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/"> &laquo; Custom openconnect vpn setup for use in Palo Alto appliances</a>
+                    
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+<div class="alertbar">
+	<div class="container text-center">
+        <span>
+            
+                <img src="/images/logo.png" alt="logo" width="30px">
+            
+            &nbsp; Never miss a <b>story</b>, subscribe to our newsletter
+        </span>
+
+        <form action="https://gmail.us20.list-manage.com/subscribe/post?u=fcd0d13593259ece3901cc6b1&amp;amp;id=658aa507ab" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+		<input type="email" placeholder="Email" name="EMAIL" autocomplete="on" required>
+	    	
+	    	<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+		<input type="submit" value="Subscribe" name="subscribe" >
+        </form>
+
+	</div>
+</div>
+
+
+            </div>
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+			<div class="d-md-flex align-items-center justify-content-center h-100">
+				<h2 class="d-md-block d-none align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+			</div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+			
+			<a class="mt-1 mb-1" href="/tags/active-directory">active-directory</a>
+			
+			<a class="mt-1 mb-1" href="/tags/asciinema">asciinema</a>
+			
+			<a class="mt-1 mb-1" href="/tags/centos">centos</a>
+			
+			<a class="mt-1 mb-1" href="/tags/cloud-native">cloud-native</a>
+			
+			<a class="mt-1 mb-1" href="/tags/dnsmasq">dnsmasq</a>
+			
+			<a class="mt-1 mb-1" href="/tags/emoji">emoji</a>
+			
+			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
+			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
+			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
+			
+			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
+			
+			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
+			
+			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
+			
+			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
+			
+			<a class="mt-1 mb-1" href="/tags/kubernetes">kubernetes</a>
+			
+			<a class="mt-1 mb-1" href="/tags/lab">lab</a>
+			
+			<a class="mt-1 mb-1" href="/tags/loadbalancer">loadbalancer</a>
+			
+			<a class="mt-1 mb-1" href="/tags/monitoring">monitoring</a>
+			
+			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
+			
+			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
+			
+			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
+			
+			<a class="mt-1 mb-1" href="/tags/terraform">terraform</a>
+			
+			<a class="mt-1 mb-1" href="/tags/ubuntu">ubuntu</a>
+			
+			<a class="mt-1 mb-1" href="/tags/virtualbox">virtualbox</a>
+			
+			<a class="mt-1 mb-1" href="/tags/vpn">vpn</a>
+			
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright Juan Enciso - All rights reserved
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/js/mediumish.js"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106539950-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>

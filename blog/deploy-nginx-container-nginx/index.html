@@ -29,6 +29,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 	<link href="/css/medium.css" rel="stylesheet">
 	<link href="/css/additional.css" rel="stylesheet">
+	<link href="/css/syntax.css" rel="stylesheet">
 
         
         <link rel="stylesheet" type="text/css" href="https://jenciso.github.io/css/asciinema-player.css" />
@@ -171,43 +172,43 @@
 <p>We will explain this process using a simple <code>config.tf</code> file in orden to setup our lab environment.</p>
 
 <h3 id="defining-a-provider">Defining a provider</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">provider &#34;docker&#34; {
-</span><span style="color:#e6db74">  host = &#34;unix:///var/run/docker.sock&#34;
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat &gt; config.tf <span class="s">&lt;&lt; EOF
+</span><span class="s">provider &#34;docker&#34; {
+</span><span class="s">  host = &#34;unix:///var/run/docker.sock&#34;
+</span><span class="s">}
+</span><span class="s">EOF</span></code></pre></div>
 <p>We can now start defining the resources of our infrastructure. The first resource is our docker image. A resource has two parameters, one is a <code>TYPE</code> and the second is the <code>NAME</code>. The type is <code>docker_image</code> and name as <code>nginx</code>.</p>
 
 <p>Here we can define the name and the tag of or docker Image.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">resource &#34;docker_image&#34; &#34;nginx&#34; {
-</span><span style="color:#e6db74">  name = &#34;nginx:1.11-alpine&#34;
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span class="s">&lt;&lt; EOF
+</span><span class="s">resource &#34;docker_image&#34; &#34;nginx&#34; {
+</span><span class="s">  name = &#34;nginx:1.11-alpine&#34;
+</span><span class="s">}
+</span><span class="s">EOF</span></code></pre></div>
 <p>The second resource to be use is the container resource. Here, the resource type is <code>docker_container</code> and name as <code>nginx-server</code>. Within the block we set the resource parameters. We can reference other resources, such as a the <code>image</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">resource &#34;docker_container&#34; &#34;nginx-server&#34; {
-</span><span style="color:#e6db74">  name = &#34;nginx-server-1&#34;
-</span><span style="color:#e6db74">  image = docker_image.nginx.latest
-</span><span style="color:#e6db74">  ports {
-</span><span style="color:#e6db74">    internal = 80
-</span><span style="color:#e6db74">    external = 8081
-</span><span style="color:#e6db74">  }
-</span><span style="color:#e6db74">  volumes {
-</span><span style="color:#e6db74">    container_path  = &#34;/usr/share/nginx/html&#34;
-</span><span style="color:#e6db74">    host_path = &#34;/tmp/tutorial/www&#34;
-</span><span style="color:#e6db74">    read_only = true
-</span><span style="color:#e6db74">  }
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cat &gt;&gt; config.tf <span class="s">&lt;&lt; EOF
+</span><span class="s">resource &#34;docker_container&#34; &#34;nginx-server&#34; {
+</span><span class="s">  name = &#34;nginx-server-1&#34;
+</span><span class="s">  image = docker_image.nginx.latest
+</span><span class="s">  ports {
+</span><span class="s">    internal = 80
+</span><span class="s">    external = 8081
+</span><span class="s">  }
+</span><span class="s">  volumes {
+</span><span class="s">    container_path  = &#34;/usr/share/nginx/html&#34;
+</span><span class="s">    host_path = &#34;/tmp/tutorial/www&#34;
+</span><span class="s">    read_only = true
+</span><span class="s">  }
+</span><span class="s">}
+</span><span class="s">EOF</span></code></pre></div>
 <h2 id="plan-terraform-actions">Plan Terraform Actions</h2>
 
 <p>Once the configuration has been defined we need to create an execution plan. Terraform describes the actions required to achieve the desired state. The plan can be saved using -out. We&rsquo;ll apply the execution plan in the next step.</p>
 
 <p>Before we need to initialize our project</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform init</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform init</code></pre></div>
 <p>And the we could create our terraform plan</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform plan -out config.tfplan</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform plan -out config.tfplan</code></pre></div>
 <p>The output of the command indicates the changes. In this case, you&rsquo;ll see a <em>dockercontainer.nginx-server</em> and <em>dockerimage.nginx</em> to highlight adding the new resources.</p>
 
 <p>Finally a summary of Plan: <code>2 to add, 0 to change, 0 to destroy</code>.</p>
@@ -215,8 +216,8 @@
 <h2 id="adding-some-content">Adding some content</h2>
 
 <p>We could add a some content to serve via our nginx server.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /tmp/tutorial/www
-echo <span style="color:#e6db74">&#34;&lt;h1&gt;hello world&lt;/h1&gt;&#34;</span> &gt; /tmp/tutorial/www/index.html</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">mkdir -p /tmp/tutorial/www
+<span class="nb">echo</span> <span class="s2">&#34;&lt;h1&gt;hello world&lt;/h1&gt;&#34;</span> &gt; /tmp/tutorial/www/index.html</code></pre></div>
 <h2 id="apply-terraform-actions">Apply Terraform Actions</h2>
 
 <p>Once the plan has been created we need to apply it to reach our desired state.</p>
@@ -224,70 +225,70 @@ echo <span style="color:#e6db74">&#34;&lt;h1&gt;hello world&lt;/h1&gt;&#34;</spa
 <blockquote>
 <p>terraform will pull the image required and launch the new containers.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform apply</code></pre></div>
 <h2 id="inspecting-infrastructure">Inspecting Infrastructure</h2>
 
 <p>Using the docker command to see the changes and the newly launched container.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker ps
-docker ps -f name<span style="color:#f92672">=</span>nginx-server-1 --format <span style="color:#e6db74">&#34;table {{.Names}}\t{{.Status}}&#34;</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">docker ps
+docker ps -f <span class="nv">name</span><span class="o">=</span>nginx-server-1 --format <span class="s2">&#34;table {{.Names}}\t{{.Status}}&#34;</span></code></pre></div>
 <p>You can inspect this in future using the terraform CLI</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform show</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform show</code></pre></div>
 <h2 id="testing">Testing</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl http://localhost:8081
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">curl http://localhost:8081
 firefox http://localhost:8081</code></pre></div>
 <h2 id="updating-infrastructure">Updating Infrastructure</h2>
 
 <p>As our infrastructure grows and changes, terraform will manage and ensure we always have our defined desired state.</p>
 
 <p>We can change our container to launch two instances, each with different names.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">resource <span style="color:#e6db74">&#34;docker_container&#34;</span> <span style="color:#e6db74">&#34;nginx-server&#34;</span> {
-  count <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nginx-server-${count.index+1}&#34;</span>
-  image <span style="color:#f92672">=</span> docker_image<span style="color:#f92672">.</span>nginx<span style="color:#f92672">.</span>latest
-  ports {
-    internal <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span>
-    external <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;808${count.index+1}&#34;</span>
-  }
-  volumes {
-    container_path  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/usr/share/nginx/html&#34;</span>
-    host_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/tmp/tutorial/www&#34;</span>
-    read_only <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
-  }
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">resource</span> <span class="s2">&#34;docker_container&#34;</span> <span class="s2">&#34;nginx-server&#34;</span> <span class="p">{</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="s2">&#34;nginx-server-${count.index+1}&#34;</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">docker_image</span><span class="o">.</span><span class="n">nginx</span><span class="o">.</span><span class="n">latest</span>
+  <span class="n">ports</span> <span class="p">{</span>
+    <span class="n">internal</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">external</span> <span class="o">=</span> <span class="s2">&#34;808${count.index+1}&#34;</span>
+  <span class="p">}</span>
+  <span class="n">volumes</span> <span class="p">{</span>
+    <span class="n">container_path</span>  <span class="o">=</span> <span class="s2">&#34;/usr/share/nginx/html&#34;</span>
+    <span class="n">host_path</span> <span class="o">=</span> <span class="s2">&#34;/tmp/tutorial/www&#34;</span>
+    <span class="n">read_only</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>If we create a plan you will see the actions Terraform will need to apply to adapt our infrastructure to match our configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform validate
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform validate
 terraform plan -out config.tfplan</code></pre></div>
 <p>The plan will outline the changes. Because we&rsquo;re changing the name and adding a resource we&rsquo;ll see <code>Plan: 1 to add, 0 to change, 0 to destroy.</code></p>
 
 <p>In the details it will explain that changing a container name forces the resource to be recreated name: &ldquo;nginx-server&rdquo; =&gt; &ldquo;nginx-server-1&rdquo; (forces new resource) along with adding the new container <em>dockercontainer.nginx-server.1</em></p>
 
 <p>We can then apply the plan as we did in the previous step.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform apply -auto-approve</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform apply -auto-approve</code></pre></div>
 <p>Now, we scale our nginx-server up to 8 replicas:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">resource <span style="color:#e6db74">&#34;docker_container&#34;</span> <span style="color:#e6db74">&#34;nginx-server&#34;</span> {
-  count <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
-  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nginx-server-${count.index+1}&#34;</span>
-  image <span style="color:#f92672">=</span> docker_image<span style="color:#f92672">.</span>nginx<span style="color:#f92672">.</span>latest
-  ports {
-    internal <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span>
-    external <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;808${count.index+1}&#34;</span>
-  }
-  volumes {
-    container_path  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/usr/share/nginx/html&#34;</span>
-    host_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/tmp/tutorial/www&#34;</span>
-    read_only <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
-  }
-}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform plan
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">resource</span> <span class="s2">&#34;docker_container&#34;</span> <span class="s2">&#34;nginx-server&#34;</span> <span class="p">{</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">8</span>
+  <span class="nb">name</span> <span class="o">=</span> <span class="s2">&#34;nginx-server-${count.index+1}&#34;</span>
+  <span class="n">image</span> <span class="o">=</span> <span class="n">docker_image</span><span class="o">.</span><span class="n">nginx</span><span class="o">.</span><span class="n">latest</span>
+  <span class="n">ports</span> <span class="p">{</span>
+    <span class="n">internal</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">external</span> <span class="o">=</span> <span class="s2">&#34;808${count.index+1}&#34;</span>
+  <span class="p">}</span>
+  <span class="n">volumes</span> <span class="p">{</span>
+    <span class="n">container_path</span>  <span class="o">=</span> <span class="s2">&#34;/usr/share/nginx/html&#34;</span>
+    <span class="n">host_path</span> <span class="o">=</span> <span class="s2">&#34;/tmp/tutorial/www&#34;</span>
+    <span class="n">read_only</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform plan
 terraform apply -auto-approve</code></pre></div>
 <h2 id="clean-up">Clean UP</h2>
 
 <p>To destroy all the resources created</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">terraform destroy</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">terraform destroy</code></pre></div>
 <p>To delete all files created</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">rm -rf config.tf* terraform.tfstate* .terraform/
+<div class="highlight"><pre class="chroma">rm -rf config.tf* terraform.tfstate* .terraform/
 rm -rf /tmp/tutorial</pre></div>
 <h3 id="demo">DEMO</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><p>
     <asciinema-player
         src="/casts/294493.cast"
         cols="127"
@@ -417,6 +418,8 @@ rm -rf /tmp/tutorial</pre></div>
 			
 			<a class="mt-1 mb-1" href="/tags/gluster">gluster</a>
 			
+			<a class="mt-1 mb-1" href="/tags/gradle">gradle</a>
+			
 			<a class="mt-1 mb-1" href="/tags/grafana">grafana</a>
 			
 			<a class="mt-1 mb-1" href="/tags/haproxy">haproxy</a>
@@ -424,6 +427,8 @@ rm -rf /tmp/tutorial</pre></div>
 			<a class="mt-1 mb-1" href="/tags/heketi">heketi</a>
 			
 			<a class="mt-1 mb-1" href="/tags/hugo">hugo</a>
+			
+			<a class="mt-1 mb-1" href="/tags/java">java</a>
 			
 			<a class="mt-1 mb-1" href="/tags/jenkins">jenkins</a>
 			
@@ -438,6 +443,8 @@ rm -rf /tmp/tutorial</pre></div>
 			<a class="mt-1 mb-1" href="/tags/networkmanager">networkmanager</a>
 			
 			<a class="mt-1 mb-1" href="/tags/openconnect">openconnect</a>
+			
+			<a class="mt-1 mb-1" href="/tags/spring-boot">spring-boot</a>
 			
 			<a class="mt-1 mb-1" href="/tags/storage">storage</a>
 			

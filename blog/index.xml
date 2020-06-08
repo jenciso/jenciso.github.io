@@ -125,5 +125,14 @@ Sometimes, one special character could break the dashboard and your text search 
       <description>Intro My company use the Palo Alto Networks appliance in order to offer a VPN service for us. Normally, I use openconnect or openvpn client when I needed to setup some VPN connection, but these clients don&amp;rsquo;t work with Palo Alto devices.</description>
     </item>
     
+    <item>
+      <title>Create a simple spring boot application using gradle</title>
+      <link>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</guid>
+      <description>Intro If you want to create a simple spring boot application likes a hello-world program, you don&amp;rsquo;t need to use a IDE software for it.</description>
+    </item>
+    
   </channel>
 </rss>
