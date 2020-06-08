@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://jenciso.github.io/blog/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/gradle/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/java/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/spring-boot/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/tags/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jenciso.github.io/</loc>
+    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,16 +44,6 @@
   
   <url>
     <loc>https://jenciso.github.io/tags/networkmanager/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/tags/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -214,22 +234,6 @@
   
   <url>
     <loc>https://jenciso.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/tags/gradle/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/tags/java/</loc>
-  </url>
-  
-  <url>
-    <loc>https://jenciso.github.io/tags/spring-boot/</loc>
   </url>
   
 </urlset>
