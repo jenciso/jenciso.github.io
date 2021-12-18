@@ -2,7 +2,7 @@
 <html lang="en-us"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="generator" content="Hugo 0.59.1" />
+	<meta name="generator" content="Hugo 0.88.1" />
 	
 	<link rel="icon" href="/images/logo.png">
 	
@@ -13,14 +13,15 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/HAProxy_Logo-2-1-cover.png"/>
 <meta name="twitter:title" content="How setup Haproxy with zero downtime reload from code source"/>
-<meta name="twitter:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3."/>
+<meta name="twitter:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections."/>
 
 	<meta property="og:title" content="How setup Haproxy with zero downtime reload from code source" />
-<meta property="og:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3." />
+<meta property="og:description" content="if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" />
+<meta property="og:url" content="https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/" /><meta property="og:image" content="https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/HAProxy_Logo-2-1-cover.png"/><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2018-10-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-10-01T00:00:00+00:00" />
+
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -157,43 +158,37 @@
 
                     
                     <div class="article-post">
-                        
-
-<p>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</p>
-
+                        <p>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</p>
 <p>On on-premise scenario, this enable the dynamic scalability and continuous integration into your production datacenter.</p>
-
 <p>Follow the next steps to install a new version of haproxy, in this case the release 1.8.14, it include the reload daemon when the config file (haproxy.cfg) need to be changed.</p>
-
 <h3 id="steps">Steps</h3>
-
 <p>Download the compatible haproxy version</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HAPROXY_MAJOR</span><span class="o">=</span><span class="m">1</span>.8
-<span class="nb">export</span> <span class="nv">HAPROXY_VERSION</span><span class="o">=</span><span class="m">1</span>.8.14</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">wget -O haproxy.tar.gz <span class="se">\
-</span><span class="se"></span> <span class="s2">&#34;https://www.haproxy.org/download/</span><span class="si">${</span><span class="nv">HAPROXY_MAJOR</span><span class="si">}</span><span class="s2">/src/haproxy-</span><span class="si">${</span><span class="nv">HAPROXY_VERSION</span><span class="si">}</span><span class="s2">.tar.gz&#34;</span></code></pre></div>
-<p>Installing the prerequisites packages to compile</p>
-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HAPROXY_MAJOR</span><span class="o">=</span>1.8
+<span class="nb">export</span> <span class="nv">HAPROXY_VERSION</span><span class="o">=</span>1.8.14
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget -O haproxy.tar.gz <span class="se">\
+</span><span class="se"></span> <span class="s2">&#34;https://www.haproxy.org/download/</span><span class="si">${</span><span class="nv">HAPROXY_MAJOR</span><span class="si">}</span><span class="s2">/src/haproxy-</span><span class="si">${</span><span class="nv">HAPROXY_VERSION</span><span class="si">}</span><span class="s2">.tar.gz&#34;</span>
+</code></pre></div><p>Installing the prerequisites packages to compile</p>
 <p>For ubuntu 16.04:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y ca-certificates gcc <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y ca-certificates gcc <span class="se">\
 </span><span class="se"></span>  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget <span class="se">\
-</span><span class="se"></span>  zlib1g-dev libsystemd-dev</code></pre></div>
-<p>For Centos 7.5:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables <span class="se">\
-</span><span class="se"></span>  openssl openssl-devel openssl-libs systemd-devel</code></pre></div>
-<p>Compiling</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">tar xvfz haproxy.tar.gz
-<span class="nb">cd</span> haproxy-1.8.14/</code></pre></div>
-<p>For ubuntu:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
+</span><span class="se"></span>  zlib1g-dev libsystemd-dev
+</code></pre></div><p>For Centos 7.5:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables <span class="se">\
+</span><span class="se"></span>  openssl openssl-devel openssl-libs systemd-devel
+</code></pre></div><p>Compiling</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">tar xvfz haproxy.tar.gz
+<span class="nb">cd</span> haproxy-1.8.14/
+</code></pre></div><p>For ubuntu:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
 </span><span class="se"></span>  <span class="nv">USE_LUA</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
-make install</code></pre></div>
-<p>For Centos 7.5:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
+make install
+</code></pre></div><p>For Centos 7.5:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
 </span><span class="se"></span>  <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
-make install</code></pre></div>
-<p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">HA-Proxy version <span class="m">1</span>.8.14-52e4d43 <span class="m">2018</span>/09/20
-Copyright <span class="m">2000</span>-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
+make install
+</code></pre></div><p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">HA-Proxy version 1.8.14-52e4d43 2018/09/20
+Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :
   <span class="nv">TARGET</span>  <span class="o">=</span> linux2628
@@ -203,47 +198,41 @@ Build options :
   <span class="nv">OPTIONS</span> <span class="o">=</span> <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_LUA</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
 
 Default settings :
-  <span class="nv">maxconn</span> <span class="o">=</span> <span class="m">2000</span>, <span class="nv">bufsize</span> <span class="o">=</span> <span class="m">16384</span>, <span class="nv">maxrewrite</span> <span class="o">=</span> <span class="m">1024</span>, <span class="nv">maxpollevents</span> <span class="o">=</span> <span class="m">200</span>
+  <span class="nv">maxconn</span> <span class="o">=</span> 2000, <span class="nv">bufsize</span> <span class="o">=</span> 16384, <span class="nv">maxrewrite</span> <span class="o">=</span> 1024, <span class="nv">maxpollevents</span> <span class="o">=</span> <span class="m">200</span>
 
-Built with OpenSSL version : OpenSSL <span class="m">1</span>.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
-Running on OpenSSL version : OpenSSL <span class="m">1</span>.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
+Built with OpenSSL version : OpenSSL 1.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
+Running on OpenSSL version : OpenSSL 1.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
 OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports : TLSv1.0 TLSv1.1 TLSv1.2
-Built with Lua version : Lua <span class="m">5</span>.3.1
+Built with Lua version : Lua 5.3.1
 Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
-Encrypted password support via crypt<span class="o">(</span><span class="m">3</span><span class="o">)</span>: yes
+Encrypted password support via crypt<span class="o">(</span>3<span class="o">)</span>: yes
 Built with multi-threading support.
-Built with PCRE version : <span class="m">8</span>.38 <span class="m">2015</span>-11-23
-Running on PCRE version : <span class="m">8</span>.38 <span class="m">2015</span>-11-23
+Built with PCRE version : 8.38 2015-11-23
+Running on PCRE version : 8.38 2015-11-23
 PCRE library supports JIT : yes
-Built with zlib version : <span class="m">1</span>.2.8
-Running on zlib version : <span class="m">1</span>.2.8
+Built with zlib version : 1.2.8
+Running on zlib version : 1.2.8
 Compression algorithms supported : identity<span class="o">(</span><span class="s2">&#34;identity&#34;</span><span class="o">)</span>, deflate<span class="o">(</span><span class="s2">&#34;deflate&#34;</span><span class="o">)</span>, raw-deflate<span class="o">(</span><span class="s2">&#34;deflate&#34;</span><span class="o">)</span>, gzip<span class="o">(</span><span class="s2">&#34;gzip&#34;</span><span class="o">)</span>
 Built with network namespace support.
 
 Available polling systems :
-      epoll : <span class="nv">pref</span><span class="o">=</span><span class="m">300</span>,  <span class="nb">test</span> result OK
-       poll : <span class="nv">pref</span><span class="o">=</span><span class="m">200</span>,  <span class="nb">test</span> result OK
-     <span class="k">select</span> : <span class="nv">pref</span><span class="o">=</span><span class="m">150</span>,  <span class="nb">test</span> result OK
+      epoll : <span class="nv">pref</span><span class="o">=</span>300,  <span class="nb">test</span> result OK
+       poll : <span class="nv">pref</span><span class="o">=</span>200,  <span class="nb">test</span> result OK
+     <span class="k">select</span> : <span class="nv">pref</span><span class="o">=</span>150,  <span class="nb">test</span> result OK
 Total: <span class="m">3</span> <span class="o">(</span><span class="m">3</span> usable<span class="o">)</span>, will use epoll.
 
 Available filters :
 	<span class="o">[</span>SPOE<span class="o">]</span> spoe
 	<span class="o">[</span>COMP<span class="o">]</span> compression
-	<span class="o">[</span>TRACE<span class="o">]</span> trace</code></pre></div>
-<hr />
-
+	<span class="o">[</span>TRACE<span class="o">]</span> trace
+</code></pre></div><hr>
 <h2 id="references">References:</h2>
-
 <p><a href="https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/">https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/</a></p>
-
 <p><a href="https://midiroot.com/post/haproxy-getting-started/">https://midiroot.com/post/haproxy-getting-started/</a></p>
-
 <p><a href="https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/">https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/</a></p>
-
 <p><a href="https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html">https://engineeringblog.yelp.com/2015/04/true-zero-downtime-haproxy-reloads.html</a></p>
-
 <p><a href="https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/">https://thegeeksalive.com/how-to-setup-haproxy-http-load-balancer-on-centos/</a></p>
 
                     </div>
@@ -432,7 +421,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 
 
 

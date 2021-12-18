@@ -2,7 +2,7 @@
 <html lang="en-us"><head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="generator" content="Hugo 0.59.1" />
+	<meta name="generator" content="Hugo 0.88.1" />
 	
 	<link rel="icon" href="/images/logo.png">
 	
@@ -18,9 +18,10 @@
 	<meta property="og:title" content="Recover your grafana admin password using sqlite shell" />
 <meta property="og:description" content="One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using sqlite as backend storage, the recover process is easy." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/" />
+<meta property="og:url" content="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/" /><meta property="og:image" content="https://jenciso.github.io/blog/how-to-recovery-the-admin-password-in-grafana/grafana-cover.png"/><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2018-01-13T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-01-13T00:00:00+00:00" />
+
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -158,20 +159,20 @@
                     
                     <div class="article-post">
                         <p>One day you can lose your grafana admin password and probably you will desire to recover it rather than reinstall. If your grafana has been using <code>sqlite</code> as backend storage, the recover process is easy. Here are the steps to do that:</p>
-
 <ol>
-<li><p>In your local machine, install the sqlite3 package</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3</code></pre></div></li>
-
-<li><p>Login into your sql database</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db</code></pre></div></li>
-
-<li><p>Reset the admin password using SQL update (the new password will be <code>admin</code>)</p>
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span><span class="p">,</span> <span class="n">salt</span> <span class="o">=</span> <span class="s1">&#39;F3FAxVm33R&#39;</span> <span class="k">where</span> <span class="n">login</span> <span class="o">=</span> <span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">exit</span></code></pre></div></li>
+<li>In your local machine, install the sqlite3 package</li>
 </ol>
-
-<p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3
+</code></pre></div><ol start="2">
+<li>Login into your sql database</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db
+</code></pre></div><ol start="3">
+<li>Reset the admin password using SQL update (the new password will be <code>admin</code>)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;F3FAxVm33R&#39;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="n">exit</span><span class="w">
+</span></code></pre></div><p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
 
                     </div>
                     
@@ -359,7 +360,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 
 
 

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sat, 21 Oct 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://jenciso.github.io/tags/openconnect/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 21 Oct 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/openconnect/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Custom openconnect vpn setup for use in Palo Alto appliances</title>
       <link>https://jenciso.github.io/blog/how-to-compile-a-global-protect-openconnect-version/</link>

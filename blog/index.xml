@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create a simple spring boot application using gradle</title>
       <link>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</guid>
-      <description>Intro If you want to create a simple spring boot application likes a hello-world program, you don&amp;rsquo;t need to use a IDE software for it.</description>
+      <description>Intro If you want to create a simple spring boot application likes a hello-world program, you don&amp;rsquo;t need to use a IDE software for it. Gradle website has a simple tutorial that inspire me to writte this post.</description>
     </item>
     
     <item>
@@ -47,8 +43,7 @@ Normally, this VPN connection will be use the DNS server of your company in orde
       
       <guid>https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/</guid>
       <description>Intro These steps were tested using Active Directory on Windows 2008 R2 and Windows 2012 R2.
-Pre-requisites  Install the packages needed
-yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python Ensure to use your AD as domain server</description>
+Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python  Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv.</description>
     </item>
     
     <item>
@@ -113,7 +108,7 @@ Sometimes, one special character could break the dashboard and your text search 
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
-      <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.</description>
+      <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</description>
     </item>
     
     <item>

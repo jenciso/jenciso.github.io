@@ -6,10 +6,6 @@
     <description>Recent content in Categories on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Juan Enciso - All rights reserved</copyright>
-    
-	<atom:link href="https://jenciso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <copyright>Juan Enciso - All rights reserved</copyright><atom:link href="https://jenciso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

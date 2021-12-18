@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://jenciso.github.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How setup Haproxy with zero downtime reload from code source</title>
       <link>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</link>
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-setup-haproxy-with-zero-downtime-reload-from-code-source/</guid>
-      <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.</description>
+      <description>if you are looking for a modern load balancer with zero downtime when you need to reload its configuration, HAProxy 1.8 and Linux kernel &amp;gt;=3.9 could take advantage of a new reload mechanism which can transfer sockets from the old process to the new process without dropping any connections.</description>
     </item>
     
   </channel>

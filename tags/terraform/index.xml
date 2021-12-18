@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://jenciso.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 19 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deploy NGINX container using Terraform</title>
       <link>https://jenciso.github.io/blog/deploy-nginx-container-nginx/</link>
