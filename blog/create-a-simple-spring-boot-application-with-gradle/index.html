@@ -159,11 +159,11 @@
                     
                     <div class="article-post">
                         <h2 id="intro">Intro</h2>
-<p>If you want to create a simple spring boot application likes a hello-world program, you don&rsquo;t need to use a IDE software for it. Gradle website has a simple tutorial that inspire me to writte this post.</p>
-<h2 id="steps">Steps</h2>
-<p>Initialize your project and choose the default options:</p>
+<p>To create a simple spring boot application as a classic Hello World!&quot;, you don&rsquo;t need to use an IDE for it. Luckily, Gradle website show you a <a href="https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/#creating_a_hello_gradle_sample_application">simple tutorial</a> and I will show you how to do that.</p>
+<h2 id="coding">Coding</h2>
+<p>Initialize your project:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">gradle init --type java-application
-</code></pre></div><p>The generated project will has the following structure</p>
+</code></pre></div><p>It generates these files, pay attention to the directory structure.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ tree spring-hello-world/
 spring-hello-world/
 ├── build.gradle
@@ -190,8 +190,7 @@ spring-hello-world/
         │               └── AppTest.java
         └── resources
 
-<span class="m">15</span> directories, <span class="m">8</span> files
-</code></pre></div><p>You need to modify the <code>build.gradle</code> file to use the spring boot plugins needed.</p>
+</code></pre></div><p>To use the spring boot plugins you need to modify the <code>build.gradle</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">plugins</span> <span class="o">{</span>
     <span class="c1">// Apply the java plugin to add support for Java
 </span><span class="c1"></span>    <span class="n">id</span> <span class="err">&#39;</span><span class="n">java</span><span class="err">&#39;</span>
@@ -293,7 +292,7 @@ spring-hello-world/
 <span class="n">bootJar</span> <span class="o">{</span>
     <span class="n">mainClassName</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">hello</span><span class="o">.</span><span class="na">App</span><span class="err">&#39;</span>
 <span class="o">}</span>
-</code></pre></div><p>At this point, you could build and run the spring boot application</p>
+</code></pre></div><p>At this point, you could build and run the application</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">./gradlew bootJar
 </code></pre></div><p>Or using the jar file</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">java -jar ./build/libs/spring-hello-world.jar
@@ -301,8 +300,6 @@ spring-hello-world/
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">./gradlew bootRun
 </code></pre></div><p>Sample:</p>
 <p><a href="https://asciinema.org/a/dWeIbajqy3an00eRqXfpuqslW"><img src="https://asciinema.org/a/dWeIbajqy3an00eRqXfpuqslW.svg" alt="asciicast"></a></p>
-<h2 id="references">References</h2>
-<p><a href="https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/#creating_a_hello_gradle_sample_application">https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/#creating_a_hello_gradle_sample_application</a></p>
 
                     </div>
                     

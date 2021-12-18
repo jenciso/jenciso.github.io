@@ -14,7 +14,7 @@
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</guid>
-      <description>Intro If you want to create a simple spring boot application likes a hello-world program, you don&amp;rsquo;t need to use a IDE software for it. Gradle website has a simple tutorial that inspire me to writte this post.</description>
+      <description>Intro To create a simple spring boot application as a classic Hello World!&amp;quot;, you don&amp;rsquo;t need to use an IDE for it. Luckily, Gradle website show you a simple tutorial and I will show you how to do that.</description>
     </item>
     
   </channel>
