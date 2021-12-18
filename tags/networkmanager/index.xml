@@ -14,8 +14,7 @@
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/caching-dns-using-dnsmasq/</guid>
-      <description>Intro In pandemic times, remote work increased VPN use in employees that need to consume internal services hosted in companies on-premise environment.
-Normally, this VPN connection will be use the DNS server of your company in order to resolve all DNS names of your company and outside internet urls.</description>
+      <description>Overview Work remotely was increased since covid-19 appears in the world. Some networks devices as VPN appliances are working a lot and employees are using more than never internal services through VPN connections.</description>
     </item>
     
   </channel>
