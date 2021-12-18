@@ -305,7 +305,7 @@ span.post-read-more a:hover {
 }
 
 .mainheading h1.posttitle {
-    font-weight: 700;
+    font-weight: 999;
     margin-bottom: 1rem;
 }
 
@@ -618,7 +618,7 @@ ul.tags li a:hover {
 }
 
 .authorpage h1 {
-    font-weight: 700;
+    font-weight: 999;
     font-size: 30px;
 }
 
@@ -701,7 +701,7 @@ h6 {
 .article-post h4,
 .article-post h5,
 .article-post h6 {
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 1.5rem;
 }
 
