@@ -30,6 +30,10 @@
 	<link href="/css/syntax.css" rel="stylesheet">
 
         
+
+<script src="/js/prism.js"></script>
+<link rel="stylesheet" href="/css/prism.css" />
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
@@ -75,11 +79,12 @@
         <div class="site-content">   
             <div class="container">
 <div class="mainheading">
-    <h1 class="sitetitle">Tech-Blog</h1>
+    <h1 class="sitetitle"><a href="/blog">Tech-Blog</a></h1>
     <p class="lead">
          Sharing my tech stories
     </p>
-</div><div class="main-content">
+</div>
+<div class="main-content">
         
         <section class="recent-posts">            
             <div class="section-title">                
@@ -100,7 +105,7 @@
         </div>
         <div class="card-body">
             <h2 class="card-title"><a class="text-dark" href="https://jenciso.github.io/blog/how-to-clean-a-gluster-heketi-volume/">How to cleanup a Gluster Heketi volume</a></h2>
-            <h4 class="card-text">Currently, I&rsquo;m using gluster + heketi in my kubernetes cluster to give a persistent storage service on demand. I know that there are other options to implement simliar service, like a rooks using ceph.</h4>            
+            <h4 class="card-text">I&rsquo;m using gluster + heketi in my current kubernetes cluster, with it I give a persistent storage service on demand, it is easy to use, robust and simple.</h4>            
         </div>
         <div class="card-footer bg-white">
             <div class="wrapfooter">

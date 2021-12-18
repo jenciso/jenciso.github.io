@@ -35,6 +35,10 @@
         
         <link rel="stylesheet" type="text/css" href="https://jenciso.github.io/css/asciinema-player.css" />
         
+
+<script src="/js/prism.js"></script>
+<link rel="stylesheet" href="/css/prism.css" />
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
@@ -80,11 +84,12 @@
         <div class="site-content">   
             <div class="container">
 <div class="mainheading">
-    <h1 class="sitetitle">Tech-Blog</h1>
+    <h1 class="sitetitle"><a href="/blog">Tech-Blog</a></h1>
     <p class="lead">
          Sharing my tech stories
     </p>
-</div><div class="main-content">
+</div>
+<div class="main-content">
         
         <div class="container">
             <div class="row">
@@ -171,13 +176,14 @@
 <li>Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</li>
 </ul>
 <p>Using wget:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.css
-wget https://github.com/asciinema/asciinema-player/releases/download/v2.6.1/asciinema-player.js
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">BASE_URL</span><span class="o">=</span>https://github.com/asciinema/asciinema-player/releases/download
+wget <span class="nv">$BASE_URL</span>/v2.6.1/asciinema-player.css
+wget <span class="nv">$BASE_URL</span>/v2.6.1/asciinema-player.js
 </code></pre></div><p>Put these files into <code>static/css</code> and <code>static/js</code> folders. Like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ ls -l static/css/asciinema-player.css 
--rw-rw-r-- <span class="m">1</span> jenciso jenciso <span class="m">50722</span> Fev <span class="m">21</span>  <span class="m">2018</span> static/css/asciinema-player.css
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ ls -l static/css/asciinema-player.css 
+-rw-rw-r-- 1 jenciso jenciso 50722 Fev 21  2018 static/css/asciinema-player.css
 $ ls -l static/js/asciinema-player.js 
--rw-rw-r-- <span class="m">1</span> jenciso jenciso <span class="m">582376</span> Fev <span class="m">21</span>  <span class="m">2018</span> static/js/asciinema-player.js
+-rw-rw-r-- 1 jenciso jenciso 582376 Fev 21  2018 static/js/asciinema-player.js
 </code></pre></div><ul>
 <li>You need to configure your hugo template files to use css and js files previously downloaded.</li>
 </ul>
@@ -235,7 +241,7 @@ $ ls -l static/js/asciinema-player.js
 </span><span class="w"></span><span class="nn">---</span><span class="w">
 </span></code></pre></div><h3 id="result">Result</h3>
 <p>Finally, the result should show something like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><p>
+<p>
     <asciinema-player
         src="/casts/249623.cast"
         cols="158"
@@ -256,7 +262,7 @@ $ ls -l static/js/asciinema-player.js
     ></asciinema-player>
 </p>
 
-</code></pre></div><h4 id="references">References</h4>
+<h4 id="references">References</h4>
 <p><a href="https://www.tonylykke.com/posts/custom-fonts-in-asciinema/">https://www.tonylykke.com/posts/custom-fonts-in-asciinema/</a></p>
 
                     </div>

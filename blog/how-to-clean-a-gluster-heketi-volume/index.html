@@ -33,6 +33,10 @@
 	<link href="/css/syntax.css" rel="stylesheet">
 
         
+
+<script src="/js/prism.js"></script>
+<link rel="stylesheet" href="/css/prism.css" />
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
@@ -78,11 +82,12 @@
         <div class="site-content">   
             <div class="container">
 <div class="mainheading">
-    <h1 class="sitetitle">Tech-Blog</h1>
+    <h1 class="sitetitle"><a href="/blog">Tech-Blog</a></h1>
     <p class="lead">
          Sharing my tech stories
     </p>
-</div><div class="main-content">
+</div>
+<div class="main-content">
         
         <div class="container">
             <div class="row">
@@ -158,29 +163,29 @@
 
                     
                     <div class="article-post">
-                        <p>Currently, I&rsquo;m using <a href="https://github.com/gluster/gluster-kubernetes">gluster + heketi</a> in my kubernetes cluster to give a persistent storage service on demand. I know that there are other options to implement simliar service, like a rooks using ceph. But, at the moment, gluster and heketi attend me very well.</p>
-<p>One problem that I found with this approach is to do one operational task. It is to cleanup some volumes via heketi. So, from time to time I need to clean up my gluster volumes because for some reason, I don&rsquo;t know, the heketi volumes don&rsquo;t represent the same size compared with the gluster bricks. It is an inconsistency issue.</p>
-<p>In the following lines I show you how to clean up the heketi information to sincronize with the gluster bricks information</p>
+                        <p>I&rsquo;m using <a href="https://github.com/gluster/gluster-kubernetes">gluster + heketi</a> in my current kubernetes cluster, with it I give a persistent storage service on demand, it is easy to use, robust and simple. I know others options to implement a simliar service, like a <a href="https://rook.io">rooks</a> using ceph, however, gluster and heketi support my cluster very well.</p>
+<p>One little problem with this approach is to do some operational tasks. For instance, it is needed to cleanup some volumes via heketi CLI. So, from time to time I need to do in my gluster volumes because for some reason, heketi volumes don&rsquo;t represent the same size when I compared with the gluster bricks sizes. It represent an inconsistency issue.</p>
+<p>I&rsquo;ll show you how to clean up the heketi information to sincronize with gluster bricks information.</p>
 <h3 id="deleting-the-orphands-bricks">Deleting the orphands bricks</h3>
 <p>Some bricks haven&rsquo;t the path correctly. So, you need to clean up using the <code>heketi</code> binary command (the server, not the client).</p>
 <h4 id="steps">Steps</h4>
 <p>Scale down your heketi service</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl scale deployment -n gluster-heketi heketi --replicas<span class="o">=</span><span class="m">0</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl scale deployment -n gluster-heketi heketi --replicas<span class="o">=</span><span class="m">0</span>
 </code></pre></div><p>Find out your <code>heketidbstorage</code> mount point</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl <span class="nb">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kubectl <span class="nb">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- df -k
 </code></pre></div><p>Mount the gluster volume of <code>heketi.db</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get -y install glusterfs-client
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get -y install glusterfs-client
 sudo mount -t glusterfs 10.64.14.47:/heketidbstorage  /mnt
 </code></pre></div><blockquote>
 <p><code>10.64.14.47</code> is one of my gluster servers</p>
 </blockquote>
 <p>Download the heketi binary</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">wget https://github.com/heketi/heketi/releases/download/v9.0.0/heketi-v9.0.0.linux.amd64.tar.gz
 <span class="nb">cd</span> heketi
 sudo ./heketi db delete-bricks-with-empty-path --dbfile<span class="o">=</span>/mnt/heketi.db --all
 umount /mnt
 </code></pre></div><p>Scale up your heketi service</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl scale deployment -n gluster-heketi heketi --replicas<span class="o">=</span><span class="m">1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">kubectl scale deployment -n gluster-heketi heketi --replicas<span class="o">=</span><span class="m">1</span>
 </code></pre></div><p>Resync your devices in all the nodes</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl <span class="nb">exec</span> -it -n gluster-heketi heketi-5c88f4574d-jxkpl -- <span class="se">\ </span>
   heketi-cli device resync 4c2a876a7829f3660e5a08cd1c0a5b1c
