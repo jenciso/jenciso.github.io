@@ -14,7 +14,7 @@
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</guid>
-      <description>Intro To create a simple spring boot application as a classic Hello World!&amp;quot;, you don&amp;rsquo;t need to use an IDE for it. Luckily, Gradle website explain to you how to do this via a simple tutorial.</description>
+      <description>To create a simple spring boot application as a classic Hello World!&amp;quot;, you don&amp;rsquo;t need to use an IDE for it. Luckily, Gradle website explain to you how to do this via a simple tutorial.</description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@
       
       <guid>https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/</guid>
       <description>Intro These steps were tested using Active Directory on Windows 2008 R2 and Windows 2012 R2.
-Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python  Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv.</description>
+Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python   Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv.</description>
     </item>
     
     <item>

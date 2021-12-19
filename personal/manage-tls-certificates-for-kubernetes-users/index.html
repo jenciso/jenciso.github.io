@@ -169,97 +169,108 @@
 <ol>
 <li>Download the cfssl binary. It is a Cloudflare tool help us to create the certificates</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir ~/bin
+<pre><code class="language-sh">mkdir ~/bin
 curl -s -L -o ~/bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
 curl -s -L -o ~/bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
-chmod +x ~/bin/<span class="o">{</span>cfssl,cfssljson<span class="o">}</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/bin
-</code></pre></div><ol start="2">
+chmod +x ~/bin/{cfssl,cfssljson}
+export PATH=$PATH:~/bin
+</code></pre>
+<ol start="2">
 <li>Create a key and csr certificate</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo &#39;{&#34;CN&#34;:&#34;juan.enciso&#34;,&#34;hosts&#34;:[&#34;&#34;],&#34;key&#34;:{&#34;algo&#34;:&#34;rsa&#34;,&#34;size&#34;:2048}}&#39; \
+<pre><code>echo '{&quot;CN&quot;:&quot;juan.enciso&quot;,&quot;hosts&quot;:[&quot;&quot;],&quot;key&quot;:{&quot;algo&quot;:&quot;rsa&quot;,&quot;size&quot;:2048}}' \
 | cfssl genkey  - | cfssljson -bare juan.enciso
-</code></pre></div><ol start="3">
+</code></pre>
+<ol start="3">
 <li>Signing this certificate. Create a YAML file named <code>certsignrequest.yml</code> and send it to kubernetes Admin</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">certificates.k8s.io/v1beta1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">CertificateSigningRequest</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">user-request-juan.enciso</span><span class="w">
-</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">groups</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="l">system:authenticated</span><span class="w">
-</span><span class="w">  </span><span class="nt">request</span><span class="p">:</span><span class="w"> </span><span class="l">LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2VUQ0NBV0VDQVFBd0ZqRVVNQklHQTFVRUF4TUxhblZoYmk1bGJtTnBjMjh3Z2dFaU1BMEdDU3FHU0liMwpEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNXamNRdDA5WWdIbTVjaER1N2JmVFBUMyttWTZ2bkRSN1ZFTm9tCmpNWkNCVkprRVl1OGt6ZWRqZldiNHdHUXNnZG9YMWxkbGZ0UERRV2xKTHhRanVScURCVjVtZkJ3bnpBamljM2QKQTFlcC9GeHV5YTRFVmRyK0kyWEJ3cGhWRlY0cXFTR0NNWjNIK0FDRFhCaWxkR1p2UTBqMFVlYThMcUJNWExkMAp2dWJWemt6YndCZmJQOFpuSHVqVVdWVjl0bmsxMnpHRXRXOFl3VkZ5SzdzUzdOK3J2RjJpR2FqOUhFTXJoNXRoCk1vVzBzMFdhZEhxWVlIUDF2TDN1b2hRZGRScWxtUFFrRTNLdkN4ZlJPTXBUeVVIL1BpMGVGRGMzekZwVWpwTFIKM3k0T3RIS2w3SG1XM3E4RDdENlVpNEp5OUNjRmUreFNHSlkyejZtajN2Q3I2amMxQWdNQkFBR2dIakFjQmdrcQpoa2lHOXcwQkNRNHhEekFOTUFzR0ExVWRFUVFFTUFLQ0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFBOEdXCnprTTg3a3lYTHdLcTlkcTdFOWNMTUh1SmoyelJKQnNCNzJnd1NvNVVDS1VjYWowblhEMVdKQXhXcllHZVB1SVUKemdqTFpsc1VNWGJ1SEtJTENqaUY1Q0JZVUtPTFdTRmNqNUlreU1hTU9ZdmQ0eHBYdkNOTzRVbWlxSktUYXZiMQplWG9ZZGQ0NzQxRW5qNG5vV0tveDNsSVVQM1VjcVhBa05sZDJaNHpDK2Zqbk9uSWFuaUQ3c0xJWXFIOG9WSXZNClA3dnRjUjJZVUp2bzlzVUdBOEdyYkhJWUFRVmlycTZ1ZkdpNUttb29VQ2hHbmtmQkJ2LytpZ1VlRlowTjkrT0MKNzFTSllMQjFGM3d2eDdvS25XN2pKdU1SdTkvNmJMUzRKK1ZjNTJsRk9YUWhjc29jYVdmU3lUbVJETDAvejcwNAoxcllhMFNMTldaN3pSbU5Hcnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0K</span><span class="w">
-</span><span class="w">  </span><span class="nt">usages</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="l">digital signature</span><span class="w">
-</span><span class="w">  </span>- <span class="l">key encipherment</span><span class="w">
-</span><span class="w">  </span>- <span class="l">client auth</span><span class="w">
-</span></code></pre></div><ol start="4">
+<pre><code class="language-yml">apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+  name: user-request-juan.enciso
+spec:
+  groups:
+  - system:authenticated
+  request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2VUQ0NBV0VDQVFBd0ZqRVVNQklHQTFVRUF4TUxhblZoYmk1bGJtTnBjMjh3Z2dFaU1BMEdDU3FHU0liMwpEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNXamNRdDA5WWdIbTVjaER1N2JmVFBUMyttWTZ2bkRSN1ZFTm9tCmpNWkNCVkprRVl1OGt6ZWRqZldiNHdHUXNnZG9YMWxkbGZ0UERRV2xKTHhRanVScURCVjVtZkJ3bnpBamljM2QKQTFlcC9GeHV5YTRFVmRyK0kyWEJ3cGhWRlY0cXFTR0NNWjNIK0FDRFhCaWxkR1p2UTBqMFVlYThMcUJNWExkMAp2dWJWemt6YndCZmJQOFpuSHVqVVdWVjl0bmsxMnpHRXRXOFl3VkZ5SzdzUzdOK3J2RjJpR2FqOUhFTXJoNXRoCk1vVzBzMFdhZEhxWVlIUDF2TDN1b2hRZGRScWxtUFFrRTNLdkN4ZlJPTXBUeVVIL1BpMGVGRGMzekZwVWpwTFIKM3k0T3RIS2w3SG1XM3E4RDdENlVpNEp5OUNjRmUreFNHSlkyejZtajN2Q3I2amMxQWdNQkFBR2dIakFjQmdrcQpoa2lHOXcwQkNRNHhEekFOTUFzR0ExVWRFUVFFTUFLQ0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFBOEdXCnprTTg3a3lYTHdLcTlkcTdFOWNMTUh1SmoyelJKQnNCNzJnd1NvNVVDS1VjYWowblhEMVdKQXhXcllHZVB1SVUKemdqTFpsc1VNWGJ1SEtJTENqaUY1Q0JZVUtPTFdTRmNqNUlreU1hTU9ZdmQ0eHBYdkNOTzRVbWlxSktUYXZiMQplWG9ZZGQ0NzQxRW5qNG5vV0tveDNsSVVQM1VjcVhBa05sZDJaNHpDK2Zqbk9uSWFuaUQ3c0xJWXFIOG9WSXZNClA3dnRjUjJZVUp2bzlzVUdBOEdyYkhJWUFRVmlycTZ1ZkdpNUttb29VQ2hHbmtmQkJ2LytpZ1VlRlowTjkrT0MKNzFTSllMQjFGM3d2eDdvS25XN2pKdU1SdTkvNmJMUzRKK1ZjNTJsRk9YUWhjc29jYVdmU3lUbVJETDAvejcwNAoxcllhMFNMTldaN3pSbU5Hcnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0K
+  usages:
+  - digital signature
+  - key encipherment
+  - client auth
+</code></pre>
+<ol start="4">
 <li>The YAML file should contain base64 encoded version of your signing <code>request</code> (the .csr file). To encode this, execute base64 command:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">cat juan.enciso.csr <span class="p">|</span> base64 <span class="p">|</span> tr -d <span class="s1">&#39;\n&#39;</span>
-</code></pre></div><h3 id="admin-steps">Admin steps</h3>
+<pre><code class="language-sh">cat juan.enciso.csr | base64 | tr -d '\n'
+</code></pre>
+<h3 id="admin-steps">Admin steps</h3>
 <ol>
 <li>create the resource</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">kubectl create -f certsignrequest.yml
-</code></pre></div><ol start="2">
+<pre><code class="language-sh">kubectl create -f certsignrequest.yml
+</code></pre>
+<ol start="2">
 <li>Approve the certificate created</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">kubectl certificate approve user-request-juan.enciso
-</code></pre></div><ol start="3">
+<pre><code class="language-sh">kubectl certificate approve user-request-juan.enciso
+</code></pre>
+<ol start="3">
 <li>Create Roles and ClusterRole using a file, e.g <code>juan.enciso-rbac.yaml</code>. In this case, the role will be: Only <code>edit</code> into the default namespace, and the ClusterRole will be <code>View All Only</code></li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterRoleBinding</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1beta1</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">juan.enciso-view-all</span><span class="w">
-</span><span class="w"></span><span class="nt">subjects</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">User</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">juan.enciso</span><span class="w">
-</span><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
-</span><span class="w"></span><span class="nt">roleRef</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterRole</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">view</span><span class="w">
-</span><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
-</span><span class="w"></span><span class="nn">---</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">RoleBinding</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1beta1</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">juan.enciso-edit-default</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w"> </span><span class="c"># This only grants permissions within the &#34;default&#34; namespace.</span><span class="w">
-</span><span class="w"></span><span class="nt">subjects</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">User</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">juan.enciso</span><span class="w">
-</span><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
-</span><span class="w"></span><span class="nt">roleRef</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterRole</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">edit</span><span class="w">
-</span><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
-</span></code></pre></div><ol start="4">
+<pre><code class="language-yaml">kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: juan.enciso-view-all
+subjects:
+- kind: User
+  name: juan.enciso
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: view
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: juan.enciso-edit-default
+  namespace: default # This only grants permissions within the &quot;default&quot; namespace.
+subjects:
+- kind: User
+  name: juan.enciso
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: edit
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<ol start="4">
 <li>Apply Roles and ClusterRole</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl create -f juan.enciso-rbac.yaml
-</code></pre></div><ol start="5">
+<pre><code class="language-shell">kubectl create -f juan.enciso-rbac.yaml
+</code></pre>
+<ol start="5">
 <li>Download the certificate and give the user <code>juan.enciso</code> via a secure channel</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">kubectl get csr user-request-juan.enciso -o jsonpath=&#39;{.status.certificate}&#39;\
+<pre><code>kubectl get csr user-request-juan.enciso -o jsonpath='{.status.certificate}'\
  | base64 -d &gt; juan.enciso.pem
-</code></pre></div><h3 id="user-steps-part-2">User Steps (Part 2)</h3>
+</code></pre>
+<h3 id="user-steps-part-2">User Steps (Part 2)</h3>
 <p>Create the kubectl configurations in the user desktop</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">kubectl config set-cluster k8s-lab --insecure-skip-tls-verify<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span><span class="se"></span>  --server<span class="o">=</span>https://apik8s-lab.e-unicred.com.br
-kubectl config set-credentials juan.enciso-lab --embed-certs<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span><span class="se"></span>  --client-certificate<span class="o">=</span>juan.enciso.pem --client-key<span class="o">=</span>juan.enciso-key.pem 
-kubectl config set-context k8s-lab --cluster<span class="o">=</span>k8s-lab --user<span class="o">=</span>juan.enciso-lab
+<pre><code class="language-shell">kubectl config set-cluster k8s-lab --insecure-skip-tls-verify=true \
+  --server=https://apik8s-lab.e-unicred.com.br
+kubectl config set-credentials juan.enciso-lab --embed-certs=true \
+  --client-certificate=juan.enciso.pem --client-key=juan.enciso-key.pem 
+kubectl config set-context k8s-lab --cluster=k8s-lab --user=juan.enciso-lab
 kubectl  config use-context k8s-lab
-</code></pre></div><p>So, for testing purpose you could add the options <code>--kubeconfig ~/.kube/config-juan.enciso</code> in each command of above. On this way, you won&rsquo;t overwrite your default config file <code>~/kube/config</code></p>
+</code></pre>
+<p>So, for testing purpose you could add the options <code>--kubeconfig ~/.kube/config-juan.enciso</code> in each command of above. On this way, you won&rsquo;t overwrite your default config file <code>~/kube/config</code></p>
 <h3 id="testing">Testing</h3>
 <p>Execute common commands</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">kubectl version
+<pre><code class="language-sh">kubectl version
 kubectl get nodes
 kubectl get pods --all-namespaces
-</code></pre></div>
+</code></pre>
+
                     </div>
                     
                     

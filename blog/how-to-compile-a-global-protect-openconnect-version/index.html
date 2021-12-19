@@ -169,64 +169,73 @@
 <h2 id="build-your-openconnect-to-use-global-protect-protocol">Build your openconnect to use Global Protect Protocol</h2>
 <p>The prerequisites are install libraries and packages needed to compile it.</p>
 <p>For Fedora users the packages needed are:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo dnf -f install libxml2-devel <span class="se">\
-</span><span class="se"></span>  zlib-devel <span class="se">\
-</span><span class="se"></span>  openssl-devel <span class="se">\
-</span><span class="se"></span>  pkg-config <span class="se">\
-</span><span class="se"></span>  p11-kit <span class="se">\
-</span><span class="se"></span>  libp11 <span class="se">\
-</span><span class="se"></span>  libproxy <span class="se">\
-</span><span class="se"></span>  trous <span class="se">\
-</span><span class="se"></span>  libproxy-devel <span class="se">\
-</span><span class="se"></span>  libstoken 
-</code></pre></div><p>And for Ubuntu users:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install <span class="se">\
-</span><span class="se"></span>  build-essential gettext autoconf automake libproxy-dev <span class="se">\
-</span><span class="se"></span>  libxml2-dev libtool vpnc-scripts pkg-config <span class="se">\
-</span><span class="se"></span>  libgnutls28-dev
-</code></pre></div><p>Finished the prerequisites steps, you need to download the git repository and compile the package using the branch <code>globalprotect</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/dlenski/openconnect.git
-<span class="nb">cd</span> openconnect
+<pre><code class="language-shell">sudo dnf -f install libxml2-devel \
+  zlib-devel \
+  openssl-devel \
+  pkg-config \
+  p11-kit \
+  libp11 \
+  libproxy \
+  trous \
+  libproxy-devel \
+  libstoken 
+</code></pre>
+<p>And for Ubuntu users:</p>
+<pre><code class="language-shell">sudo apt-get install \
+  build-essential gettext autoconf automake libproxy-dev \
+  libxml2-dev libtool vpnc-scripts pkg-config \
+  libgnutls28-dev
+</code></pre>
+<p>Finished the prerequisites steps, you need to download the git repository and compile the package using the branch <code>globalprotect</code>:</p>
+<pre><code class="language-shell">git clone https://github.com/dlenski/openconnect.git
+cd openconnect
 git checkout globalprotect
 ./autogen.sh
 ./configure
 make
 sudo make install
-</code></pre></div><p>It is necessary to load the shared libraries</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo ldconfig
-</code></pre></div><p>Finally, you can test it!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo /usr/local/sbin/openconnect --protocol<span class="o">=</span>gp vpn.mycompany.com --dump -v
-</code></pre></div><h2 id="scripts-to-setup-your-credentials">Scripts to setup your credentials</h2>
+</code></pre>
+<p>It is necessary to load the shared libraries</p>
+<pre><code class="language-shell">sudo ldconfig
+</code></pre>
+<p>Finally, you can test it!</p>
+<pre><code class="language-shell">sudo /usr/local/sbin/openconnect --protocol=gp vpn.mycompany.com --dump -v
+</code></pre>
+<h2 id="scripts-to-setup-your-credentials">Scripts to setup your credentials</h2>
 <p>Here we have are scripts examples to automate your personal credentials and execute your vpn connection automatically</p>
 <p>Create a <code>mycompany-vpn.sh</code> file like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="k">case</span> <span class="nv">$1</span> in
-        disconnect<span class="p">|</span>stop<span class="o">)</span>
-                sudo <span class="nb">kill</span> <span class="k">$(</span>pidof openconnect<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect was disconnected&#34;</span>
-                sudo systemctl restart systemd-resolved.service <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;DNS service was restarted&#34;</span>
-                <span class="p">;;</span>
-        status<span class="o">)</span>
-                <span class="nv">pid</span><span class="o">=</span><span class="k">$(</span>pidof openconnect<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect is running | pidof: </span><span class="nv">$pid</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;the openconnect is stopped&#34;</span>
-                <span class="p">;;</span>
-        *<span class="o">)</span>
-                <span class="nb">echo</span> <span class="s2">&#34;the openconnect is trying to connect...&#34;</span>
-                <span class="nb">echo</span> <span class="k">$(</span>cat ~/mycompany.ocvpn.pass<span class="k">)</span> <span class="p">|</span> sudo openconnect -b --config<span class="o">=</span>/home/jenciso/mycompany.ocvpn
-                <span class="p">;;</span>
-<span class="k">esac</span>
-</code></pre></div><p>A file <code>~/mycompany.ocvpn.pass</code> with your password:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">SuperSecretPass
-</code></pre></div><p>And finally a <code>mycompany.ocvpn</code> with aditional configuration:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">user=myuser
+<pre><code class="language-bash">#!/bin/bash
+
+case $1 in
+        disconnect|stop)
+                sudo kill $(pidof openconnect) &amp;&amp; echo &quot;the openconnect was disconnected&quot;
+                sudo systemctl restart systemd-resolved.service &amp;&amp; echo &quot;DNS service was restarted&quot;
+                ;;
+        status)
+                pid=$(pidof openconnect) &amp;&amp; echo &quot;the openconnect is running | pidof: $pid&quot; || echo &quot;the openconnect is stopped&quot;
+                ;;
+        *)
+                echo &quot;the openconnect is trying to connect...&quot;
+                echo $(cat ~/mycompany.ocvpn.pass) | sudo openconnect -b --config=/home/jenciso/mycompany.ocvpn
+                ;;
+esac
+</code></pre>
+<p>A file <code>~/mycompany.ocvpn.pass</code> with your password:</p>
+<pre><code>SuperSecretPass
+</code></pre>
+<p>And finally a <code>mycompany.ocvpn</code> with aditional configuration:</p>
+<pre><code>user=myuser
 passwd-on-stdin
 servercert=pin-sha256:axzKF1qMn0Ncyh8FIvSyg9SIRuSFfyn7ILk/20roII4=
 protocol=gp
 server=vpn.mycompany.com
-</code></pre></div><p>Run your vpn and test it!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mycomapny-vpn.sh
+</code></pre>
+<p>Run your vpn and test it!</p>
+<pre><code class="language-bash">mycomapny-vpn.sh
 mycomapny-vpn.sh status
 mycomapny-vpn.sh disconnect
-</code></pre></div><h2 id="references">References:</h2>
+</code></pre>
+<h2 id="references">References:</h2>
 <ul>
 <li><a href="https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon">https://serverfault.com/questions/584163/supplying-password-to-openconnect-started-via-start-stop-daemon</a>. Here you will get more ideas to create an init script.</li>
 </ul>

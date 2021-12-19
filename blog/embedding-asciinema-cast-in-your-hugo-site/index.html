@@ -168,58 +168,64 @@
                         <p>Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use <a href="https://github.com/asciinema/asciinema">asciinema</a> to do that.</p>
 <p>It is an excellent tool very useful to dynamic content which give you a good explanation of your process. It will create a compact animation along with their output and formatting with far less overhead, if you compare it with others alternative like a gif or mp4 files.</p>
 <p>You could use asciinema in your Hugo posts and pages by embedding a snippet like this directly as markdown:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://asciinema.org/a/186686.js&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;asciicast-186686&#34;</span> <span class="na">async</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div><p>Although, this method works quietly, you have another method to use asciinema in your blog site without upload the cast file on public, it is embedding the cast file</p>
+<pre><code class="language-html">&lt;script src=&quot;https://asciinema.org/a/186686.js&quot; id=&quot;asciicast-186686&quot; async&gt;&lt;/script&gt;
+</code></pre>
+<p>Although, this method works quietly, you have another method to use asciinema in your blog site without upload the cast file on public, it is embedding the cast file</p>
 <h2 id="setup">Setup</h2>
 <p>I will show you how to setup you hugo to use asciinema. Follow these steps to accomplish it.</p>
 <ul>
 <li>Download the latest <a href="https://github.com/asciinema/asciinema-player/releases">asciinema-player release</a>.</li>
 </ul>
 <p>Using wget:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">BASE_URL</span><span class="o">=</span>https://github.com/asciinema/asciinema-player/releases/download
-wget <span class="nv">$BASE_URL</span>/v2.6.1/asciinema-player.css
-wget <span class="nv">$BASE_URL</span>/v2.6.1/asciinema-player.js
-</code></pre></div><p>Put these files into <code>static/css</code> and <code>static/js</code> folders. Like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ ls -l static/css/asciinema-player.css 
+<pre><code class="language-bash">BASE_URL=https://github.com/asciinema/asciinema-player/releases/download
+wget $BASE_URL/v2.6.1/asciinema-player.css
+wget $BASE_URL/v2.6.1/asciinema-player.js
+</code></pre>
+<p>Put these files into <code>static/css</code> and <code>static/js</code> folders. Like this:</p>
+<pre><code class="language-console">$ ls -l static/css/asciinema-player.css 
 -rw-rw-r-- 1 jenciso jenciso 50722 Fev 21  2018 static/css/asciinema-player.css
 $ ls -l static/js/asciinema-player.js 
 -rw-rw-r-- 1 jenciso jenciso 582376 Fev 21  2018 static/js/asciinema-player.js
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>You need to configure your hugo template files to use css and js files previously downloaded.</li>
 </ul>
 <p>Insert this block in your <code>head</code> template section. In my case it&rsquo;s here: <code>layouts/partials/_shared/head.html</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Site.BaseURL }}css/asciinema-player.css&#34;</span> <span class="p">/&gt;</span>
+<pre><code class="language-html">{{ if .Params.asciinema }}
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{{ .Site.BaseURL }}css/asciinema-player.css&quot; /&gt;
 {{ end }}
-</code></pre></div><p>And before the <code>&lt;/body&gt;</code> tag in your template’s baseof. Ex.: <code>layouts/_default/baseof.html</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">{{ if .Params.asciinema }}
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ .Site.BaseURL }}js/asciinema-player.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre>
+<p>And before the <code>&lt;/body&gt;</code> tag in your template’s baseof. Ex.: <code>layouts/_default/baseof.html</code></p>
+<pre><code class="language-html">{{ if .Params.asciinema }}
+    &lt;script src=&quot;{{ .Site.BaseURL }}js/asciinema-player.js&quot;&gt;&lt;/script&gt;
 {{ end }}
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Create a shortcode</li>
 </ul>
 <p>Create a file <code>layouts/shortcodes/asciinema.html</code> with the this content:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">asciinema</span><span class="o">-</span><span class="n">player</span>
-        <span class="n">src</span><span class="o">=</span><span class="s2">&#34;/casts/{{ with .Get &#34;</span><span class="n">key</span><span class="s2">&#34; }}{{ . }}{{ end }}.cast&#34;</span>
-        <span class="n">cols</span><span class="o">=</span><span class="s2">&#34;{{ if .Get &#34;</span><span class="n">cols</span><span class="s2">&#34; }}{{ .Get &#34;</span><span class="n">cols</span><span class="s2">&#34; }}{{ else }}640{{ end }}&#34;</span>
-        <span class="n">rows</span><span class="o">=</span><span class="s2">&#34;{{ if .Get &#34;</span><span class="n">rows</span><span class="s2">&#34; }}{{ .Get &#34;</span><span class="n">rows</span><span class="s2">&#34; }}{{ else }}10{{ end }}&#34;</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;autoplay&#34;</span> <span class="p">}}</span><span class="n">autoplay</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">autoplay</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;preload&#34;</span> <span class="p">}}</span><span class="n">preload</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">preload</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;loop&#34;</span> <span class="p">}}</span><span class="n">loop</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">loop</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="n">start</span><span class="o">-</span><span class="n">at</span><span class="o">=</span><span class="s2">&#34;{{ if .Get &#34;</span><span class="n">start</span><span class="o">-</span><span class="n">at</span><span class="s2">&#34; }}{{ .Get &#34;</span><span class="n">start</span><span class="o">-</span><span class="n">at</span><span class="s2">&#34; }}{{ else }}0{{ end }}&#34;</span>
-        <span class="n">speed</span><span class="o">=</span><span class="s2">&#34;{{ if .Get &#34;</span><span class="n">speed</span><span class="s2">&#34; }}{{ .Get &#34;</span><span class="n">speed</span><span class="s2">&#34; }}{{ else }}1{{ end }}&#34;</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;idle-time-limit&#34;</span> <span class="p">}}</span><span class="n">idle</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">limit</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">idle</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">limit</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;poster&#34;</span> <span class="p">}}</span><span class="n">poster</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">poster</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;font-size&#34;</span> <span class="p">}}</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;theme&#34;</span> <span class="p">}}</span><span class="n">theme</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">theme</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;title&#34;</span> <span class="p">}}</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">title</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;author&#34;</span> <span class="p">}}</span><span class="n">author</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">author</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;author-url&#34;</span> <span class="p">}}</span><span class="n">author</span><span class="o">-</span><span class="n">url</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">author</span><span class="o">-</span><span class="n">url</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Get</span> <span class="s2">&#34;author-img-url&#34;</span> <span class="p">}}</span><span class="n">author</span><span class="o">-</span><span class="n">img</span><span class="o">-</span><span class="n">url</span><span class="o">=</span><span class="s2">&#34;{{ .Get &#34;</span><span class="n">author</span><span class="o">-</span><span class="n">img</span><span class="o">-</span><span class="n">url</span><span class="s2">&#34; }}&#34;</span><span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-    <span class="o">&gt;&lt;/</span><span class="n">asciinema</span><span class="o">-</span><span class="n">player</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</code></pre></div><blockquote>
+<pre><code class="language-python">&lt;p&gt;
+    &lt;asciinema-player
+        src=&quot;/casts/{{ with .Get &quot;key&quot; }}{{ . }}{{ end }}.cast&quot;
+        cols=&quot;{{ if .Get &quot;cols&quot; }}{{ .Get &quot;cols&quot; }}{{ else }}640{{ end }}&quot;
+        rows=&quot;{{ if .Get &quot;rows&quot; }}{{ .Get &quot;rows&quot; }}{{ else }}10{{ end }}&quot;
+        {{ if .Get &quot;autoplay&quot; }}autoplay=&quot;{{ .Get &quot;autoplay&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;preload&quot; }}preload=&quot;{{ .Get &quot;preload&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;loop&quot; }}loop=&quot;{{ .Get &quot;loop&quot; }}&quot;{{ end }}
+        start-at=&quot;{{ if .Get &quot;start-at&quot; }}{{ .Get &quot;start-at&quot; }}{{ else }}0{{ end }}&quot;
+        speed=&quot;{{ if .Get &quot;speed&quot; }}{{ .Get &quot;speed&quot; }}{{ else }}1{{ end }}&quot;
+        {{ if .Get &quot;idle-time-limit&quot; }}idle-time-limit=&quot;{{ .Get &quot;idle-time-limit&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;poster&quot; }}poster=&quot;{{ .Get &quot;poster&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;font-size&quot; }}font-size=&quot;{{ .Get &quot;font-size&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;theme&quot; }}theme=&quot;{{ .Get &quot;theme&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;title&quot; }}title=&quot;{{ .Get &quot;title&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;author&quot; }}author=&quot;{{ .Get &quot;author&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;author-url&quot; }}author-url=&quot;{{ .Get &quot;author-url&quot; }}&quot;{{ end }}
+        {{ if .Get &quot;author-img-url&quot; }}author-img-url=&quot;{{ .Get &quot;author-img-url&quot; }}&quot;{{ end }}
+    &gt;&lt;/asciinema-player&gt;
+&lt;/p&gt;
+</code></pre>
+<blockquote>
 <p>The fields map directly to those documented <a href="https://github.com/asciinema/asciinema-player#asciinema-player-element-attributes">here</a>. All fields are supported, but only the key is required.</p>
 </blockquote>
 <h3 id="testing">Testing</h3>
@@ -227,19 +233,21 @@ $ ls -l static/js/asciinema-player.js
 <ul>
 <li>You can now embed asciinema casts in your Hugo posts and pages with the following shortcode:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="o">{{</span>&lt; asciinema <span class="nv">key</span><span class="o">=</span><span class="s2">&#34;demo-cast&#34;</span> <span class="nv">rows</span><span class="o">=</span><span class="s2">&#34;10&#34;</span> <span class="nv">preload</span><span class="o">=</span><span class="s2">&#34;1&#34;</span> &gt;<span class="o">}}</span>
-</code></pre></div><ul>
+<pre><code class="language-sh">{{&lt; asciinema key=&quot;demo-cast&quot; rows=&quot;10&quot; preload=&quot;1&quot; &gt;}}
+</code></pre>
+<ul>
 <li>You also need to include <code>asciinema = true</code> in the frontmatter for you post too, to make sure the javascript and css assets are included. Ex:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
-</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Kubernetes Backup - ARK </span><span class="w">
-</span><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">Kubernetes backup process using ark</span><span class="w">
-</span><span class="w"></span><span class="nt">asciinema</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="l">kubernetes</span><span class="w">
-</span><span class="w">  </span>- <span class="l">backup</span><span class="w">
-</span><span class="w"></span><span class="nn">---</span><span class="w">
-</span></code></pre></div><h3 id="result">Result</h3>
+<pre><code class="language-yaml">---
+title: Kubernetes Backup - ARK 
+description: Kubernetes backup process using ark
+asciinema: true
+tags:
+  - kubernetes
+  - backup
+---
+</code></pre>
+<h3 id="result">Result</h3>
 <p>Finally, the result should show something like this:</p>
 <p>
     <asciinema-player

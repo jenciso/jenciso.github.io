@@ -167,17 +167,20 @@
 <ol>
 <li>In your local machine, install the sqlite3 package</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install sqlite3
-</code></pre></div><ol start="2">
+<pre><code class="language-shell">sudo apt-get install sqlite3
+</code></pre>
+<ol start="2">
 <li>Login into your sql database</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo sqlite3 /var/lib/grafana/grafana.db
-</code></pre></div><ol start="3">
+<pre><code class="language-shell">sudo sqlite3 /var/lib/grafana/grafana.db
+</code></pre>
+<ol start="3">
 <li>Reset the admin password using SQL update (the new password will be <code>admin</code>)</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;F3FAxVm33R&#39;</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span><span class="w">
-</span><span class="w"></span><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="n">exit</span><span class="w">
-</span></code></pre></div><p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
+<pre><code class="language-sql">sqlite&gt; update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin';
+sqlite&gt; .exit
+</code></pre>
+<p>Now, you could login in your grafana web interface using <code>username: admin</code> and <code>password: admin</code></p>
 
                     </div>
                     

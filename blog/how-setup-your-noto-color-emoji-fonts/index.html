@@ -174,41 +174,45 @@
 <p>Then, copy the ttf file into your <code>.fonts</code> dir</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads
+<pre><code class="language-shell">cd ~/Downloads
 unzip NotoColorEmoji-unhinted.zip
 mkdir ~/.fonts
 mv NotoColorEmoji.ttf ~/.fonts
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Edit the <code>.fonts.conf</code> configuration file</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vim ~/.fonts.conf
-</code></pre></div><ul>
+<pre><code class="language-shell">vim ~/.fonts.conf
+</code></pre>
+<ul>
 <li>And put the following content</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
-<span class="cp">&lt;!DOCTYPE fontconfig SYSTEM &#34;fonts.dtd&#34;&gt;</span>
-<span class="nt">&lt;fontconfig&gt;</span>
-   <span class="nt">&lt;alias&gt;</span>
-     <span class="nt">&lt;family&gt;</span>sans-serif<span class="nt">&lt;/family&gt;</span>
-     <span class="nt">&lt;prefer&gt;</span>
-       <span class="nt">&lt;family&gt;</span>Noto Color Emoji<span class="nt">&lt;/family&gt;</span>
-       <span class="nt">&lt;family&gt;</span>Noto Emoji<span class="nt">&lt;/family&gt;</span>
-     <span class="nt">&lt;/prefer&gt;</span>
-   <span class="nt">&lt;/alias&gt;</span>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
+&lt;fontconfig&gt;
+   &lt;alias&gt;
+     &lt;family&gt;sans-serif&lt;/family&gt;
+     &lt;prefer&gt;
+       &lt;family&gt;Noto Color Emoji&lt;/family&gt;
+       &lt;family&gt;Noto Emoji&lt;/family&gt;
+     &lt;/prefer&gt;
+   &lt;/alias&gt;
 
-   <span class="nt">&lt;alias&gt;</span>
-     <span class="nt">&lt;family&gt;</span>serif<span class="nt">&lt;/family&gt;</span>
-     <span class="nt">&lt;prefer&gt;</span>
-       <span class="nt">&lt;family&gt;</span>Noto Color Emoji<span class="nt">&lt;/family&gt;</span>
-       <span class="nt">&lt;family&gt;</span>Noto Emoji<span class="nt">&lt;/family&gt;</span>
-     <span class="nt">&lt;/prefer&gt;</span>
-   <span class="nt">&lt;/alias&gt;</span>
-<span class="nt">&lt;/fontconfig&gt;</span>
-</code></pre></div><ul>
+   &lt;alias&gt;
+     &lt;family&gt;serif&lt;/family&gt;
+     &lt;prefer&gt;
+       &lt;family&gt;Noto Color Emoji&lt;/family&gt;
+       &lt;family&gt;Noto Emoji&lt;/family&gt;
+     &lt;/prefer&gt;
+   &lt;/alias&gt;
+&lt;/fontconfig&gt;
+</code></pre>
+<ul>
 <li>You need to rebuild the cache fonts to take effect</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo fc-cache -fv
-</code></pre></div><blockquote>
+<pre><code class="language-shell">sudo fc-cache -fv
+</code></pre>
+<blockquote>
 <p>In chrome web browser you need to restart that application. For your Gnome Terminal, some characters would be a little big, so you should setup your Profile Terminal to specify the specific size font to use, in my case <code>size 13</code></p>
 </blockquote>
 

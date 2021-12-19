@@ -171,11 +171,12 @@
 <p>For ubuntu</p>
 </blockquote>
 <p>Uninstall <code>systemd-resolved</code> package. It isn&rsquo;t necessary to have.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl disable systemd-resolved
+<pre><code class="language-shell">sudo systemctl disable systemd-resolved
 sudo systemctl stop systemd-resolved
 sudo apt-get remove systemd-resolved
-</code></pre></div><p>Disabled <code>dnsmasq</code> in the NetworkManager configuration. Ensure to have the <code>dns=none</code> line</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[main]
+</code></pre>
+<p>Disabled <code>dnsmasq</code> in the NetworkManager configuration. Ensure to have the <code>dns=none</code> line</p>
+<pre><code>[main]
 dns=none
 plugins=ifupdown,keyfile
 
@@ -184,32 +185,40 @@ managed=false
 
 [device]
 wifi.scan-rand-mac-address=no
-</code></pre></div><p>Restart NetworkManager</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo systemctl restart NetworkManager
-</code></pre></div><h3 id="install">Install</h3>
+</code></pre>
+<p>Restart NetworkManager</p>
+<pre><code class="language-shell">sudo systemctl restart NetworkManager
+</code></pre>
+<h3 id="install">Install</h3>
 <p>Remove the current <code>/etc/resolvconf</code> file and install dnsmasq</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">unlink /etc/resolv.conf
+<pre><code class="language-shell">unlink /etc/resolv.conf
 sudo apt-get install dnsmasq
-</code></pre></div><p>Config your upstream dns</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;nameserver 1.1.1.1&#34;</span> <span class="p">|</span> sudo tee /etc/resolv.dnsmaq
-<span class="nb">echo</span> <span class="s2">&#34;nameserver 8.8.8.8&#34;</span> <span class="p">|</span> sudo tee -a /etc/resolv.dnsmaq
-</code></pre></div><p>Config your <code>dnsmasq.conf</code> file. Use a cache-size parameter:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo tee /etc/dnsmasq.conf <span class="s">&lt;&lt; EOF
-</span><span class="s">listen-address=127.0.0.1
-</span><span class="s">resolv-file=/etc/resolv.dnsmasq
-</span><span class="s">cache-size=2048
-</span><span class="s">EOF</span>
-</code></pre></div><p>Use the dnsmasq as main dns provider</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo &#34;nameserver 127.0.0.1&#34; | sudo tee /etc/resolv.conf
-</code></pre></div><p>Restart dnsmasq service</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemctl restart dnsmasq
-systemctl <span class="nb">enable</span> dnsmasq
-</code></pre></div><h2 id="test">Test</h2>
+</code></pre>
+<p>Config your upstream dns</p>
+<pre><code class="language-shell">echo &quot;nameserver 1.1.1.1&quot; | sudo tee /etc/resolv.dnsmaq
+echo &quot;nameserver 8.8.8.8&quot; | sudo tee -a /etc/resolv.dnsmaq
+</code></pre>
+<p>Config your <code>dnsmasq.conf</code> file. Use a cache-size parameter:</p>
+<pre><code class="language-shell">sudo tee /etc/dnsmasq.conf &lt;&lt; EOF
+listen-address=127.0.0.1
+resolv-file=/etc/resolv.dnsmasq
+cache-size=2048
+EOF
+</code></pre>
+<p>Use the dnsmasq as main dns provider</p>
+<pre><code>echo &quot;nameserver 127.0.0.1&quot; | sudo tee /etc/resolv.conf
+</code></pre>
+<p>Restart dnsmasq service</p>
+<pre><code class="language-shell">systemctl restart dnsmasq
+systemctl enable dnsmasq
+</code></pre>
+<h2 id="test">Test</h2>
 <p>You should get <code>0 msec</code> in the next dns query.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ dig www.google.com <span class="p">|</span> grep <span class="s2">&#34;Query time&#34;</span>
-<span class="p">;;</span> Query time: <span class="m">0</span> msec
+<pre><code class="language-shell">$ dig www.google.com | grep &quot;Query time&quot;
+;; Query time: 0 msec
 $
-</code></pre></div><h2 id="references">References</h2>
+</code></pre>
+<h2 id="references">References</h2>
 <p><a href="https://vdemir.github.io/app/2018/06/16/Dnsmasq.html">https://vdemir.github.io/app/2018/06/16/Dnsmasq.html</a>
 <a href="https://fedoramagazine.org/using-the-networkmanagers-dnsmasq-plugin/">https://fedoramagazine.org/using-the-networkmanagers-dnsmasq-plugin/</a></p>
 

@@ -14,11 +14,11 @@
 <meta name="twitter:image" content="https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/join-centos-ad-cover.png"/>
 <meta name="twitter:title" content="How To Join CentOS Linux To An Active Directory Domain"/>
 <meta name="twitter:description" content="Intro These steps were tested using Active Directory on Windows 2008 R2 and Windows 2012 R2.
-Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python  Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv."/>
+Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python   Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv."/>
 
 	<meta property="og:title" content="How To Join CentOS Linux To An Active Directory Domain" />
 <meta property="og:description" content="Intro These steps were tested using Active Directory on Windows 2008 R2 and Windows 2012 R2.
-Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python  Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv." />
+Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python   Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/" /><meta property="og:image" content="https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/join-centos-ad-cover.png"/><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2019-12-29T00:00:00+00:00" />
@@ -171,25 +171,28 @@ Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob o
 <ul>
 <li>Install the packages needed</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \
+<pre><code class="language-console">yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \
   samba-common samba-common-tools krb5-workstation \
   openldap-clients policycoreutils-python
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Ensure to use your AD as domain server</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]#  cat /etc/resolv.conf
+<pre><code class="language-console">[root@centos7 ~]#  cat /etc/resolv.conf
 search example.com
 nameserver 192.168.1.2
-</code></pre></div><h2 id="joing-to-windows-domain">Joing to Windows Domain</h2>
+</code></pre>
+<h2 id="joing-to-windows-domain">Joing to Windows Domain</h2>
 <ul>
 <li>Using realm command to join into the domain</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# realm join --user=administrator example.com
+<pre><code class="language-console">[root@centos7 ~]# realm join --user=administrator example.com
 Password for administrator:
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Look into the CentOS machine</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# realm list
+<pre><code class="language-console">[root@centos7 ~]# realm list
 example.com
   type: kerberos
   realm-name: EXAMPLE.COM
@@ -204,46 +207,53 @@ example.com
   required-package: samba-common-tools
   login-formats: %U@example.com
   login-policy: allow-realm-logins
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Look the centOS machine in the Active Directory</li>
 </ul>
 <p><img src="active-directory-users-and-computers.png" alt="ad"></p>
 <ul>
 <li>Change the way to get the users in the <code>sssd.conf</code> config file. Modify these lines</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">use_fully_qualified_names</span> <span class="p">=</span> <span class="nx">True</span>
-<span class="nx">fallback_homedir</span> <span class="p">=</span> <span class="err">/</span><span class="nx">home</span><span class="err">/%</span><span class="nx">u</span><span class="err">@%</span><span class="nx">d</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# systemctl restart sssd
-</code></pre></div><ul>
+<pre><code class="language-toml">use_fully_qualified_names = True
+fallback_homedir = /home/%u@%d
+</code></pre>
+<pre><code class="language-console">[root@centos7 ~]# systemctl restart sssd
+</code></pre>
+<ul>
 <li>Testing this modification</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# id administrator
+<pre><code class="language-console">[root@centos7 ~]# id administrator
 id: administrator: no such user
 
 [root@centos7 ~]# id administrator@example.com
 uid=1829600500(administrator@example.com) gid=1829600513(domain users@example.com) groups=1829600513(domain users@example.com),1829600512(domain
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Enable <code>sudoers</code> group</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# cat /etc/sudoers.d/sudoers
+<pre><code class="language-console">[root@centos7 ~]# cat /etc/sudoers.d/sudoers
 %sudoers    ALL=(ALL)       ALL
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Create a user <code>test1</code> and add to group <code>sudoers</code></li>
 </ul>
 <p><img src="group-properties.png" alt="group"></p>
 <ul>
 <li>Testing</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[user1@centos7 ~]$ sudo su
+<pre><code class="language-console">[user1@centos7 ~]$ sudo su
 [sudo] password for user1:
 [root@centos7 user1]#
 [root@centos7 user1]# whoami
 root
-</code></pre></div><ul>
+</code></pre>
+<ul>
 <li>Leaving the domain</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@centos7 ~]# realm leave example.com
-</code></pre></div><p>Source: <a href="https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/">https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/</a></p>
+<pre><code class="language-console">[root@centos7 ~]# realm leave example.com
+</code></pre>
+<p>Source: <a href="https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/">https://www.rootusers.com/how-to-join-centos-linux-to-an-active-directory-domain/</a></p>
 
                     </div>
                     

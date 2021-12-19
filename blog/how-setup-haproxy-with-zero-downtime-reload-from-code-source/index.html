@@ -168,71 +168,79 @@
 <p>Follow the next steps to install a new version of haproxy, in this case the release 1.8.14, it include the reload daemon when the config file (haproxy.cfg) need to be changed.</p>
 <h3 id="steps">Steps</h3>
 <p>Download the compatible haproxy version</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">HAPROXY_MAJOR</span><span class="o">=</span>1.8
-<span class="nb">export</span> <span class="nv">HAPROXY_VERSION</span><span class="o">=</span>1.8.14
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget -O haproxy.tar.gz <span class="se">\
-</span><span class="se"></span> <span class="s2">&#34;https://www.haproxy.org/download/</span><span class="si">${</span><span class="nv">HAPROXY_MAJOR</span><span class="si">}</span><span class="s2">/src/haproxy-</span><span class="si">${</span><span class="nv">HAPROXY_VERSION</span><span class="si">}</span><span class="s2">.tar.gz&#34;</span>
-</code></pre></div><p>Installing the prerequisites packages to compile</p>
+<pre><code class="language-shell">export HAPROXY_MAJOR=1.8
+export HAPROXY_VERSION=1.8.14
+</code></pre>
+<pre><code class="language-shell">wget -O haproxy.tar.gz \
+ &quot;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
+</code></pre>
+<p>Installing the prerequisites packages to compile</p>
 <p>For ubuntu 16.04:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y ca-certificates gcc <span class="se">\
-</span><span class="se"></span>  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget <span class="se">\
-</span><span class="se"></span>  zlib1g-dev libsystemd-dev
-</code></pre></div><p>For Centos 7.5:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables <span class="se">\
-</span><span class="se"></span>  openssl openssl-devel openssl-libs systemd-devel
-</code></pre></div><p>Compiling</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">tar xvfz haproxy.tar.gz
-<span class="nb">cd</span> haproxy-1.8.14/
-</code></pre></div><p>For ubuntu:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
-</span><span class="se"></span>  <span class="nv">USE_LUA</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
+<pre><code class="language-shell">sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
+  libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget \
+  zlib1g-dev libsystemd-dev
+</code></pre>
+<p>For Centos 7.5:</p>
+<pre><code class="language-shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
+  openssl openssl-devel openssl-libs systemd-devel
+</code></pre>
+<p>Compiling</p>
+<pre><code class="language-shell">tar xvfz haproxy.tar.gz
+cd haproxy-1.8.14/
+</code></pre>
+<p>For ubuntu:</p>
+<pre><code class="language-shell">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+  USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 make install
-</code></pre></div><p>For Centos 7.5:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make <span class="nv">TARGET</span><span class="o">=</span>linux2628 <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="se">\
-</span><span class="se"></span>  <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
+</code></pre>
+<p>For Centos 7.5:</p>
+<pre><code class="language-shell">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+  USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 make install
-</code></pre></div><p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">HA-Proxy version 1.8.14-52e4d43 2018/09/20
+</code></pre>
+<p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
+<pre><code class="language-shell">HA-Proxy version 1.8.14-52e4d43 2018/09/20
 Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :
-  <span class="nv">TARGET</span>  <span class="o">=</span> linux2628
-  <span class="nv">CPU</span>     <span class="o">=</span> generic
-  <span class="nv">CC</span>      <span class="o">=</span> gcc
-  <span class="nv">CFLAGS</span>  <span class="o">=</span> -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
-  <span class="nv">OPTIONS</span> <span class="o">=</span> <span class="nv">USE_GETADDRINFO</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_ZLIB</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_REGPARM</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_OPENSSL</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_LUA</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_SYSTEMD</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_PCRE_JIT</span><span class="o">=</span><span class="m">1</span> <span class="nv">USE_NS</span><span class="o">=</span><span class="m">1</span>
+  TARGET  = linux2628
+  CPU     = generic
+  CC      = gcc
+  CFLAGS  = -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement -fwrapv -fno-strict-overflow -Wno-unused-label
+  OPTIONS = USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 
 Default settings :
-  <span class="nv">maxconn</span> <span class="o">=</span> 2000, <span class="nv">bufsize</span> <span class="o">=</span> 16384, <span class="nv">maxrewrite</span> <span class="o">=</span> 1024, <span class="nv">maxpollevents</span> <span class="o">=</span> <span class="m">200</span>
+  maxconn = 2000, bufsize = 16384, maxrewrite = 1024, maxpollevents = 200
 
-Built with OpenSSL version : OpenSSL 1.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
-Running on OpenSSL version : OpenSSL 1.0.2g  <span class="m">1</span> Mar <span class="m">2016</span>
+Built with OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
+Running on OpenSSL version : OpenSSL 1.0.2g  1 Mar 2016
 OpenSSL library supports TLS extensions : yes
 OpenSSL library supports SNI : yes
 OpenSSL library supports : TLSv1.0 TLSv1.1 TLSv1.2
 Built with Lua version : Lua 5.3.1
 Built with transparent proxy support using: IP_TRANSPARENT IPV6_TRANSPARENT IP_FREEBIND
-Encrypted password support via crypt<span class="o">(</span>3<span class="o">)</span>: yes
+Encrypted password support via crypt(3): yes
 Built with multi-threading support.
 Built with PCRE version : 8.38 2015-11-23
 Running on PCRE version : 8.38 2015-11-23
 PCRE library supports JIT : yes
 Built with zlib version : 1.2.8
 Running on zlib version : 1.2.8
-Compression algorithms supported : identity<span class="o">(</span><span class="s2">&#34;identity&#34;</span><span class="o">)</span>, deflate<span class="o">(</span><span class="s2">&#34;deflate&#34;</span><span class="o">)</span>, raw-deflate<span class="o">(</span><span class="s2">&#34;deflate&#34;</span><span class="o">)</span>, gzip<span class="o">(</span><span class="s2">&#34;gzip&#34;</span><span class="o">)</span>
+Compression algorithms supported : identity(&quot;identity&quot;), deflate(&quot;deflate&quot;), raw-deflate(&quot;deflate&quot;), gzip(&quot;gzip&quot;)
 Built with network namespace support.
 
 Available polling systems :
-      epoll : <span class="nv">pref</span><span class="o">=</span>300,  <span class="nb">test</span> result OK
-       poll : <span class="nv">pref</span><span class="o">=</span>200,  <span class="nb">test</span> result OK
-     <span class="k">select</span> : <span class="nv">pref</span><span class="o">=</span>150,  <span class="nb">test</span> result OK
-Total: <span class="m">3</span> <span class="o">(</span><span class="m">3</span> usable<span class="o">)</span>, will use epoll.
+      epoll : pref=300,  test result OK
+       poll : pref=200,  test result OK
+     select : pref=150,  test result OK
+Total: 3 (3 usable), will use epoll.
 
 Available filters :
-	<span class="o">[</span>SPOE<span class="o">]</span> spoe
-	<span class="o">[</span>COMP<span class="o">]</span> compression
-	<span class="o">[</span>TRACE<span class="o">]</span> trace
-</code></pre></div><hr>
+	[SPOE] spoe
+	[COMP] compression
+	[TRACE] trace
+</code></pre>
+<hr>
 <h2 id="references">References:</h2>
 <p><a href="https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/">https://fabianlee.org/2017/10/16/haproxy-zero-downtime-reloads-with-haproxy-1-8-on-ubuntu-16-04-with-systemd/</a></p>
 <p><a href="https://midiroot.com/post/haproxy-getting-started/">https://midiroot.com/post/haproxy-getting-started/</a></p>
