@@ -9,7 +9,7 @@ License: https://www.wowthemes.net/freebies-license/
 }
 
 a {
-    color: #00ab6b;
+    color: #1A8917;
     transition: all 0.2s;
 }
 
@@ -28,7 +28,7 @@ pre {
     font-size: 14.5px;
     white-space: pre;
     overflow: auto;
-    background: #f7f7f7;
+    background: #f0f0f0;
     border-radius: 3px;
     line-height: 1.6;
     color: #333;
@@ -305,8 +305,10 @@ span.post-read-more a:hover {
 }
 
 .mainheading h1.posttitle {
-    font-weight: 999;
-    margin-bottom: 1rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.7rem;
+    font-weight: 930;
+    margin-bottom: 2rem;
 }
 
 .footer {
@@ -329,9 +331,17 @@ span.post-read-more a:hover {
     font-family: Merriweather, Georgia, serif;
     font-weight: 400;
     font-size: 1.1rem;
-    line-height: 2.0;
+    line-height: 1.85;
     color: #222222;
 }
+
+.article-post a {
+    color: #222222;
+    text-decoration: underline;
+    text-decoration-thickness: 0.18rem;
+    transition: all 0.2s;
+}
+
 
 blockquote {
     border-left: 5px solid #000;
@@ -686,7 +696,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .article-post .h1,
@@ -702,6 +712,7 @@ h6 {
 .article-post h5,
 .article-post h6 {
     font-weight: 900;
+    margin-top: 3.0rem;
     margin-bottom: 1.5rem;
 }
 
@@ -886,9 +897,13 @@ iframe {
 }
 
 p code {
-    font-size: 87.5%;
     color: #333;
     word-break: break-word;
-    padding: .25em .4em .25em;
+    padding: .25em .4em .25em .4em;
+    background-color: #f0f0f0;
+}
+
+code {
+    color: #333;
     background-color: #f0f0f0;
 }

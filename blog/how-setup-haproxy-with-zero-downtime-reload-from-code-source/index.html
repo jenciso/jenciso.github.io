@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="generator" content="Hugo 0.88.1" />
 	
-	<link rel="icon" href="/images/logo.png">
+	<link rel="icon" href="/images/logo-verde.png">
 	
 	<title>How setup Haproxy with zero downtime reload from code source | Tech-Blog</title>
 	
@@ -45,7 +45,7 @@
         <a class="navbar-brand" href="https://jenciso.github.io/">
 
             
-            <img src="/images/logo.png" alt="logo">
+            <img src="/images/logo-verde.png" alt="logo">
             
         </a>
         
@@ -128,6 +128,8 @@
                                 
                 <div class="col-md-9 flex-first flex-md-unordered">
                     <div class="mainheading">
+                        
+                        <h1 class="posttitle">How setup Haproxy with zero downtime reload from code source</h1>
                         	
                         
                         
@@ -150,8 +152,6 @@
                         	
                         
                                                 
-                        
-                        <h1 class="posttitle">How setup Haproxy with zero downtime reload from code source</h1> 
                     </div>
 
                     
@@ -168,38 +168,39 @@
 <p>Follow the next steps to install a new version of haproxy, in this case the release 1.8.14, it include the reload daemon when the config file (haproxy.cfg) need to be changed.</p>
 <h3 id="steps">Steps</h3>
 <p>Download the compatible haproxy version</p>
-<pre><code class="language-shell">export HAPROXY_MAJOR=1.8
+<pre><code>export HAPROXY_MAJOR=1.8
 export HAPROXY_VERSION=1.8.14
+export HAPROXY_URL=https://www.haproxy.org
 </code></pre>
-<pre><code class="language-shell">wget -O haproxy.tar.gz \
- &quot;https://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
+<pre><code>wget -O haproxy.tar.gz \
+ &quot;$HAPROXY_URL=/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz&quot;
 </code></pre>
 <p>Installing the prerequisites packages to compile</p>
 <p>For ubuntu 16.04:</p>
-<pre><code class="language-shell">sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
+<pre><code>sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates gcc \
   libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make wget \
   zlib1g-dev libsystemd-dev
 </code></pre>
 <p>For Centos 7.5:</p>
-<pre><code class="language-shell">yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
+<pre><code>yum install -y inotify-tools wget tar gzip make gcc perl pcre-devel zlib-devel iptables \
   openssl openssl-devel openssl-libs systemd-devel
 </code></pre>
 <p>Compiling</p>
-<pre><code class="language-shell">tar xvfz haproxy.tar.gz
+<pre><code>tar xvfz haproxy.tar.gz
 cd haproxy-1.8.14/
 </code></pre>
 <p>For ubuntu:</p>
-<pre><code class="language-shell">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
   USE_LUA=1 USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 make install
 </code></pre>
 <p>For Centos 7.5:</p>
-<pre><code class="language-shell">make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
+<pre><code>make TARGET=linux2628 USE_GETADDRINFO=1 USE_ZLIB=1 USE_REGPARM=1 USE_OPENSSL=1 \
   USE_SYSTEMD=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_NS=1
 make install
 </code></pre>
 <p>During the compilation process, you could verify the compile options passed via <code>make</code>, so you have to get the <code>USE_SYSTEMD=1</code> via the stdout log, like this:</p>
-<pre><code class="language-shell">HA-Proxy version 1.8.14-52e4d43 2018/09/20
+<pre><code>HA-Proxy version 1.8.14-52e4d43 2018/09/20
 Copyright 2000-2018 Willy Tarreau &lt;willy@haproxy.org&gt;
 
 Build options :

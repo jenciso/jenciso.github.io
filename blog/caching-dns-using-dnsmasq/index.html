@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="generator" content="Hugo 0.88.1" />
 	
-	<link rel="icon" href="/images/logo.png">
+	<link rel="icon" href="/images/logo-verde.png">
 	
 	<title>Using dnsmasq with networkManager in Ubuntu | Tech-Blog</title>
 	
@@ -45,7 +45,7 @@
         <a class="navbar-brand" href="https://jenciso.github.io/">
 
             
-            <img src="/images/logo.png" alt="logo">
+            <img src="/images/logo-verde.png" alt="logo">
             
         </a>
         
@@ -128,6 +128,8 @@
                                 
                 <div class="col-md-9 flex-first flex-md-unordered">
                     <div class="mainheading">
+                        
+                        <h1 class="posttitle">Using dnsmasq with networkManager in Ubuntu</h1>
                         	
                         
                         
@@ -150,8 +152,6 @@
                         	
                         
                                                 
-                        
-                        <h1 class="posttitle">Using dnsmasq with networkManager in Ubuntu</h1> 
                     </div>
 
                     
@@ -176,7 +176,7 @@ sudo systemctl stop systemd-resolved
 sudo apt-get remove systemd-resolved
 </code></pre>
 <p>Disabled <code>dnsmasq</code> in the NetworkManager configuration. Ensure to have the <code>dns=none</code> line</p>
-<pre><code>[main]
+<pre><code class="language-ini">[main]
 dns=none
 plugins=ifupdown,keyfile
 
