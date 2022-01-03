@@ -34,8 +34,9 @@
 
         
 
-<script src="/js/prism.js"></script>
-<link rel="stylesheet" href="/css/prism.css" />
+<link rel="stylesheet" href="/css/stackoverflow-light.min.css">
+<script src="/js/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </head>
 <body>
@@ -169,7 +170,7 @@
 <h2 id="build-your-openconnect-to-use-global-protect-protocol">Build your openconnect to use Global Protect Protocol</h2>
 <p>The prerequisites are install libraries and packages needed to compile it.</p>
 <p>For Fedora users the packages needed are:</p>
-<pre><code class="language-shell">sudo dnf -f install libxml2-devel \
+<pre><code class="language-console">sudo dnf -f install libxml2-devel \
   zlib-devel \
   openssl-devel \
   pkg-config \

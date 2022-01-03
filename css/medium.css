@@ -23,9 +23,9 @@ pre {
     box-sizing: border-box;
     border: #E3EDF3 0px solid;
     width: 100%;
-    padding: 15px;
+    padding: 0px;
     font-family: monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New";
-    font-size: 14.5px;
+    font-size: 13px;
     white-space: pre;
     overflow: auto;
     background: #f0f0f0;

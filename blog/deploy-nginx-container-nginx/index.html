@@ -36,8 +36,9 @@
         <link rel="stylesheet" type="text/css" href="https://jenciso.github.io/css/asciinema-player.css" />
         
 
-<script src="/js/prism.js"></script>
-<link rel="stylesheet" href="/css/prism.css" />
+<link rel="stylesheet" href="/css/stackoverflow-light.min.css">
+<script src="/js/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 
 </head>
 <body>
@@ -177,7 +178,7 @@
 </li>
 </ul>
 <h3 id="define-a-provider-to-use">Define a provider to use</h3>
-<pre><code class="language-shell">cat &gt; config.tf &lt;&lt; EOF
+<pre><code class="language-bash">cat &gt; config.tf &lt;&lt; EOF
 provider &quot;docker&quot; {
   host = &quot;unix:///var/run/docker.sock&quot;
 }
@@ -192,14 +193,14 @@ EOF
 <blockquote>
 <p>In our case, type is <code>docker_image</code> and name as <code>nginx</code>.</p>
 </blockquote>
-<pre><code class="language-shell">cat &gt;&gt; config.tf &lt;&lt; EOF
+<pre><code class="language-bash">cat &gt;&gt; config.tf &lt;&lt; EOF
 resource &quot;docker_image&quot; &quot;nginx&quot; {
   name = &quot;nginx:1.11-alpine&quot;
 }
 EOF
 </code></pre>
 <p>Other resource type is <code>docker_container</code> name as <code>nginx-server</code>. Within the block we set the resource parameters. We can reference other resources, such as a the <code>image</code>.</p>
-<pre><code class="language-shell">cat &gt;&gt; config.tf &lt;&lt; EOF
+<pre><code class="language-bash">cat &gt;&gt; config.tf &lt;&lt; EOF
 resource &quot;docker_container&quot; &quot;nginx-server&quot; {
   name = &quot;nginx-server-1&quot;
   image = docker_image.nginx.latest
@@ -221,17 +222,17 @@ EOF
 <p>The plan can be saved using -out.</p>
 </blockquote>
 <p>Initializing our project</p>
-<pre><code class="language-shell">terraform init
+<pre><code class="language-sh">terraform init
 </code></pre>
 <p>And then, we plan our state desired</p>
-<pre><code class="language-shell">terraform plan -out config.tfplan
+<pre><code class="language-sh">terraform plan -out config.tfplan
 </code></pre>
 <blockquote>
 <p>The output of the command indicates the changes. In this case, you&rsquo;ll see a <em>dockercontainer.nginx-server</em> and <em>dockerimage.nginx</em> to highlight adding the new resources.
 Finally a summary of Plan: <code>2 to add, 0 to change, 0 to destroy</code>.</p>
 </blockquote>
 <p>To create some data for our containers, we added some content:</p>
-<pre><code class="language-shell">mkdir -p /tmp/tutorial/www
+<pre><code class="language-console">mkdir -p /tmp/tutorial/www
 echo &quot;&lt;h1&gt;hello world&lt;/h1&gt;&quot; &gt; /tmp/tutorial/www/index.html
 </code></pre>
 <h2 id="apply">Apply</h2>
