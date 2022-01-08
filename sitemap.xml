@@ -3,7 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jenciso.github.io/blog/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/tags/ruby/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/tags/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</loc>
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
@@ -15,12 +27,6 @@
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/tags/spring-boot/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/tags/</loc>
-    <lastmod>2020-06-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/</loc>
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/tags/dnsmasq/</loc>
