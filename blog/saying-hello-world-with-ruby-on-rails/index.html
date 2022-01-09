@@ -146,7 +146,7 @@
                                     <i class="far fa-star"></i>
                                     Jan 8, 2022
                                     <i class="far fa-clock clock"></i>
-                                    2 min read
+                                    3 min read
                                 </span>					
                             </div>
                         </div>			
@@ -164,19 +164,47 @@
 
                     
                     <div class="article-post">
-                        <h2 id="intro">Intro</h2>
-<p>As a devops engineer you need to approximate to the Developer Teams code language. Ruby on Rails is one of the most popular programming languages and your developers often want to use it.</p>
-<p>One of the first things you need to do when you are learning a programming language is to create a <code>Hello World</code> code. I will explain how to do that in diverse ways in the following lines.</p>
-<h2 id="install">Install</h2>
+                        <div class="toc">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#getting-started-with-ruby">Getting Started with Ruby</a>
+      <ul>
+        <li><a href="#installing-ruby">Installing Ruby</a></li>
+        <li><a href="#installing-rails">Installing Rails</a></li>
+      </ul>
+    </li>
+    <li><a href="#say-hello-world">Say Hello World!</a>
+      <ul>
+        <li><a href="#using-one-command-line">Using one command line</a></li>
+        <li><a href="#using-puts-function">Using Puts function</a></li>
+        <li><a href="#using-object-oriented-version">Using object oriented version</a></li>
+        <li><a href="#using-sinatra-and-puma">Using Sinatra and puma</a></li>
+      </ul>
+    </li>
+    <li><a href="#as-a-container-application">As a Container Application</a></li>
+  </ul>
+</nav>
+</div>
+
+<h2 id="intro">Intro</h2>
+<p>As a SRE engineer you have to approximate to the Developer Teams code language in order to understand how difficult it is to build and debug applications. Ruby is one of the most popular programming languages and if you want to getting started with Ruby, here I show you some steps to help you in this journey.</p>
+<h2 id="getting-started-with-ruby">Getting Started with Ruby</h2>
+<p>One of the first things you need to do when you are learning a programming language is to create a Hello World code. I will explain how to do that in diverse ways in the following lines.</p>
 <h3 id="installing-ruby">Installing Ruby</h3>
 <p>For Ubuntu users I will install Ruby on Rails using this steps found out <a href="https://gorails.com/setup/ubuntu/20.04">here</a></p>
-<pre><code class="language-bash">sudo apt install curl
+<pre><code class="language-shell">sudo apt install curl
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo &quot;deb https://dl.yarnpkg.com/debian/ stable main&quot; | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
+  sudo apt-key add -
+echo &quot;deb https://dl.yarnpkg.com/debian/ stable main&quot; | \
+  sudo tee /etc/apt/sources.list.d/yarn.list
 
 sudo apt-get update
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev \
+  libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev \
+  libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev \
+  nodejs yarn
 </code></pre>
 <p>Next we&rsquo;re going to be installing Ruby using a version manager called Rbenv.</p>
 <p>Installing with rbenv is a simple two step process. First you install rbenv, and then ruby-build:</p>
@@ -214,6 +242,7 @@ rails -v
 Hello world
 </code></pre>
 <h3 id="using-object-oriented-version">Using object oriented version</h3>
+<p>Create a file called <code>hi.rb</code> with the following content:</p>
 <pre><code class="language-ruby">class HelloWorld
    def initialize(name)
       @name = name.capitalize
@@ -226,25 +255,85 @@ end
 hello = HelloWorld.new(&quot;World&quot;)
 hello.sayHi
 </code></pre>
-<h3 id="using-sinatra">Using Sinatra</h3>
-<p>Install sinatra</p>
+<h3 id="using-sinatra-and-puma">Using Sinatra and puma</h3>
+<p>To run a hellow world as a webserver require use this following gems:</p>
 <pre><code class="language-shell">gem install sinatra
+gem install puma
 </code></pre>
-<p>Create a file called <code>hi.rb</code></p>
+<p>Then, create a file called <code>hi.rb</code></p>
 <pre><code class="language-ruby">require 'sinatra'
+require 'puma'
 
 get '/hi' do
   &quot;Hello World!&quot;
 end
 </code></pre>
-<p>Then, run it <code>ruby hi.rb</code>, after a few seconds you should see something like this:</p>
-<pre><code class="language-shell">== Sinatra/1.1.0 has taken the stage on 4567 for development with backup from WEBrick
-[2010-12-04 11:43:43] INFO  WEBrick 1.3.1
-[2010-12-04 11:43:43] INFO  ruby 1.9.2 (2010-08-18) [x86_64-darwin10.5.0]
-[2010-12-04 11:43:43] INFO  WEBrick::HTTPServer#start: pid=37898 port=4567:
+<p>And run it <code>ruby hi.rb</code>. You will see this result:</p>
+<pre><code class="language-shell">== Sinatra (v2.1.0) has taken the stage on 4567 for development with backup from Puma
+Puma starting in single mode...
+* Puma version: 5.5.2 (ruby 3.0.3-p157) (&quot;Zawgyi&quot;)
+*  Min threads: 0
+*  Max threads: 5
+*  Environment: development
+*          PID: 51949
+* Listening on http://127.0.0.1:4567
+* Listening on http://[::1]:4567
+Use Ctrl-C to stop
 </code></pre>
+<blockquote>
+<p>Debug mode: <code>ruby --debug hi.rb</code></p>
+</blockquote>
 <p>Test it via curl</p>
 <pre><code>curl -vs http://localhost:4567/hi
+</code></pre>
+<h2 id="as-a-container-application">As a Container Application</h2>
+<p>Create a <code>Dockerfile</code>:</p>
+<pre><code>FROM ruby:alpine
+
+RUN apk add build-base &amp;&amp; \
+    rm -rf /var/cache/apk/*
+
+RUN mkdir /app
+COPY . /app/
+
+WORKDIR /app
+RUN bundle install
+
+CMD [&quot;puma&quot;,&quot;-b&quot;,&quot;tcp://0.0.0.0:4567&quot;]  
+</code></pre>
+<p>Add a <code>Gemfile</code>, <code>config.ru</code> and <code>app.rb</code></p>
+<pre><code class="language-ruby">source &quot;https://rubygems.org&quot;
+
+gem 'sinatra'
+gem 'puma'
+</code></pre>
+<pre><code class="language-ruby">require_relative './app.rb'      
+                                 
+run App                          
+</code></pre>
+<pre><code class="language-ruby">require 'sinatra'
+require 'puma'
+
+configure {                      
+  set :server, :puma             
+}                                
+                                 
+class App &lt; Sinatra::Base
+
+  get '/' do
+    &quot;Hello World with Ruby!&quot;
+  end
+
+  get '/hi' do
+    &quot;Hi!&quot;
+  end
+
+
+  get '/health' do                         
+    &quot;Im Alive, TimeStamp: #{Time.now}&quot;     
+  end                                      
+ 
+end
 </code></pre>
 
                     </div>
