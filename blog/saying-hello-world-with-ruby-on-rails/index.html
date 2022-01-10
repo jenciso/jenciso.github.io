@@ -290,57 +290,14 @@ Use Ctrl-C to stop
 <pre><code>curl -vs http://localhost:4567/hi
 </code></pre>
 <h3 id="as-a-container-application">As a Container Application</h3>
-<p>Create a <code>Dockerfile</code>:</p>
-<pre><code>FROM ruby:alpine
-
-RUN apk add build-base &amp;&amp; \
-    rm -rf /var/cache/apk/*
-
-RUN mkdir /app
-COPY . /app/
-
-WORKDIR /app
-RUN bundle install
-
-CMD [&quot;puma&quot;,&quot;-b&quot;,&quot;tcp://0.0.0.0:4567&quot;]  
-</code></pre>
-<p>Add a <code>Gemfile</code>, <code>config.ru</code> and <code>app.rb</code></p>
-<pre><code class="language-ruby">source &quot;https://rubygems.org&quot;
-
-gem 'sinatra'
-gem 'puma'
-</code></pre>
-<pre><code class="language-ruby">require_relative './app.rb'      
-                                 
-run App                          
-</code></pre>
-<pre><code class="language-ruby">require 'sinatra'
-require 'puma'
-
-configure {                      
-  set :server, :puma             
-}                                
-                                 
-class App &lt; Sinatra::Base
-
-  get '/' do
-    &quot;Hello World with Ruby!&quot;
-  end
-
-  get '/hi' do
-    &quot;Hi!&quot;
-  end
-
-
-  get '/health' do                         
-    &quot;Im Alive, TimeStamp: #{Time.now}&quot;     
-  end                                      
- 
-end
-</code></pre>
-<blockquote>
-<p>The source code is <a href="https://github.com/jenciso/ruby-helloworld">here</a></p>
-</blockquote>
+<p>You need to create 3 files for your application:</p>
+<ul>
+<li>Gemfile</li>
+<li>config.ru</li>
+<li>app.rb</li>
+</ul>
+<p>And in addition, you have to create a <code>Dockerfile</code>. I uploaded this file in this git repository: <a href="https://github.com/jenciso/ruby-helloworld">https://github.com/jenciso/ruby-helloworld</a></p>
+<script src="https://gist.github.com/jenciso/8c9b69ed1cf99d9c8ce1cd88ccf4431b.js"></script>
 <h2 id="demo">Demo</h2>
 <p>
     <asciinema-player
@@ -351,7 +308,7 @@ end
         preload="1"
         
         start-at="0"
-        speed="2"
+        speed="1"
         
         
         
