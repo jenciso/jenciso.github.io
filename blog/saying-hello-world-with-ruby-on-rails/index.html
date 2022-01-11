@@ -298,7 +298,62 @@ Use Ctrl-C to stop
 </ul>
 <p>And in addition, you have to create a <code>Dockerfile</code>. I uploaded those files in this git repository: <a href="https://github.com/jenciso/ruby-helloworld">https://github.com/jenciso/ruby-helloworld</a></p>
 <p>You only need to follow the instructions written on the <a href="https://github.com/jenciso/ruby-helloworld">README.md</a></p>
-<script src="https://gist.github.com/jenciso/8c9b69ed1cf99d9c8ce1cd88ccf4431b.js"></script>
+<ul>
+<li>Dockerfile</li>
+</ul>
+<pre><code class="language-Dockerfile">FROM ruby:alpine
+
+RUN apk add build-base &amp;&amp; \
+    rm -rf /var/cache/apk/*
+
+RUN mkdir /app
+COPY . /app/
+
+WORKDIR /app
+RUN bundle install
+
+CMD [&quot;puma&quot;,&quot;-b&quot;,&quot;tcp://0.0.0.0:4567&quot;]
+</code></pre>
+<ul>
+<li>Gemfile</li>
+</ul>
+<pre><code class="language-ruby">source &quot;https://rubygems.org&quot;
+
+gem 'sinatra'
+gem 'puma'
+</code></pre>
+<ul>
+<li>config.ru</li>
+</ul>
+<pre><code class="language-ruby">require_relative './app.rb'
+run App
+</code></pre>
+<ul>
+<li>app.ru</li>
+</ul>
+<pre><code class="language-ruby">require 'sinatra'
+require 'puma'
+
+configure {                      
+  set :server, :puma             
+}                                
+                                 
+class App &lt; Sinatra::Base
+
+  get '/' do
+    &quot;Hello World with Ruby!&quot;
+  end
+
+  get '/hi' do
+    &quot;Hi!&quot;
+  end
+
+  get '/health' do                         
+    &quot;Im Alive, TimeStamp: #{Time.now}&quot;     
+  end                                      
+
+end
+</code></pre>
 <h2 id="demo">Demo</h2>
 <p>
     <asciinema-player
