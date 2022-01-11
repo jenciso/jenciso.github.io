@@ -197,7 +197,8 @@
 <h3 id="installing-ruby">Installing Ruby</h3>
 <p>For Ubuntu users I will install Ruby on Rails using this steps found out <a href="https://gorails.com/setup/ubuntu/20.04">here</a></p>
 <pre class="command-line" data-prompt="$">
-<code class="language-shell">sudo apt install curl
+<code class="language-shell">
+sudo apt install curl
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
   sudo apt-key add -
@@ -208,11 +209,13 @@ sudo apt-get update
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev \
   libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev \
   libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev \
-  nodejs yarn</code>
+  nodejs yarn
+</code>
 </pre>
 <p>Next we&rsquo;re going to be installing Ruby using a version manager called Rbenv.</p>
 <p>Installing with rbenv is a simple two step process. First you install rbenv, and then ruby-build:</p>
-<pre class="command-line" data-prompt="$"><code class="language-bash">cd
+<pre class="command-line" data-prompt="$"><code class="language-bash">
+cd
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
@@ -220,17 +223,22 @@ exec $SHELL
 
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-exec $SHELL</code></pre>
+exec $SHELL
+</code></pre>
 <p>To install Ruby and set the default version, we&rsquo;ll run the following commands:</p>
-<pre class="command-line" data-prompt="$"><code class="language-bash">rbenv install 3.0.3
+<pre class="command-line" data-prompt="$"><code class="language-bash">
+rbenv install 3.0.3
 rbenv global 3.0.3
 ruby -v
-gem install bundler</code>
+gem install bundler
+</code>
 </pre>
 <h3 id="installing-rails">Installing Rails</h3>
-<pre class="command-line" data-prompt="$"><code class="language-bash">gem install rails -v 7.0.0
+<pre class="command-line" data-prompt="$"><code class="language-bash">
+gem install rails -v 7.0.0
 rbenv rehash
-rails -v</code></pre>
+rails -v
+</code></pre>
 <h2 id="say-hello-world">Say Hello World!</h2>
 <h3 id="using-one-command-line">Using one command line</h3>
 <pre><code class="language-shell">ruby -e &quot;puts 'Hello world'&quot;
@@ -246,7 +254,8 @@ Hello world
 <h3 id="using-object-oriented-version">Using object oriented version</h3>
 <p>Create a file called <code>hi.rb</code> with the following content:</p>
 <pre class="line-numbers" style="white-space: pre-wrap;">
-<code class="language-ruby">class HelloWorld
+<code class="language-ruby">
+class HelloWorld
    def initialize(name)
       @name = name.capitalize
    end
@@ -261,12 +270,14 @@ hello.sayHi
 </pre>
 <h3 id="using-sinatra-and-puma">Using Sinatra and puma</h3>
 <p>To run a hellow world as a webserver require use this following gems:</p>
-<pre><code class="language-shell">gem install sinatra
+<pre class="command-line" data-prompt="$"><code class="language-bash">
+gem install sinatra
 gem install puma
 </code></pre>
 <p>Then, create a file called <code>hi.rb</code></p>
 <pre class="line-numbers">
-<code class="language-ruby">require 'sinatra'
+<code class="language-ruby">
+require 'sinatra'
 require 'puma'
 
 get '/hi' do
@@ -275,16 +286,18 @@ end
 </code>
 </pre>
 <p>And run it <code>ruby hi.rb</code>. You will see this result:</p>
-<pre><code class="language-shell">== Sinatra (v2.1.0) has taken the stage on 4567 for development with backup from Puma
-Puma starting in single mode...
-* Puma version: 5.5.2 (ruby 3.0.3-p157) (&quot;Zawgyi&quot;)
-*  Min threads: 0
-*  Max threads: 5
-*  Environment: development
-*          PID: 51949
-* Listening on http://127.0.0.1:4567
-* Listening on http://[::1]:4567
-Use Ctrl-C to stop
+<pre class="command-line" data-prompt="$" data-filter-output="(out)"><code class="language-bash">
+ruby hi.rb
+(out) == Sinatra (v2.1.0) has taken the stage on 4567 for development with backup from Puma
+(out) Puma starting in single mode...
+(out) * Puma version: 5.5.2 (ruby 3.0.3-p157) ("Zawgyi")
+(out) *  Min threads: 0
+(out) *  Max threads: 5
+(out) *  Environment: development
+(out) *          PID: 51949
+(out) * Listening on http://127.0.0.1:4567
+(out) * Listening on http://[::1]:4567
+(out) Use Ctrl-C to stop
 </code></pre>
 <blockquote>
 <p>Debug mode: <code>ruby --debug hi.rb</code></p>
