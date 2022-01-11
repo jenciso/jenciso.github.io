@@ -168,10 +168,10 @@
 <p>To create a simple spring boot application, as the very famous example &ldquo;Hello World!&rdquo;, you don&rsquo;t need to use an IDE software. Fortunately, you can use only gradle CLI, and the Gradle website explains how to do this via its <a href="https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/#creating_a_hello_gradle_sample_application">simple tutorial</a>. I will try to sumarize it in this article</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>Initialize your project via <code>gradle</code></p>
-<pre><code>gradle init --type java-application
+<pre><code class="language-shell">gradle init --type java-application
 </code></pre>
 <p>It will create this directory structure adding some files</p>
-<pre><code>$ tree spring-hello-world/
+<pre><code class="language-shell">$ tree spring-hello-world/
 spring-hello-world/
 ├── build.gradle
 ├── gradle
@@ -218,13 +218,13 @@ bootJar {
 }
 </code></pre>
 <p>At this point, you could build and run the application</p>
-<pre><code>./gradlew bootJar
+<pre><code class="language-shell">./gradlew bootJar
 </code></pre>
 <p>Or using the jar file</p>
-<pre><code>java -jar ./build/libs/spring-hello-world.jar
+<pre><code class="language-shell">java -jar ./build/libs/spring-hello-world.jar
 </code></pre>
 <p>Another way to run the Application is by executing the following Gradle command:</p>
-<pre><code>./gradlew bootRun
+<pre><code class="language-shell">./gradlew bootRun
 </code></pre>
 <p>Sample:</p>
 <p><a href="https://asciinema.org/a/dWeIbajqy3an00eRqXfpuqslW"><img src="https://asciinema.org/a/dWeIbajqy3an00eRqXfpuqslW.svg" alt="asciicast"></a></p>
