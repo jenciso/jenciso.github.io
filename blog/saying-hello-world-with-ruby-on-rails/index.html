@@ -182,7 +182,7 @@
         <li><a href="#using-puts-function">Using Puts function</a></li>
         <li><a href="#using-object-oriented-version">Using object oriented version</a></li>
         <li><a href="#using-sinatra-and-puma">Using Sinatra and puma</a></li>
-        <li><a href="#as-a-container-application">As a Container Application</a></li>
+        <li><a href="#use-a-container-application">Use a container application</a></li>
       </ul>
     </li>
     <li><a href="#demo">Demo</a></li>
@@ -305,36 +305,23 @@ ruby hi.rb
 <p>Test it via curl</p>
 <pre><code class="language-shell">curl -vs http://localhost:4567/hi
 </code></pre>
-<h3 id="as-a-container-application">As a Container Application</h3>
-<p>You need to create 3 files for your application:</p>
+<h3 id="use-a-container-application">Use a container application</h3>
+<p>To containerize my &ldquo;hello world&rdquo; application, I created 3 files in addition to <code>Dockerfile</code> needed. Those files are:</p>
 <ul>
 <li>Gemfile</li>
 <li>config.ru</li>
 <li>app.rb</li>
 </ul>
-<p>And in addition, you have to create a <code>Dockerfile</code>. I uploaded those files in this git repository: <a href="https://github.com/jenciso/ruby-helloworld">https://github.com/jenciso/ruby-helloworld</a></p>
-<p>You only need to follow the instructions written on the <a href="https://github.com/jenciso/ruby-helloworld">README.md</a></p>
-<ul>
-<li>Dockerfile</li>
-</ul>
+<p>I uploaded those in this git repository: <a href="https://github.com/jenciso/ruby-helloworld">https://github.com/jenciso/ruby-helloworld</a>. You only need to follow the instructions written on the <a href="https://github.com/jenciso/ruby-helloworld">README.md</a></p>
 <code>
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fjenciso%2Fruby-helloworld%2Fblob%2Fmaster%2FDockerfile&style=default&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
 </code>
-<ul>
-<li>Gemfile</li>
-</ul>
 <code>
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fjenciso%2Fruby-helloworld%2Fblob%2Fmaster%2FGemfile&style=default&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
 </code>
-<ul>
-<li>config.ru</li>
-</ul>
 <code>
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fjenciso%2Fruby-helloworld%2Fblob%2Fmaster%2Fconfig.ru&style=default&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
 </code>
-<ul>
-<li>app.ru</li>
-</ul>
 <code>
 <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fjenciso%2Fruby-helloworld%2Fblob%2Fmaster%2Fapp.rb&style=xcode&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
 </code>
