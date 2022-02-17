@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container Tips for Spring Applications</title>
+      <link>https://jenciso.github.io/blog/container-tips-for-spring-applications/</link>
+      <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/container-tips-for-spring-applications/</guid>
+      <description> Intro References    Intro References  https://www.farfetchtechblog.com/en/blog/post/performance-tips-for-container-applications/  </description>
+    </item>
+    
     <item>
       <title>How to use multiple Java Development Kit</title>
       <link>https://jenciso.github.io/blog/how-to-use-multiple-jdks/</link>
@@ -36,12 +45,12 @@
     </item>
     
     <item>
-      <title>Using dnsmasq with networkManager in Ubuntu</title>
+      <title>Using dnsmasq with networkManager in Ubuntu 20.04</title>
       <link>https://jenciso.github.io/blog/caching-dns-using-dnsmasq/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/caching-dns-using-dnsmasq/</guid>
-      <description>Overview Remote work increased since covid-19 appears. The VPN appliances turned crucial devices and employees are using more than ever their companies internal services. VPN connections often setting a custom DNS server, your internal DNS server, in order to resolve hostnames or services of the internal company.</description>
+      <description>Overview Remote work has been increased since covid-19. VPN appliances turned crucial devices and employees has been using more than ever their companies internal services. VPN often need to setup your DNS configuration in order to use the internal DNS server of the company, so you can resolve hostnames or services offer by your company.</description>
     </item>
     
     <item>

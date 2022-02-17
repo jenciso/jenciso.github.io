@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on Tech-Blog</title>
+    <link>https://jenciso.github.io/tags/spring/</link>
+    <description>Recent content in spring on Tech-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Juan Enciso - All rights reserved</copyright>
+    <lastBuildDate>Tue, 25 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container Tips for Spring Applications</title>
+      <link>https://jenciso.github.io/blog/container-tips-for-spring-applications/</link>
+      <pubDate>Tue, 25 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/container-tips-for-spring-applications/</guid>
+      <description> Intro References    Intro References  https://www.farfetchtechblog.com/en/blog/post/performance-tips-for-container-applications/  </description>
+    </item>
+    
+  </channel>
+</rss>
