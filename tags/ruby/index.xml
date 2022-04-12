@@ -6,15 +6,14 @@
     <description>Recent content in ruby on Tech-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sat, 08 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Juan Enciso - All rights reserved</copyright><atom:link href="https://jenciso.github.io/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Saying Hello World with Ruby On Rails</title>
       <link>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</link>
-      <pubDate>Sat, 08 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</guid>
-      <description>Intro Getting Started with Ruby  Installing Ruby Installing Rails   Say Hello World!  Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application   Demo    Intro As a SRE engineer you have to approximate to the Developer Teams code language in order to understand how difficult it is to build and debug applications.</description>
+      <description>Intro Getting Started with Ruby  Installing Ruby Installing Rails   Say Hello World!  Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application   Demo    Intro As an SRE engineer, you have to approximate the Developer Teams talking in the same language.</description>
     </item>
     
   </channel>

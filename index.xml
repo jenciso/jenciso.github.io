@@ -27,15 +27,6 @@
     </item>
     
     <item>
-      <title>Saying Hello World with Ruby On Rails</title>
-      <link>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</link>
-      <pubDate>Sat, 08 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</guid>
-      <description>Intro Getting Started with Ruby  Installing Ruby Installing Rails   Say Hello World!  Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application   Demo    Intro As a SRE engineer you have to approximate to the Developer Teams code language in order to understand how difficult it is to build and debug applications.</description>
-    </item>
-    
-    <item>
       <title>Create a simple spring boot application using gradle</title>
       <link>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</link>
       <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
@@ -171,6 +162,15 @@ Sometimes, one special character could break the dashboard and your text search 
       
       <guid>https://jenciso.github.io/personal/manage-tls-certificates-for-kubernetes-users/</guid>
       <description>Intro After to create your kubernetes cluster, the most common next step is create user&amp;rsquo;s access to the cluster. In order to do that, you&amp;rsquo;ll need to create certificates to give authentication via kube-apiserver service.</description>
+    </item>
+    
+    <item>
+      <title>Saying Hello World with Ruby On Rails</title>
+      <link>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</guid>
+      <description>Intro Getting Started with Ruby  Installing Ruby Installing Rails   Say Hello World!  Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application   Demo    Intro As an SRE engineer, you have to approximate the Developer Teams talking in the same language.</description>
     </item>
     
   </channel>
