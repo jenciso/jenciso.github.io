@@ -26,6 +26,12 @@
     <loc>https://jenciso.github.io/tags/jdk/</loc>
     <lastmod>2022-01-21T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://jenciso.github.io/tags/ruby/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</loc>
+    <lastmod>2022-01-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jenciso.github.io/blog/create-a-simple-spring-boot-application-with-gradle/</loc>
     <lastmod>2020-06-08T00:00:00+00:00</lastmod>
   </url><url>
@@ -153,9 +159,5 @@
     <lastmod>2017-09-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/categories/</loc>
-  </url><url>
-    <loc>https://jenciso.github.io/tags/ruby/</loc>
-  </url><url>
-    <loc>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</loc>
   </url>
 </urlset>
