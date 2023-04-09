@@ -192,7 +192,7 @@
 <h3 id="create-a-shortcode">Create a shortcode</h3>
 <p>Create a shortcode file. Example: <code>layouts/shortcodes/asciinema.html</code> with this content:</p>
 <pre><code class="language-html">&lt;div id='{{ with .Get &quot;key&quot; }}{{ . }}{{ end }}'&gt;&lt;/div&gt;
-&lt;script src=&quot;{{ .Site.BaseURL }}js/asciinema-player.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{{ .Site.BaseURL }}/js/asciinema-player.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
     AsciinemaPlayer.create('/casts/{{ with .Get &quot;key&quot; }}{{ . }}{{ end }}.cast', document.getElementById('{{ with .Get &quot;key&quot; }}{{ . }}{{ end }}'), {
         {{ if .Get &quot;cols&quot; }}cols: &quot;{{ .Get &quot;cols&quot; }}&quot;,{{ end }}
