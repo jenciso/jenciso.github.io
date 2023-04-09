@@ -14,7 +14,8 @@
       <pubDate>Mon, 28 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-check-if-a-variable-is-set-in-bash/</guid>
-      <description>Question Answers  Short Approach Full explanation      Question For example, how do I check if the user gave the first parameter to a function?</description>
+      <description>Question Answers Short Approach Full explanation Question For example, how do I check if the user gave the first parameter to a function?
+function a { # if $1 is set ?</description>
     </item>
     
     <item>
@@ -23,7 +24,7 @@
       <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/how-to-use-multiple-jdks/</guid>
-      <description>Intro Getting Started References    Intro SDKMAN! is a tool for managing parallel versions of multiple Software Development Kits on most Unix based systems.</description>
+      <description>Intro Getting Started References Intro SDKMAN! is a tool for managing parallel versions of multiple Software Development Kits on most Unix based systems. It allows you to download and easy switch between various versions of JDK.</description>
     </item>
     
     <item>
@@ -32,7 +33,7 @@
       <pubDate>Sat, 08 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/saying-hello-world-with-ruby-on-rails/</guid>
-      <description>Intro Getting Started with Ruby  Installing Ruby Installing Rails   Say Hello World!  Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application   Demo    Intro As an SRE engineer, you have to approximate the Developer Teams talking in the same language.</description>
+      <description>Intro Getting Started with Ruby Installing Ruby Installing Rails Say Hello World! Using one command line Using Puts function Using object oriented version Using Sinatra and puma Use a container application Demo Intro As an SRE engineer, you have to approximate the Developer Teams talking in the same language.</description>
     </item>
     
     <item>
@@ -69,7 +70,7 @@
       
       <guid>https://jenciso.github.io/blog/how-to-join-centos-linux-to-an-active-directory-domain/</guid>
       <description>Intro These steps were tested using Active Directory on Windows 2008 R2 and Windows 2012 R2.
-Pre-requisites  Install the packages needed  yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python   Ensure to use your AD as domain server  [root@centos7 ~]# cat /etc/resolv.</description>
+Pre-requisites Install the packages needed yum -y install sssd realmd oddjob oddjob-mkhomedir adcli \ samba-common samba-common-tools krb5-workstation \ openldap-clients policycoreutils-python Ensure to use your AD as domain server [root@centos7 ~]# cat /etc/resolv.</description>
     </item>
     
     <item>
@@ -134,7 +135,7 @@ Sometimes, one special character could break the dashboard and your text search 
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
-      <description>Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use asciinema to do that.</description>
+      <description>Overview Embedding videos in your blog could be overwhelming and time-consuming. Alternatively, you could use asciinema player to replay a sequence of steps of your terminal on your blog website.</description>
     </item>
     
     <item>

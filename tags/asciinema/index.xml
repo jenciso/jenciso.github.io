@@ -14,7 +14,7 @@
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
-      <description>Every now and then I want to show step by step a process simply recording an output of my terminal, so commonly I use asciinema to do that.</description>
+      <description>Overview Embedding videos in your blog could be overwhelming and time-consuming. Alternatively, you could use asciinema player to replay a sequence of steps of your terminal on your blog website.</description>
     </item>
     
   </channel>
