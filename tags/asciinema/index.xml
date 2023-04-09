@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Juan Enciso - All rights reserved</copyright>
-    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/asciinema/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jenciso.github.io/tags/asciinema/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Embedding asciinema cast in your Hugo site</title>
       <link>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</link>
-      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</guid>
       <description>Overview Embedding videos in your blog could be overwhelming and time-consuming. Alternatively, you could use asciinema player to replay a sequence of steps of your terminal on your blog website.</description>

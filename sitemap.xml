@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jenciso.github.io/tags/asciinema/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/blog/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/tags/hugo/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/tags/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jenciso.github.io/</loc>
+    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jenciso.github.io/tags/bash/</loc>
     <lastmod>2022-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jenciso.github.io/blog/</loc>
-    <lastmod>2022-02-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://jenciso.github.io/blog/how-to-check-if-a-variable-is-set-in-bash/</loc>
-    <lastmod>2022-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/tags/</loc>
-    <lastmod>2022-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/</loc>
     <lastmod>2022-02-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/blog/how-to-use-multiple-jdks/</loc>
@@ -112,15 +121,6 @@
   </url><url>
     <loc>https://jenciso.github.io/tags/storage/</loc>
     <lastmod>2019-06-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/tags/asciinema/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/blog/embedding-asciinema-cast-in-your-hugo-site/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jenciso.github.io/tags/hugo/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jenciso.github.io/tags/haproxy/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
